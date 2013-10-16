@@ -33,3 +33,5 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+/NewPythonProject/nbproject/private
+/nbproject/private/
