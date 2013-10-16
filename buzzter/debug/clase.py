@@ -1,7 +1,7 @@
 __author__="t4r0"
 __date__ ="$14-oct-2013 16:53:32$"
 
-class pruebas():
+class pruebas:
     
     def pruebaIndice(self):
         print("Hola clase!")

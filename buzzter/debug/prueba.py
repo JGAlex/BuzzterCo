@@ -8,6 +8,5 @@ __date__ ="$15-oct-2013 18:06:25$"
 from clase import pruebas
 
 if __name__ == "__main__":
-    pruebas.pruebaIndice()
- 
+    pruebas.errorCapturado
     print "Hello World";
