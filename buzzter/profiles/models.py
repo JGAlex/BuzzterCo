@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -14,3 +15,6 @@ class Profile(models.Model):
     nombre = models.CharField(max_length=300, blank=True)
     fotografia = models.CharField(max_length=500, blank=True)
     
+    def __unicode__(self):
+        return self.usuario.get_username()
+        
