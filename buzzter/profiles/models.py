@@ -13,7 +13,7 @@ class Profile(models.Model):
     """
     usuario = models.ForeignKey(User, unique=True)
     nombre = models.CharField(max_length=300, blank=True)
-    fotografia = models.CharField(max_length=500, blank=True)
+    fotografia = models.ImageField(upload_to="users")
     
     def __unicode__(self):
         return self.usuario.get_username()
