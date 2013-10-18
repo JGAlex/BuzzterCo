@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome to buzzter</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div>
+            <form method="POST">
+                {% csrf_token %}
+                <label> Usuario </label>
+                <input name="username" type="text" placeholder="Usuario">
+                <label> Contraseña </label>
+                <input name="password" type="password" placeholder="Contraseña">
+                <input type="hidden" name = "next" value="{{user.username}}" />
+                <button type="submit"> Ingresar </button>
+            </form>
+        </div>
+    </body>
+</html>
