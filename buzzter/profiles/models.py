@@ -11,7 +11,7 @@ class Profile(models.Model):
     Branch: master
     Modificado: 16/10/2013 19:14
     """
-    usuario = models.ForeignKey(User, unique=True)
+    usuario = models.OneToOneField(User, related_name='profile')
     nombre = models.CharField(max_length=300, blank=True)
     fotografia = models.ImageField(upload_to="users")
     

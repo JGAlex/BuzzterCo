@@ -7,11 +7,12 @@ from django.views.generic import CreateView
 from django import forms 
 
 def ProfileView(request, user_name):
+    user = User()
     try:
         user = User.objects.get(username = user_name)
     except User.DoesNotExist:
         raise Http404
-    return render(request, 'profiles/profile.html', {'profile':user})
+    return render(request, 'profiles/profile.html', {'profile':user, 'info':user.profile })
 
 class EditProfile(CreateView):
     
