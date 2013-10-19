@@ -7,9 +7,10 @@ from django.conf.urls import patterns, url
 from profiles import views 
 
 urlpatterns = patterns('', 
-                        url(r'^$', 'django.contrib.auth.views.login',
+                        url(r'^Login$', 'django.contrib.auth.views.login',
                             {'template_name':'profiles/login.html'}, name = 'login'),
-                        url(r'^logout/$', 'django.contrib.auth.views.logout_then_login', name = 'logout'),
-                        url(r'^(?P<user_name>\w+)/$', views.ProfileView, name='profile'),
-                        url(r'^(?P<user_name>\w+)/edit/$', views.EditProfile.as_view(), name='edit_profile')
+                        url(r'^Logout/$', 'django.contrib.auth.views.logout_then_login', name = 'logout'),
+                        url(r'^Accounts/(?P<user_name>\w+)/$', views.ProfileView, name='profile'),
+                        url(r'^Accounts/Edit/$', views.EditProfile.as_view(), name='edit_profile'),
+                        url(r'^$', views.SignUp.as_view(), name='signup')
                 )
