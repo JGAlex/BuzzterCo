@@ -27,7 +27,7 @@ and open the template in the editor.
  #header
  {
      color: white;
-     margin: 0 85% 0 5%;     
+     margin: 0%;     
  }
  
  .buzzContainer a, .buzzContainer a:link{
@@ -45,3 +45,7 @@ and open the template in the editor.
      position: absolute;
  }
  
+ #logPart
+ {
+     margin-left: 66%;
+ }
