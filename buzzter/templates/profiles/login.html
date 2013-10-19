@@ -1,25 +1,27 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Welcome to buzzter</title>
-        <meta charset="UTF-8">
-    </head>
-    <body>
-    <div>
+{% extends "base.html" %}
+
+{% block tittle %} Welcome to buzzter {% endblock %}
+    
+{% block content %}
+     <div>
         {%if user.is_authenticated %}
         <div><a href="Accounts/{{user.username}}"> ve a tu perfil</a> </div>
         {%else%}
         <div>
             <form method="POST">
                 {% csrf_token %}
-                <label> Usuario </label>
-                <input name="username" type="text" placeholder="Usuario">
-                <label> Contraseña </label>
-                <input name="password" type="password" placeholder="Contraseña">            
+                <div>
+                    <label> Usuario </label>
+                    <input name="username" type="text" placeholder="Usuario">
+                </div>
+                <div>
+                    <label> Contraseña </label>
+                    <input name="password" type="password" placeholder="Contraseña">  
+                </div>
                 <button type="submit"> Ingresar </button>
             </form>
         </div>
         {%endif%}
     </div>
-    </body>
-</html>
+{% endblock %}

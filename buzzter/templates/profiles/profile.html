@@ -1,4 +1,8 @@
-<meta charset="UTF-8">
+{% extends "base.html" %}
+
+{% block tittle %} Edita tu perfil {% endblock %}
+    
+{% block content %}
 <a href="/Logout/"> Cerrar sesión </a>
 <div>
     <img alt ="imagen de usuario" src="{{info.fotografia.url}}" style="width: 10%; height: 20%">
@@ -6,3 +10,4 @@
 <div>
     {{profile}}
 </div>
+{% endblock %}

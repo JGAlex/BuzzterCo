@@ -1,16 +1,9 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="windows-1252">
-        <meta name="viewport" content="width=device-width">
-    </head>
-    <body>
+{% extends "base.html" %}
+
+{% block tittle %} Welcome to Buzzter! {% endblock %}
+    
+{% block content %}
         <div>
             <form method="POST" >
                {% csrf_token %}
@@ -18,6 +11,5 @@ and open the template in the editor.
                <input type="Submit" value="Registrarme">
             </form>
         </div>
-    </body>
     <a href="/Login">Ya tengo una cuenta</a>
-</html>
+{% endblock %}

@@ -1,15 +1,14 @@
 <!doctype html>
-<html lang="es">
-    <head>
-        <title>Editar perfil</title>
-        <meta charset="windows-1252">
-    </head>
-    <body>
+{% extends "base.html" %}
+
+{% block tittle %} Edita tu perfil {% endblock %}
+    
+{% block content %}
         <h1>Edita tu perfil</h1>
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{Profile.as_p}}
             <input type="Submit" value="Listo!">
         </form>
-    </body>
-</html>
+{% endblock %}
+

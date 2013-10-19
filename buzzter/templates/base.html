@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>{% block tittle %} {% endblock %}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}styles/buzzter.css"/>
+    </head>
+    <body class="buzzBody">
+        <div class="buzzContainer">
+            <div id="header">
+                <a  href="/">
+                    <h1 style="margin: 0 0 0 0; padding: 0%">Buzzter</h1>
+                </a>
+            </div>
+            {% if user.is_authenticated %}
+            <div>
+                <a href="/Logout">Log-out</a>
+            </div>
+            {% endif %}
+            
+                <div id="downDecorator" style="background-color: #0078b0;"> </div>
+                <div id="downDecorator" style="background-color: #ff8000; margin-left: 33%"> </div>
+                <div id="downDecorator" style="background-color: #f7ff55; margin-left: 66%"> </div>
+            
+        </div> 
+        
+        <div>
+            {% block content %} {% endblock %}
+        </div>
+    </body>
+</html>
