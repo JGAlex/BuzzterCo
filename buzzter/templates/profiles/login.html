@@ -8,19 +8,21 @@
         {%if user.is_authenticated %}
         <div><a href="Accounts/{{user.username}}"> ve a tu perfil</a> </div>
         {%else%}
-        <div>
-            <form method="POST">
-                {% csrf_token %}
-                <div>
-                    <label> Usuario </label>
-                    <input name="username" type="text" placeholder="Usuario">
-                </div>
-                <div>
-                    <label> Contraseña </label>
-                    <input name="password" type="password" placeholder="Contraseña">  
-                </div>
-                <button type="submit"> Ingresar </button>
-            </form>
+        <div class="logIn">
+            <div class="logInForm">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div >
+                        <label> Usuario </label>
+                        <input name="username" type="text" placeholder="Usuario">
+                    </div>
+                    <div>
+                        <label> Contraseña </label>
+                        <input name="password" type="password" placeholder="Contraseña">  
+                    </div>
+                    <button type="submit"> Ingresar </button>
+                </form>
+            </div>
         </div>
         {%endif%}
     </div>

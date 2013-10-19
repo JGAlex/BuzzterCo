@@ -14,17 +14,17 @@ and open the template in the editor.
     <body class="buzzBody">
         <div class="buzzContainer">
             <div id="header">
-                <div>
+                <div id = "buzzterHome">
                     <a  href="/">
                         <h1 style="margin: 0 0 0 0; padding: 0%">Buzzter</h1>
                     </a>
                 </div>
            
                 <div id="logPart">
-                {% if user.is_authenticated %}
-                <div >
-                    <a href="/Logout">Log-out</a>
-                </div>
+                    {% if user.is_authenticated %}
+                    <div style="margin-top: 7.5px;">
+                        <a href="/Logout">Log-out</a>
+                    </div>
                 {% endif %}            
                 </div>
             </div>
