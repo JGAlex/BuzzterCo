@@ -8,11 +8,14 @@
             <div class="logInForm">
                 <div>
                     <form method="POST" >
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <input type="Submit" value="Registrarme">
-                    <a href="/Login">Ya tengo una cuenta</a>
-                    </form>                   
+                        <div>
+                            <h1 class="titulo">Hazte escuchar</h1>
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <input type="Submit" value="Registrarme">
+                        <a href="/Login">Ya tengo una cuenta</a>
+                        </div>
+                   </form>                          
                  </div>                
             </div>
      </div>
