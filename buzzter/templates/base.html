@@ -34,7 +34,18 @@ and open the template in the editor.
                 <div id="downDecorator" style="background-color: #f7ff55; margin-left: 66%"> </div>
             
         </div> 
-        
+        {% if user.is_authenticated %}
+        {%with info=user.profile%}
+        <a href="/Accounts/{{info}}">
+        <div>          
+            <img alt ="imagen de usuario" src="{{info.fotografia.url}}" style="width: 10%; height: 20%">            
+        </div>        
+        <div>
+            {{info}}
+        </div>
+        </a>
+        {%endwith%}
+        {% endif %}
         <div>
             {% block content %} {% endblock %}
         </div>

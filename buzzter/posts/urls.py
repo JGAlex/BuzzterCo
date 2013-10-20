@@ -6,6 +6,6 @@ from django.conf.urls import patterns, url
 from posts import views
 
 urlpatterns = patterns('',
-                        url(r'^Posts/(?P<title>\w+)/$',views.PostView,name='posts'),
-                        url(r'^New/$', views.NewPost.as_view(),name='newPost'),
+                        url(r'^(?P<title>\w+)/$',views.PostView,name='posts'),
+                        url(r'^New/$', views.NewPost,name='newPost'),
                         )
