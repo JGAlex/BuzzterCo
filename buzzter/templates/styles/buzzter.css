@@ -56,6 +56,9 @@ and open the template in the editor.
  #logPart div:hover, #logPart a:hover, #logPart:hover
  {
     background-image: linear-gradient(bottom, rgb(45,46,46) 32%, rgb(63,65,66) 66%, rgb(69,71,71) 83%);
+    background-image: -webkit-linear-gradient(bottom, rgb(45,46,46) 32%, rgb(63,65,66) 66%, rgb(69,71,71) 83%);
+    background-image: -o-linear-gradient(bottom, rgb(45,46,46) 32%, rgb(63,65,66) 66%, rgb(69,71,71) 83%);
+    background-image: -moz-linear-gradient(bottom, rgb(45,46,46) 32%, rgb(63,65,66) 66%, rgb(69,71,71) 83%);
     color: #ACACAC;
  }
 
@@ -80,9 +83,15 @@ and open the template in the editor.
  .logIn form
  {
      background-image: -webkit-linear-gradient(bottom, #29373f 2%, #424446 6%, #313132 100%);
+     background-image: linear-gradient(bottom, #29373f 2%, #424446 6%, #313132 100%);
+     background-image: -o-linear-gradient(bottom, #29373f 2%, #424446 6%, #313132 100%);
+     background-image: -moz-linear-gradient(bottom, #29373f 2%, #424446 6%, #313132 100%);
      height: 350px;
      border-radius: 5px;
      box-shadow: 2px 2px 2px #444444;
+     transform: translateY(-15px);
+     -ms-transform: translateY(-15px);
+     -webkit-transform: translateY(-15px);
  }
  
  .logInForm
@@ -92,7 +101,7 @@ and open the template in the editor.
  
  .logInForm input
  {
-     border-radius: 5px;
+     border-radius: 5px;     
  }
  
  .logInForm label, .logInForm input
@@ -112,9 +121,15 @@ and open the template in the editor.
  {
      width: 75%;
      height: 100%;
-     margin: 0 auto;
-     transform-origin: top;
-     transform: translateY(-15px);
+     margin: 0 auto;     
+ }
+ 
+ .logInForm form a
+ {
+     text-align: center;
+     font-family: 'Segoe UI';
+     font-size: 12pt;
+     color: #34c6ca
  }
  .titulo
  {
