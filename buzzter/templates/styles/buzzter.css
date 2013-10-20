@@ -150,3 +150,32 @@ and open the template in the editor.
      font-size: 11.5pt;
      font-family: 'ComickBook';
  }
+
+ .mainButton
+ {
+    background-image: linear-gradient(bottom, rgb(0,158,126) 0%, rgb(63,189,143) 20%, rgb(109,221,156) 100%);
+    background-image: -o-linear-gradient(bottom, rgb(0,158,126) 0%, rgb(63,189,143) 20%, rgb(109,221,156) 100%);
+    background-image: -moz-linear-gradient(bottom, rgb(0,158,126) 0%, rgb(63,189,143) 20%, rgb(109,221,156) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgb(0,158,126) 0%, rgb(63,189,143) 20%, rgb(109,221,156) 100%);
+    background-image: -ms-linear-gradient(bottom, rgb(0,158,126) 0%, rgb(63,189,143) 20%, rgb(109,221,156) 100%);
+    color: white;
+    font-weight: bold;
+   
+ }
+ 
+ .mainButton:hover
+ {
+    background-image: linear-gradient(bottom, rgb(22,181,147) 0%, rgb(77,199,154) 20%, rgb(131,230,172) 100%);
+    background-image: -o-linear-gradient(bottom, rgb(22,181,147) 0%, rgb(77,199,154) 20%, rgb(131,230,172) 100%);
+    background-image: -moz-linear-gradient(bottom, rgb(22,181,147) 0%, rgb(77,199,154) 20%, rgb(131,230,172) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgb(22,181,147) 0%, rgb(77,199,154) 20%, rgb(131,230,172) 100%);
+    background-image: -ms-linear-gradient(bottom, rgb(22,181,147) 0%, rgb(77,199,154) 20%, rgb(131,230,172) 100%);
+ }
+ 
+ .errorlist
+ {
+     z-index: -1;
+     list-style-image: none;
+     list-style-type: none;
+     clear: both;
+ }

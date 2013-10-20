@@ -25,7 +25,7 @@ class SignUpForm(forms.ModelForm):
         help_text="Requerido. 30 caracteres o menos, letras, digitos y los carcateres "
                       "@/./+/-/_ .",
         error_messages={
-            'invalid': "Este campo debe contener solo letras digitos o los caraceteres "
+            'invalid': "puedes usar solo los caraceteres "
                          "@/./+/-/_"})
     password = forms.CharField(label="Password",
         widget=forms.PasswordInput)
