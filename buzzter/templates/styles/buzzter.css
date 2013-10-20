@@ -73,7 +73,7 @@ and open the template in the editor.
     width: 100%;
     height: 500px;
     background-image: url('resources/start.jpg');
-    background-size: 90% 100%;
+    background-size: 100% 110%;
     box-shadow: 5px 5px 5px #888888;
  }
  
@@ -104,18 +104,32 @@ and open the template in the editor.
      font-size: 95%;
  }
  
+ .logInForm label
+ {
+     font-weight: bold;
+ }
  .logInForm form div
  {
      width: 75%;
      height: 100%;
      margin: 0 auto;
+     transform-origin: top;
+     transform: translateY(-15px);
+ }
+ .titulo
+ {
+     font-size: 18pt;
+     color: white;
+     font-family: 'ComickBook';
+     text-align: center;
  }
  .helptext
  {
      display: none;
  }
  
- .buzzContainer a, .buzzContainer a:link .titulo{
+ .buzzContainer a, .buzzContainer a:link
+ {
      text-decoration: none;
      color: white;
      font-size: 11.5pt;
