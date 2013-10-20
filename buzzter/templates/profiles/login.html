@@ -12,15 +12,13 @@
             <div class="logInForm">
                 <form method="POST">
                     {% csrf_token %}
-                    <div >
+                    <div>
                         <label> Usuario </label>
                         <input name="username" type="text" placeholder="Usuario">
+                        <label> Contrase&ntilde;a </label>
+                        <input name="password" type="password" placeholder="Contrase&ntilde;a">
+                        <input type="submit" class="mainButton">
                     </div>
-                    <div>
-                        <label> Contraseña </label>
-                        <input name="password" type="password" placeholder="Contraseña">  
-                    </div>
-                    <button type="submit"> Ingresar </button>
                 </form>
             </div>
         </div>

@@ -57,3 +57,4 @@ class SignUpForm(forms.ModelForm):
     
     def hasErrors(self):
         return bool(self.errors)
+    

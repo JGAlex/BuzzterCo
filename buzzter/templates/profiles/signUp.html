@@ -8,18 +8,28 @@
             <div class="logInForm">
                 <div>
                     <form method="POST" >
-                        {% if form.hasErrors %}
-                        {% for error in form.errors %}
-                        <p> {{ error.key }} <p>
-                        {%endfor%}
-                        {% endif %}
                         <div>
                             <h1 class="titulo">Hazte escuchar</h1>
                         {% csrf_token %}
-                        {{ form.as_p }}
+                        <label> Usuario </label>
+                        <input name="username" type="text" placeholder="Usuario">
+                        {% if form.hasErrors %}
+                        {% with errores=form.errors %}
+                        <p class = "errorlist"> {{ errores.username }}</p>
+                        {% endwith %}
+                        {% endif %}
+                        <label> Contrase&ntilde;a </label>
+                        <input name="password" type="password" placeholder="Contrase&ntilde;a"> 
+                        <label> e-mail </label>
+                        <input name="email" type="email" placeholder="e-mail">  
+                        {% if form.hasErrors %}
+                        {% with errores=form.errors %}
+                         <p class = "errorlist"> {{ errores.email }}</p>
+                        {% endwith %}
+                        {% endif %}                    
                         <input class="mainButton" type="Submit" value="Registrarme">
                         <a href="/Login">Ya tengo una cuenta</a>
-                        </div>
+                        </div>                        
                    </form>                          
                  </div>                
             </div>
