@@ -8,8 +8,8 @@
         {%if user.is_authenticated %}
         <div><a href="Accounts/{{user.username}}"> ve a tu perfil</a> </div>
         {%else%}
-        <div class="logIn">
-            <div class="logInForm">
+        <div class="signUp">
+            <div class="signUpForm">
                 <form method="POST">
                     {% csrf_token %}
                     <div>
