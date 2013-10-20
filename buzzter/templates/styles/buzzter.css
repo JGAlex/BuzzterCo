@@ -138,7 +138,7 @@ and open the template in the editor.
      font-family: 'ComickBook';
      text-align: center;
  }
- .helptext
+ .helptext, .errorlist
  {
      display: none;
  }
@@ -172,10 +172,10 @@ and open the template in the editor.
     background-image: -ms-linear-gradient(bottom, rgb(22,181,147) 0%, rgb(77,199,154) 20%, rgb(131,230,172) 100%);
  }
  
- .errorlist
+ /*.errorlist
  {
      z-index: -1;
      list-style-image: none;
      list-style-type: none;
      clear: both;
- }
+ }*/

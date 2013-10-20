@@ -54,3 +54,6 @@ class SignUpForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+    
+    def hasErrors(self):
+        return bool(self.errors)

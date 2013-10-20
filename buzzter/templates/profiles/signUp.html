@@ -8,6 +8,11 @@
             <div class="logInForm">
                 <div>
                     <form method="POST" >
+                        {% if form.hasErrors %}
+                        {% for error in form.errors %}
+                        <p> {{ error.key }} <p>
+                        {%endfor%}
+                        {% endif %}
                         <div>
                             <h1 class="titulo">Hazte escuchar</h1>
                         {% csrf_token %}
