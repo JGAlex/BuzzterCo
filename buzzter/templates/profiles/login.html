@@ -4,12 +4,13 @@
 {% block tittle %} Welcome to buzzter {% endblock %}
     
 {% block content %}
-     <div>
+     <div class="bigBody">
+         <div class="bigBackground">
         {%if user.is_authenticated %}
         <div><a href="Accounts/{{user.username}}"> ve a tu perfil</a> </div>
         {%else%}
-        <div class="signPart">
-            <div class="signPartForm">
+        <div class="logIn">
+            <div class="logIn">
                 <form method="POST">
                     {% csrf_token %}
                     <div>
@@ -23,5 +24,6 @@
             </div>
         </div>
         {%endif%}
+         </div>
     </div>
 {% endblock %}

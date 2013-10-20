@@ -10,6 +10,7 @@ and open the template in the editor.
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}styles/buzzter.css"/>
+        <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}styles/profiles.css"/>
     </head>
     <body class="buzzBody">
         <div class="buzzContainer">
@@ -25,7 +26,7 @@ and open the template in the editor.
                     <div style="margin-top: 7.5px;">
                         <a href="/Logout">Log-out</a>
                     </div>
-                {% endif %}            
+                    {% endif %}            
                 </div>
             </div>
                 <div id="downDecorator" style="background-color: #0078b0;"> </div>
@@ -36,6 +37,9 @@ and open the template in the editor.
         
         <div>
             {% block content %} {% endblock %}
+        </div>
+        <div class="footer">
+            {% block footer %} {% endblock %}
         </div>
     </body>
 </html>
