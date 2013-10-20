@@ -4,12 +4,16 @@
 {% block tittle %} Welcome to Buzzter! {% endblock %}
     
 {% block content %}
-        <div>
-            <form method="POST" >
-               {% csrf_token %}
-               {{ form.as_p }}
-               <input type="Submit" value="Registrarme">
-            </form>
-        </div>
-    <a href="/Login">Ya tengo una cuenta</a>
+     <div class="logIn">
+            <div class="logInForm">
+                <div>
+                    <form method="POST" >
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="Submit" value="Registrarme">
+                    <a href="/Login">Ya tengo una cuenta</a>
+                    </form>                   
+                 </div>                
+            </div>
+     </div>
 {% endblock %}
