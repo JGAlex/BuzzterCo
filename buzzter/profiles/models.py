@@ -14,6 +14,9 @@ class Profile(models.Model):
     usuario = models.OneToOneField(User, related_name='profile')
     pais = models.ForeignKey(Country,  null=True)
     fotografia = models.ImageField(upload_to="users", null=True, blank=True,
-                                default='users/default.png')
+                                default='users/default.png')    
+    followers = models.ManyToManyField(User, related_name='followers', null=True, blank=True)
+    followings = models.ManyToManyField(User, related_name='follwings', null=True, blank=True)
+    
     def __unicode__(self):
         return self.usuario.get_username()
