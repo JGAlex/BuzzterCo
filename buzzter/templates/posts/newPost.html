@@ -9,11 +9,25 @@ and open the template in the editor.
 {% block tittle %} Nueva Publicación {% endblock %}
     
 {% block content %}
-        <div>
-            <form method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{Post.as_p}}
-                <input type="Submit" value="Publicar">
-            </form> 
-        </div>
+       <div>
+                    <form method="POST" >
+                        <div>
+                            <h1 class="titulo">Nueva Publicacion</h1>
+                        {% csrf_token %}
+                        <label> Titulo </label>
+                        <input name="titulo" type="text" placeholder="Titulo">
+                        
+                        <label> Link Relacionado </label>
+                        <input name="link" type="URL" placeholder="Link"> 
+                        
+                        <label> Descripcion </label>
+                        <input name="descripcion" type="text">  
+                        
+                        <label> Link de Imagen </label>
+                        <input name="linkImagen" type="URL">  
+                        
+                        <input class="mainButton" type="Submit" value="Postea">
+                        </div>                        
+                   </form>                          
+                 </div>     
 {% endblock %}
