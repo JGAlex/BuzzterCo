@@ -13,7 +13,7 @@ class Follower(models.Model):
     usuario = models.ForeignKey(Profile, related_name = "seguidores")
     
     def __unicode__(self):
-        return self.follower.get_username()
+        return self.follower
 
 class Following(models.Model):
     """
@@ -27,5 +27,5 @@ class Following(models.Model):
     usuario = models.ForeignKey(Profile, related_name = "siguiendo")
     
     def __unicode__(self):
-        return self.following.get_username()
+        return self.following
 # Create your models here.
