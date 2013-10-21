@@ -15,10 +15,12 @@ def PostView(request, title):
         raise Http404
     return render(request, "posts/Post.html",{'post':post,'autor':autor})
 
-class NewPost(CreateView):
+class newPost(CreateView):
     
     from django.core.urlresolvers import reverse_lazy
+    from posts.forms import newPostForm
+    
     
     template_name = "posts/newPost.html"
-    model = Post
-    success_url = reverse_lazy('newPost')
+    form_class = newPostForm
+    success_url = reverse_lazy('Now')
