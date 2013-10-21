@@ -32,15 +32,35 @@ CREATE TABLE `posts_post` (
   `rating` int(10) unsigned NOT NULL,
   `eliminar` tinyint(1) NOT NULL,
   `linkImagen` varchar(150) NOT NULL,
+  `autor` varchar(50) DEFAULT NULL,
+  `interprete` varchar(50) DEFAULT NULL,
+  `album` varchar(50) DEFAULT NULL,
+  `year` int(10) unsigned NOT NULL,
+  `director` varchar(50) DEFAULT NULL,
+  `clasificacion` varchar(50) DEFAULT NULL,
+  `dibujante` varchar(50) DEFAULT NULL,
+  `temporada` varchar(50) DEFAULT NULL,
   `usuario_id` int(11) NOT NULL,
   `tipoPublicacion_id` int(11) NOT NULL,
+<<<<<<< HEAD
+=======
+  `tipoGenero_id` int(11) DEFAULT NULL,
+>>>>>>> origin/Branch_Posts
   PRIMARY KEY (`id`),
   UNIQUE KEY `titulo` (`titulo`),
   KEY `posts_post_c69e2c81` (`usuario_id`),
   KEY `posts_post_028d8518` (`tipoPublicacion_id`),
+<<<<<<< HEAD
   CONSTRAINT `tipoPublicacion_id_refs_id_6a0bba83` FOREIGN KEY (`tipoPublicacion_id`) REFERENCES `posts_posttype` (`id`),
   CONSTRAINT `usuario_id_refs_id_1db8e550` FOREIGN KEY (`usuario_id`) REFERENCES `profiles_profile` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+=======
+  KEY `posts_post_44bd5394` (`tipoGenero_id`),
+  CONSTRAINT `tipoPublicacion_id_refs_id_6a0bba83` FOREIGN KEY (`tipoPublicacion_id`) REFERENCES `posts_posttype` (`id`),
+  CONSTRAINT `tipoGenero_id_refs_id_6308e0e1` FOREIGN KEY (`tipoGenero_id`) REFERENCES `posts_genre` (`id`),
+  CONSTRAINT `usuario_id_refs_id_1db8e550` FOREIGN KEY (`usuario_id`) REFERENCES `profiles_profile` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+>>>>>>> origin/Branch_Posts
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,8 +69,87 @@ CREATE TABLE `posts_post` (
 
 LOCK TABLES `posts_post` WRITE;
 /*!40000 ALTER TABLE `posts_post` DISABLE KEYS */;
+<<<<<<< HEAD
 INSERT INTO `posts_post` VALUES (1,'Hola','','Esta es una descripcion',2,0,'http://2.bp.blogspot.com/_bp9TO9Q7930/S99b02MhWtI/AAAAAAAAAKo/XSC-deZ-ve8/s320/hola_bn_1.gif',3,4);
+=======
+>>>>>>> origin/Branch_Posts
 /*!40000 ALTER TABLE `posts_post` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `posts_genre`
+--
+
+DROP TABLE IF EXISTS `posts_genre`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `posts_genre` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `genero` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `posts_genre`
+--
+
+LOCK TABLES `posts_genre` WRITE;
+/*!40000 ALTER TABLE `posts_genre` DISABLE KEYS */;
+/*!40000 ALTER TABLE `posts_genre` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `posts_posttype`
+--
+
+DROP TABLE IF EXISTS `posts_posttype`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `posts_posttype` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `tipo` (`tipo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `posts_posttype`
+--
+
+LOCK TABLES `posts_posttype` WRITE;
+/*!40000 ALTER TABLE `posts_posttype` DISABLE KEYS */;
+/*!40000 ALTER TABLE `posts_posttype` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `posts_genre_tipogenero`
+--
+
+DROP TABLE IF EXISTS `posts_genre_tipogenero`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `posts_genre_tipogenero` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `genre_id` int(11) NOT NULL,
+  `posttype_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `genre_id` (`genre_id`,`posttype_id`),
+  KEY `posts_genre_tipoGenero_33e6008b` (`genre_id`),
+  KEY `posts_genre_tipoGenero_04c81107` (`posttype_id`),
+  CONSTRAINT `genre_id_refs_id_9f09ae98` FOREIGN KEY (`genre_id`) REFERENCES `posts_genre` (`id`),
+  CONSTRAINT `posttype_id_refs_id_95d145ac` FOREIGN KEY (`posttype_id`) REFERENCES `posts_posttype` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `posts_genre_tipogenero`
+--
+
+LOCK TABLES `posts_genre_tipogenero` WRITE;
+/*!40000 ALTER TABLE `posts_genre_tipogenero` DISABLE KEYS */;
+/*!40000 ALTER TABLE `posts_genre_tipogenero` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -62,4 +161,8 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+<<<<<<< HEAD
 -- Dump completed on 2013-10-20 20:54:51
+=======
+-- Dump completed on 2013-10-21 11:04:28
+>>>>>>> origin/Branch_Posts
