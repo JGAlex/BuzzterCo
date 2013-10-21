@@ -4,7 +4,7 @@ USE `buzzter`;
 --
 -- Host: localhost    Database: buzzter
 -- ------------------------------------------------------
--- Server version	5.6.14-log
+-- Server version	5.6.14
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,6 +16,69 @@ USE `buzzter`;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `django_admin_log`
+--
+
+DROP TABLE IF EXISTS `django_admin_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `django_admin_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `action_time` datetime NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `content_type_id` int(11) DEFAULT NULL,
+  `object_id` longtext,
+  `object_repr` varchar(200) NOT NULL,
+  `action_flag` smallint(5) unsigned NOT NULL,
+  `change_message` longtext NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `django_admin_log_6340c63c` (`user_id`),
+  KEY `django_admin_log_37ef4eb4` (`content_type_id`),
+  CONSTRAINT `user_id_refs_id_c0d12874` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`),
+  CONSTRAINT `content_type_id_refs_id_93d2d1f8` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_admin_log`
+--
+
+LOCK TABLES `django_admin_log` WRITE;
+/*!40000 ALTER TABLE `django_admin_log` DISABLE KEYS */;
+INSERT INTO `django_admin_log` VALUES (1,'2013-10-19 02:36:17',1,10,'1','t4r0_o',1,''),(2,'2013-10-19 02:47:39',1,3,'2','krn_mt',1,''),(3,'2013-10-19 02:47:59',1,2,'1','Administradores',1,''),(4,'2013-10-19 02:48:17',1,3,'2','krn_mt',2,'Modificado/a password, is_staff, is_superuser, groups y user_permissions.'),(5,'2013-10-19 02:49:02',1,10,'2','krn_mt',1,''),(6,'2013-10-19 03:00:47',1,10,'1','t4r0_o',2,'Modificado/a fotografia.'),(7,'2013-10-21 01:22:08',2,10,'1','t4r0_o',2,'No ha cambiado ningún campo.'),(8,'2013-10-21 01:22:18',2,10,'1','t4r0_o',2,'Modificado/a followers.'),(9,'2013-10-21 01:22:32',2,10,'1','t4r0_o',2,'Modificado/a followings.'),(10,'2013-10-21 02:34:24',1,10,'2','krn_mt',2,'Modificado/a fotografia.'),(11,'2013-10-21 02:34:42',1,10,'1','t4r0_o',2,'Modificado/a fotografia.'),(12,'2013-10-21 02:36:34',1,10,'3','Buzzie',2,'Modificado/a pais.'),(13,'2013-10-21 02:36:59',1,10,'4','User',2,'Modificado/a pais.'),(14,'2013-10-21 02:37:35',1,10,'4','User',2,'Modificado/a fotografia.'),(15,'2013-10-21 02:37:51',1,10,'3','Buzzie',2,'Modificado/a fotografia.'),(16,'2013-10-21 02:38:38',1,10,'2','krn_mt',2,'Modificado/a fotografia.');
+/*!40000 ALTER TABLE `django_admin_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_permission`
+--
+
+DROP TABLE IF EXISTS `auth_permission`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_permission` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `content_type_id` int(11) NOT NULL,
+  `codename` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `content_type_id` (`content_type_id`,`codename`),
+  KEY `auth_permission_37ef4eb4` (`content_type_id`),
+  CONSTRAINT `content_type_id_refs_id_d043b34a` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_permission`
+--
+
+LOCK TABLES `auth_permission` WRITE;
+/*!40000 ALTER TABLE `auth_permission` DISABLE KEYS */;
+INSERT INTO `auth_permission` VALUES (1,'Can add permission',1,'add_permission'),(2,'Can change permission',1,'change_permission'),(3,'Can delete permission',1,'delete_permission'),(4,'Can add group',2,'add_group'),(5,'Can change group',2,'change_group'),(6,'Can delete group',2,'delete_group'),(7,'Can add user',3,'add_user'),(8,'Can change user',3,'change_user'),(9,'Can delete user',3,'delete_user'),(10,'Can add content type',4,'add_contenttype'),(11,'Can change content type',4,'change_contenttype'),(12,'Can delete content type',4,'delete_contenttype'),(13,'Can add session',5,'add_session'),(14,'Can change session',5,'change_session'),(15,'Can delete session',5,'delete_session'),(16,'Can add site',6,'add_site'),(17,'Can change site',6,'change_site'),(18,'Can delete site',6,'delete_site'),(19,'Can add log entry',7,'add_logentry'),(20,'Can change log entry',7,'change_logentry'),(21,'Can delete log entry',7,'delete_logentry'),(22,'Can add Country',8,'add_country'),(23,'Can change Country',8,'change_country'),(24,'Can delete Country',8,'delete_country'),(25,'Can add US State',9,'add_usstate'),(26,'Can change US State',9,'change_usstate'),(27,'Can delete US State',9,'delete_usstate'),(28,'Can add profile',10,'add_profile'),(29,'Can change profile',10,'change_profile'),(30,'Can delete profile',10,'delete_profile'),(31,'Can add post',11,'add_post'),(32,'Can change post',11,'change_post'),(33,'Can delete post',11,'delete_post');
+/*!40000 ALTER TABLE `auth_permission` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `auth_group`
@@ -73,66 +136,196 @@ INSERT INTO `auth_group_permissions` VALUES (1,1,1),(2,1,2),(3,1,3),(4,1,4),(5,1
 UNLOCK TABLES;
 
 --
--- Table structure for table `auth_permission`
+-- Table structure for table `auth_user_user_permissions`
 --
 
-DROP TABLE IF EXISTS `auth_permission`;
+DROP TABLE IF EXISTS `auth_user_user_permissions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `auth_permission` (
+CREATE TABLE `auth_user_user_permissions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  `content_type_id` int(11) NOT NULL,
-  `codename` varchar(100) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `permission_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `content_type_id` (`content_type_id`,`codename`),
-  KEY `auth_permission_37ef4eb4` (`content_type_id`),
-  CONSTRAINT `content_type_id_refs_id_d043b34a` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
+  UNIQUE KEY `user_id` (`user_id`,`permission_id`),
+  KEY `auth_user_user_permissions_6340c63c` (`user_id`),
+  KEY `auth_user_user_permissions_83d7f98b` (`permission_id`),
+  CONSTRAINT `user_id_refs_id_4dc23c39` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`),
+  CONSTRAINT `permission_id_refs_id_35d9ac25` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `auth_permission`
+-- Dumping data for table `auth_user_user_permissions`
 --
 
-LOCK TABLES `auth_permission` WRITE;
-/*!40000 ALTER TABLE `auth_permission` DISABLE KEYS */;
-INSERT INTO `auth_permission` VALUES (1,'Can add permission',1,'add_permission'),(2,'Can change permission',1,'change_permission'),(3,'Can delete permission',1,'delete_permission'),(4,'Can add group',2,'add_group'),(5,'Can change group',2,'change_group'),(6,'Can delete group',2,'delete_group'),(7,'Can add user',3,'add_user'),(8,'Can change user',3,'change_user'),(9,'Can delete user',3,'delete_user'),(10,'Can add content type',4,'add_contenttype'),(11,'Can change content type',4,'change_contenttype'),(12,'Can delete content type',4,'delete_contenttype'),(13,'Can add session',5,'add_session'),(14,'Can change session',5,'change_session'),(15,'Can delete session',5,'delete_session'),(16,'Can add site',6,'add_site'),(17,'Can change site',6,'change_site'),(18,'Can delete site',6,'delete_site'),(19,'Can add log entry',7,'add_logentry'),(20,'Can change log entry',7,'change_logentry'),(21,'Can delete log entry',7,'delete_logentry'),(22,'Can add Country',8,'add_country'),(23,'Can change Country',8,'change_country'),(24,'Can delete Country',8,'delete_country'),(25,'Can add US State',9,'add_usstate'),(26,'Can change US State',9,'change_usstate'),(27,'Can delete US State',9,'delete_usstate'),(28,'Can add profile',10,'add_profile'),(29,'Can change profile',10,'change_profile'),(30,'Can delete profile',10,'delete_profile'),(31,'Can add post',11,'add_post'),(32,'Can change post',11,'change_post'),(33,'Can delete post',11,'delete_post');
-/*!40000 ALTER TABLE `auth_permission` ENABLE KEYS */;
+LOCK TABLES `auth_user_user_permissions` WRITE;
+/*!40000 ALTER TABLE `auth_user_user_permissions` DISABLE KEYS */;
+INSERT INTO `auth_user_user_permissions` VALUES (1,2,1),(2,2,2),(3,2,3),(4,2,4),(5,2,5),(6,2,6),(7,2,7),(8,2,8),(9,2,9),(10,2,10),(11,2,11),(12,2,12),(13,2,13),(14,2,14),(15,2,15),(16,2,16),(17,2,17),(18,2,18),(19,2,19),(20,2,20),(21,2,21),(22,2,22),(23,2,23),(24,2,24),(25,2,25),(26,2,26),(27,2,27),(28,2,28),(29,2,29),(30,2,30),(31,2,31),(32,2,32),(33,2,33);
+/*!40000 ALTER TABLE `auth_user_user_permissions` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `auth_user`
+-- Table structure for table `django_site`
 --
 
-DROP TABLE IF EXISTS `auth_user`;
+DROP TABLE IF EXISTS `django_site`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `auth_user` (
+CREATE TABLE `django_site` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `password` varchar(128) NOT NULL,
-  `last_login` datetime NOT NULL,
-  `is_superuser` tinyint(1) NOT NULL,
-  `username` varchar(30) NOT NULL,
-  `first_name` varchar(30) NOT NULL,
-  `last_name` varchar(30) NOT NULL,
-  `email` varchar(75) NOT NULL,
-  `is_staff` tinyint(1) NOT NULL,
-  `is_active` tinyint(1) NOT NULL,
-  `date_joined` datetime NOT NULL,
+  `domain` varchar(100) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_site`
+--
+
+LOCK TABLES `django_site` WRITE;
+/*!40000 ALTER TABLE `django_site` DISABLE KEYS */;
+INSERT INTO `django_site` VALUES (1,'example.com','example.com');
+/*!40000 ALTER TABLE `django_site` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `profiles_profile`
+--
+
+DROP TABLE IF EXISTS `profiles_profile`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `profiles_profile` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `usuario_id` int(11) NOT NULL,
+  `pais_id` varchar(2) DEFAULT NULL,
+  `fotografia` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
+  UNIQUE KEY `usuario_id` (`usuario_id`),
+  KEY `profiles_profile_de1867db` (`pais_id`),
+  CONSTRAINT `usuario_id_refs_id_c76c5dbe` FOREIGN KEY (`usuario_id`) REFERENCES `auth_user` (`id`),
+  CONSTRAINT `pais_id_refs_iso_1d723b59` FOREIGN KEY (`pais_id`) REFERENCES `country` (`iso`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `auth_user`
+-- Dumping data for table `profiles_profile`
 --
 
-LOCK TABLES `auth_user` WRITE;
-/*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
-INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$10000$H0rqzlD2Yowd$FgsZjf41t+B5No0UdWmn0q234BxHG5FzVbEJrW+/dT0=','2013-10-19 03:26:49',1,'t4r0_o','','','esjoando555@gmail.com',1,1,'2013-10-19 02:34:03'),(2,'pbkdf2_sha256$10000$hE68pYMm9TBT$WloLK/8PAmfFfGOY10uiqEetokYR1JPBZhUeLrwYtIU=','2013-10-19 02:47:38',1,'krn_mt','','','',1,1,'2013-10-19 02:47:38'),(3,'pbkdf2_sha256$10000$Hq4Eb9ai4iQH$N33EI9swbCKaHT5C+ssUdE8SkGzCcPvpFTaNpyd+Xno=','2013-10-19 02:56:04',0,'Buzzie','','','',0,1,'2013-10-19 02:55:48'),(4,'pbkdf2_sha256$10000$isVCuQtoPbv5$FFINR/5lLRYUKyJyVKP4Nwtb1gCWDUAZYxlY08N1VpQ=','2013-10-19 03:15:57',0,'User','','','',0,1,'2013-10-19 03:15:57');
-/*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
+LOCK TABLES `profiles_profile` WRITE;
+/*!40000 ALTER TABLE `profiles_profile` DISABLE KEYS */;
+INSERT INTO `profiles_profile` VALUES (1,1,'GT','users/1381206215_music.png'),(2,2,'GT','users/1381207464_icq.png'),(3,3,'US','users/1381207646_drupal.png'),(4,4,'CU','users/1381206896_man-24.png');
+/*!40000 ALTER TABLE `profiles_profile` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_content_type`
+--
+
+DROP TABLE IF EXISTS `django_content_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `django_content_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `app_label` varchar(100) NOT NULL,
+  `model` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `app_label` (`app_label`,`model`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_content_type`
+--
+
+LOCK TABLES `django_content_type` WRITE;
+/*!40000 ALTER TABLE `django_content_type` DISABLE KEYS */;
+INSERT INTO `django_content_type` VALUES (1,'permission','auth','permission'),(2,'group','auth','group'),(3,'user','auth','user'),(4,'content type','contenttypes','contenttype'),(5,'session','sessions','session'),(6,'site','sites','site'),(7,'log entry','admin','logentry'),(8,'Country','countries','country'),(9,'US State','countries','usstate'),(10,'profile','profiles','profile'),(11,'post','posts','post');
+/*!40000 ALTER TABLE `django_content_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `profiles_profile_followings`
+--
+
+DROP TABLE IF EXISTS `profiles_profile_followings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `profiles_profile_followings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `profile_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `profile_id` (`profile_id`,`user_id`),
+  KEY `profiles_profile_followings_5948a8a3` (`profile_id`),
+  KEY `profiles_profile_followings_6340c63c` (`user_id`),
+  CONSTRAINT `profile_id_refs_id_ed4c22ac` FOREIGN KEY (`profile_id`) REFERENCES `profiles_profile` (`id`),
+  CONSTRAINT `user_id_refs_id_e1b91aa6` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `profiles_profile_followings`
+--
+
+LOCK TABLES `profiles_profile_followings` WRITE;
+/*!40000 ALTER TABLE `profiles_profile_followings` DISABLE KEYS */;
+INSERT INTO `profiles_profile_followings` VALUES (3,1,2),(4,1,3);
+/*!40000 ALTER TABLE `profiles_profile_followings` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usstate`
+--
+
+DROP TABLE IF EXISTS `usstate`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `usstate` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `abbrev` varchar(2) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usstate`
+--
+
+LOCK TABLES `usstate` WRITE;
+/*!40000 ALTER TABLE `usstate` DISABLE KEYS */;
+INSERT INTO `usstate` VALUES (1,'Alabama','AL'),(2,'Alaska','AK'),(3,'American Samoa','AS'),(4,'Arizona','AZ'),(5,'Arkansas','AR'),(6,'California','CA'),(7,'Colorado','CO'),(8,'Connecticut','CT'),(9,'Delaware','DE'),(10,'District of Columbia','DC'),(11,'Federated States of Micronesia','FM'),(12,'Florida','FL'),(13,'Georgia','GA'),(14,'Guam','GU'),(15,'Hawaii','HI'),(16,'Idaho','ID'),(17,'Illinois','IL'),(18,'Indiana','IN'),(19,'Iowa','IA'),(20,'Kansas','KS'),(21,'Kentucky','KY'),(22,'Louisiana','LA'),(23,'Maine','ME'),(24,'Marshall Islands','MH'),(25,'Maryland','MD'),(26,'Massachusetts','MA'),(27,'Michigan','MI'),(28,'Minnesota','MN'),(29,'Mississippi','MS'),(30,'Missouri','MO'),(31,'Montana','MT'),(32,'Nebraska','NE'),(33,'Nevada','NV'),(34,'New Hampshire','NH'),(35,'New Jersey','NJ'),(36,'New Mexico','NM'),(37,'New York','NY'),(38,'North Carolina','NC'),(39,'North Dakota','ND'),(40,'Northern Mariana Islands','MP'),(41,'Ohio','OH'),(42,'Oklahoma','OK'),(43,'Oregon','OR'),(44,'Palau','PW'),(45,'Pennsylvania','PA'),(46,'Puerto Rico','PR'),(47,'Rhode Island','RI'),(48,'South Carolina','SC'),(49,'South Dakota','SD'),(50,'Tennessee','TN'),(51,'Texas','TX'),(52,'Utah','UT'),(53,'Vermont','VT'),(54,'Virgin Islands','VI'),(55,'Virginia','VA'),(56,'Washington','WA'),(57,'West Virginia','WV'),(58,'Wisconsin','WI'),(59,'Wyoming','WY'),(60,'Armed Forces Africa','AE'),(61,'Armed Forces Americas (except Canada)','AA'),(62,'Armed Forces Canada','AE'),(63,'Armed Forces Europe','AE'),(64,'Armed Forces Middle East','AE'),(65,'Armed Forces Pacific','AP');
+/*!40000 ALTER TABLE `usstate` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_session`
+--
+
+DROP TABLE IF EXISTS `django_session`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `django_session` (
+  `session_key` varchar(40) NOT NULL,
+  `session_data` longtext NOT NULL,
+  `expire_date` datetime NOT NULL,
+  PRIMARY KEY (`session_key`),
+  KEY `django_session_b7b81f0c` (`expire_date`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_session`
+--
+
+LOCK TABLES `django_session` WRITE;
+/*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
+INSERT INTO `django_session` VALUES ('05pjfqig7kwr0q4e9rr9cr2wydfsckv3','NjNkYzRkMTVkMWU5NmQzZjc1ZTM5MjQxOGIzMDhiYmI4OTIwMDg5MDqAAn1xAVgKAAAAdGVzdGNvb2tpZXECWAYAAAB3b3JrZWRxA3Mu','2013-11-02 03:26:53'),('d0nkutpoo1k5a4drb663wwql9vv6036e','MzJjMGYzNTZmMmM1OGNiYmQ2NTJjN2YzZWIzMjY2ZDE2NzMzY2M1NzqAAn1xAShYCgAAAHRlc3Rjb29raWVxAlgGAAAAd29ya2VkcQNVDV9hdXRoX3VzZXJfaWSKAQFVEl9hdXRoX3VzZXJfYmFja2VuZFUpZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmR1Lg==','2013-11-04 02:07:59');
+/*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -166,36 +359,6 @@ INSERT INTO `auth_user_groups` VALUES (1,2,1);
 UNLOCK TABLES;
 
 --
--- Table structure for table `auth_user_user_permissions`
---
-
-DROP TABLE IF EXISTS `auth_user_user_permissions`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `auth_user_user_permissions` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `permission_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `user_id` (`user_id`,`permission_id`),
-  KEY `auth_user_user_permissions_6340c63c` (`user_id`),
-  KEY `auth_user_user_permissions_83d7f98b` (`permission_id`),
-  CONSTRAINT `user_id_refs_id_4dc23c39` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`),
-  CONSTRAINT `permission_id_refs_id_35d9ac25` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `auth_user_user_permissions`
---
-
-LOCK TABLES `auth_user_user_permissions` WRITE;
-/*!40000 ALTER TABLE `auth_user_user_permissions` DISABLE KEYS */;
-INSERT INTO `auth_user_user_permissions` VALUES (1,2,1),(2,2,2),(3,2,3),(4,2,4),(5,2,5),(6,2,6),(7,2,7),(8,2,8),(9,2,9),(10,2,10),(11,2,11),(12,2,12),(13,2,13),(14,2,14),(15,2,15),(16,2,16),(17,2,17),(18,2,18),(19,2,19),(20,2,20),(21,2,21),(22,2,22),(23,2,23),(24,2,24),(25,2,25),(26,2,26),(27,2,27),(28,2,28),(29,2,29),(30,2,30),(31,2,31),(32,2,32),(33,2,33);
-/*!40000 ALTER TABLE `auth_user_user_permissions` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `country`
 --
 
@@ -223,202 +386,67 @@ INSERT INTO `country` VALUES ('AD','ANDORRA','Andorra','AND',20),('AE','UNITED A
 UNLOCK TABLES;
 
 --
--- Table structure for table `django_admin_log`
+-- Table structure for table `auth_user`
 --
 
-DROP TABLE IF EXISTS `django_admin_log`;
+DROP TABLE IF EXISTS `auth_user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `django_admin_log` (
+CREATE TABLE `auth_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `action_time` datetime NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `content_type_id` int(11) DEFAULT NULL,
-  `object_id` longtext,
-  `object_repr` varchar(200) NOT NULL,
-  `action_flag` smallint(5) unsigned NOT NULL,
-  `change_message` longtext NOT NULL,
+  `password` varchar(128) NOT NULL,
+  `last_login` datetime NOT NULL,
+  `is_superuser` tinyint(1) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `first_name` varchar(30) NOT NULL,
+  `last_name` varchar(30) NOT NULL,
+  `email` varchar(75) NOT NULL,
+  `is_staff` tinyint(1) NOT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  `date_joined` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `django_admin_log_6340c63c` (`user_id`),
-  KEY `django_admin_log_37ef4eb4` (`content_type_id`),
-  CONSTRAINT `user_id_refs_id_c0d12874` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`),
-  CONSTRAINT `content_type_id_refs_id_93d2d1f8` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `django_admin_log`
---
-
-LOCK TABLES `django_admin_log` WRITE;
-/*!40000 ALTER TABLE `django_admin_log` DISABLE KEYS */;
-INSERT INTO `django_admin_log` VALUES (1,'2013-10-19 02:36:17',1,10,'1','t4r0_o',1,''),(2,'2013-10-19 02:47:39',1,3,'2','krn_mt',1,''),(3,'2013-10-19 02:47:59',1,2,'1','Administradores',1,''),(4,'2013-10-19 02:48:17',1,3,'2','krn_mt',2,'Modificado/a password, is_staff, is_superuser, groups y user_permissions.'),(5,'2013-10-19 02:49:02',1,10,'2','krn_mt',1,''),(6,'2013-10-19 03:00:47',1,10,'1','t4r0_o',2,'Modificado/a fotografia.');
-/*!40000 ALTER TABLE `django_admin_log` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `django_content_type`
---
-
-DROP TABLE IF EXISTS `django_content_type`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `django_content_type` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  `app_label` varchar(100) NOT NULL,
-  `model` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `app_label` (`app_label`,`model`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `django_content_type`
---
-
-LOCK TABLES `django_content_type` WRITE;
-/*!40000 ALTER TABLE `django_content_type` DISABLE KEYS */;
-INSERT INTO `django_content_type` VALUES (1,'permission','auth','permission'),(2,'group','auth','group'),(3,'user','auth','user'),(4,'content type','contenttypes','contenttype'),(5,'session','sessions','session'),(6,'site','sites','site'),(7,'log entry','admin','logentry'),(8,'Country','countries','country'),(9,'US State','countries','usstate'),(10,'profile','profiles','profile'),(11,'post','posts','post');
-/*!40000 ALTER TABLE `django_content_type` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `django_session`
---
-
-DROP TABLE IF EXISTS `django_session`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `django_session` (
-  `session_key` varchar(40) NOT NULL,
-  `session_data` longtext NOT NULL,
-  `expire_date` datetime NOT NULL,
-  PRIMARY KEY (`session_key`),
-  KEY `django_session_b7b81f0c` (`expire_date`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `django_session`
---
-
-LOCK TABLES `django_session` WRITE;
-/*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
-INSERT INTO `django_session` VALUES ('05pjfqig7kwr0q4e9rr9cr2wydfsckv3','NjNkYzRkMTVkMWU5NmQzZjc1ZTM5MjQxOGIzMDhiYmI4OTIwMDg5MDqAAn1xAVgKAAAAdGVzdGNvb2tpZXECWAYAAAB3b3JrZWRxA3Mu','2013-11-02 03:26:53');
-/*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `django_site`
---
-
-DROP TABLE IF EXISTS `django_site`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `django_site` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `domain` varchar(100) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `django_site`
---
-
-LOCK TABLES `django_site` WRITE;
-/*!40000 ALTER TABLE `django_site` DISABLE KEYS */;
-INSERT INTO `django_site` VALUES (1,'example.com','example.com');
-/*!40000 ALTER TABLE `django_site` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `posts_post`
---
-
-DROP TABLE IF EXISTS `posts_post`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `posts_post` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `titulo` varchar(50) NOT NULL,
-  `link` varchar(150) NOT NULL,
-  `descripcion` longtext NOT NULL,
-  `rating` int(10) unsigned NOT NULL,
-  `eliminar` tinyint(1) NOT NULL,
-  `linkImagen` varchar(150) NOT NULL,
-  `usuario_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `titulo` (`titulo`),
-  KEY `posts_post_c69e2c81` (`usuario_id`),
-  CONSTRAINT `usuario_id_refs_id_1db8e550` FOREIGN KEY (`usuario_id`) REFERENCES `profiles_profile` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `posts_post`
---
-
-LOCK TABLES `posts_post` WRITE;
-/*!40000 ALTER TABLE `posts_post` DISABLE KEYS */;
-/*!40000 ALTER TABLE `posts_post` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `profiles_profile`
---
-
-DROP TABLE IF EXISTS `profiles_profile`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `profiles_profile` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `usuario_id` int(11) NOT NULL,
-  `pais_id` varchar(2) DEFAULT NULL,
-  `fotografia` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `usuario_id` (`usuario_id`),
-  KEY `profiles_profile_de1867db` (`pais_id`),
-  CONSTRAINT `usuario_id_refs_id_c76c5dbe` FOREIGN KEY (`usuario_id`) REFERENCES `auth_user` (`id`),
-  CONSTRAINT `pais_id_refs_iso_1d723b59` FOREIGN KEY (`pais_id`) REFERENCES `country` (`iso`)
+  UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `profiles_profile`
+-- Dumping data for table `auth_user`
 --
 
-LOCK TABLES `profiles_profile` WRITE;
-/*!40000 ALTER TABLE `profiles_profile` DISABLE KEYS */;
-INSERT INTO `profiles_profile` VALUES (1,1,'GT','users/default.png'),(2,2,'GT','users/default.png'),(3,3,NULL,'users/default.png'),(4,4,NULL,'users/default.png');
-/*!40000 ALTER TABLE `profiles_profile` ENABLE KEYS */;
+LOCK TABLES `auth_user` WRITE;
+/*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
+INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$10000$H0rqzlD2Yowd$FgsZjf41t+B5No0UdWmn0q234BxHG5FzVbEJrW+/dT0=','2013-10-21 02:07:59',1,'t4r0_o','','','esjoando555@gmail.com',1,1,'2013-10-19 02:34:03'),(2,'pbkdf2_sha256$10000$hE68pYMm9TBT$WloLK/8PAmfFfGOY10uiqEetokYR1JPBZhUeLrwYtIU=','2013-10-21 01:17:28',1,'krn_mt','','','',1,1,'2013-10-19 02:47:38'),(3,'pbkdf2_sha256$10000$Hq4Eb9ai4iQH$N33EI9swbCKaHT5C+ssUdE8SkGzCcPvpFTaNpyd+Xno=','2013-10-19 02:56:04',0,'Buzzie','','','',0,1,'2013-10-19 02:55:48'),(4,'pbkdf2_sha256$10000$isVCuQtoPbv5$FFINR/5lLRYUKyJyVKP4Nwtb1gCWDUAZYxlY08N1VpQ=','2013-10-19 03:15:57',0,'User','','','',0,1,'2013-10-19 03:15:57');
+/*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `usstate`
+-- Table structure for table `profiles_profile_followers`
 --
 
-DROP TABLE IF EXISTS `usstate`;
+DROP TABLE IF EXISTS `profiles_profile_followers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `usstate` (
+CREATE TABLE `profiles_profile_followers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  `abbrev` varchar(2) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
+  `profile_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `profile_id` (`profile_id`,`user_id`),
+  KEY `profiles_profile_followers_5948a8a3` (`profile_id`),
+  KEY `profiles_profile_followers_6340c63c` (`user_id`),
+  CONSTRAINT `profile_id_refs_id_2299a30f` FOREIGN KEY (`profile_id`) REFERENCES `profiles_profile` (`id`),
+  CONSTRAINT `user_id_refs_id_faa17da6` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `usstate`
+-- Dumping data for table `profiles_profile_followers`
 --
 
-LOCK TABLES `usstate` WRITE;
-/*!40000 ALTER TABLE `usstate` DISABLE KEYS */;
-INSERT INTO `usstate` VALUES (1,'Alabama','AL'),(2,'Alaska','AK'),(3,'American Samoa','AS'),(4,'Arizona','AZ'),(5,'Arkansas','AR'),(6,'California','CA'),(7,'Colorado','CO'),(8,'Connecticut','CT'),(9,'Delaware','DE'),(10,'District of Columbia','DC'),(11,'Federated States of Micronesia','FM'),(12,'Florida','FL'),(13,'Georgia','GA'),(14,'Guam','GU'),(15,'Hawaii','HI'),(16,'Idaho','ID'),(17,'Illinois','IL'),(18,'Indiana','IN'),(19,'Iowa','IA'),(20,'Kansas','KS'),(21,'Kentucky','KY'),(22,'Louisiana','LA'),(23,'Maine','ME'),(24,'Marshall Islands','MH'),(25,'Maryland','MD'),(26,'Massachusetts','MA'),(27,'Michigan','MI'),(28,'Minnesota','MN'),(29,'Mississippi','MS'),(30,'Missouri','MO'),(31,'Montana','MT'),(32,'Nebraska','NE'),(33,'Nevada','NV'),(34,'New Hampshire','NH'),(35,'New Jersey','NJ'),(36,'New Mexico','NM'),(37,'New York','NY'),(38,'North Carolina','NC'),(39,'North Dakota','ND'),(40,'Northern Mariana Islands','MP'),(41,'Ohio','OH'),(42,'Oklahoma','OK'),(43,'Oregon','OR'),(44,'Palau','PW'),(45,'Pennsylvania','PA'),(46,'Puerto Rico','PR'),(47,'Rhode Island','RI'),(48,'South Carolina','SC'),(49,'South Dakota','SD'),(50,'Tennessee','TN'),(51,'Texas','TX'),(52,'Utah','UT'),(53,'Vermont','VT'),(54,'Virgin Islands','VI'),(55,'Virginia','VA'),(56,'Washington','WA'),(57,'West Virginia','WV'),(58,'Wisconsin','WI'),(59,'Wyoming','WY'),(60,'Armed Forces Africa','AE'),(61,'Armed Forces Americas (except Canada)','AA'),(62,'Armed Forces Canada','AE'),(63,'Armed Forces Europe','AE'),(64,'Armed Forces Middle East','AE'),(65,'Armed Forces Pacific','AP');
-/*!40000 ALTER TABLE `usstate` ENABLE KEYS */;
+LOCK TABLES `profiles_profile_followers` WRITE;
+/*!40000 ALTER TABLE `profiles_profile_followers` DISABLE KEYS */;
+INSERT INTO `profiles_profile_followers` VALUES (7,1,2),(8,1,3),(9,1,4);
+/*!40000 ALTER TABLE `profiles_profile_followers` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -430,4 +458,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-10-18 21:34:47
+-- Dump completed on 2013-10-20 21:23:20

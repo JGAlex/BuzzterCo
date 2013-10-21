@@ -5,9 +5,9 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 {%extends "base.html"%}
-{%block title%} Seguiendo a {%endblock%}
+{%block title%} Seguido por {%endblock%}
 {%block content%}
-    {%for varUsuario in user.profile.followings.all%}
-        <div> <img src="{{varUsuario.profile.fotografia.url}}" style="width: 4%; height: 4%"> {{varUsuario}}</div>
+    {%for varUsuario in user.profile.followers.all%}
+    <div> <img src="{{varUsuario.profile.fotografia.url}}" style="width: 4%; height: 4%"> {{varUsuario}}</div>
     {%endfor%}
 {%endblock%}
