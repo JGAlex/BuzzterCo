@@ -6,6 +6,7 @@ __author__="Krn_mt"
 __date__ ="$18-oct-2013 15:35:44$"
 
 from django.contrib import admin
-from posts.models import Post
+from posts.models import Post, PostType
 
 admin.site.register(Post)
+admin.site.register(PostType)
