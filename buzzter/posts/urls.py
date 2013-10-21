@@ -7,5 +7,5 @@ from posts import views
 
 urlpatterns = patterns('',
                         url(r'^(?P<title>\w+)/$',views.PostView,name='posts'),
-                        url(r'^New/$', views.NewPost,name='newPost'),
+                       
                         )
