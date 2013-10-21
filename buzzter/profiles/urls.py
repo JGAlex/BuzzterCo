@@ -13,5 +13,6 @@ urlpatterns = patterns('',
                         url(r'^Accounts/(?P<user_name>\w+)/$', views.ProfileView, name='profile'),
                         url(r'^Edit/$', views.EditProfile.as_view(), name='edit_profile'),
                         url(r'^Following/$', follow.FollowingView, name='following'),
+                        url(r'^Followers/$', follow.FollowersView, name='followers'),
                         url(r'^$', views.SignUp.as_view(), name='signup')
                 )
