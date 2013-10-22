@@ -24,7 +24,7 @@ and open the template in the editor.
    height: 100%;
    min-height: 620px;
    min-width: 620px;
-   overflow-style: scrollbar;
+   overflow: scroll;
 }
 .buzzContainer 
 {
