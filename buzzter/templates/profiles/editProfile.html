@@ -5,7 +5,7 @@
     
 {% block content %}
         <h1>Edita tu perfil</h1>
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data" data-ajax="false">
             {% csrf_token %}
             {{userForm}}
             {% csrf_token %}

@@ -33,7 +33,7 @@ class SignUp(FormView):
 def editProfile(request):
     if request.POST:
         userForm = EditUserForm(request.POST, instance=request.user)
-        profileForm = EditProfileForm(request.POST, instance=request.user.profile)
+        profileForm = EditProfileForm(request.POST, request.FILES, instance=request.user.profile)
         
         if userForm.is_valid() and profileForm.is_valid():
             userForm.save()
