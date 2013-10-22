@@ -24,6 +24,8 @@ def SignUp(request):
             perfil = Profile(usuario=user)
             perfil.save()
             return HttpResponseRedirect('/Login/')
+        else:
+            return render_to_response('profiles/signUp.html',{'form':form}, context_instance=RequestContext(request))
     if request.user.is_authenticated():
         return HttpResponseRedirect('/Now/')
     else:
