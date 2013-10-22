@@ -14,5 +14,5 @@ urlpatterns = patterns('',
                         url(r'^Edit/$', views.editProfile, name='edit_profile'),
                         url(r'^Following/$', follow.FollowingView, name='following'),
                         url(r'^Followers/$', follow.FollowersView, name='followers'),
-                        url(r'^$', views.SignUp.as_view(), name='signup')
+                        url(r'^$', views.SignUp, name='signup')
                 )

@@ -58,7 +58,7 @@ class SignUpForm(forms.ModelForm):
     def save(self, commit=True):
         user = super(SignUpForm, self).save(commit=False)
         user.set_password(self.cleaned_data["password"])
-        user.email(self.cleaned_data["email"])
+        user.email=self.cleaned_data["email"]
         if commit:
             user.save()
         return user

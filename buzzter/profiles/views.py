@@ -2,9 +2,7 @@
 
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render, render_to_response
-from django.template import RequestContext, loader
-from django.views.generic import FormView
-from django.core.urlresolvers import reverse_lazy
+from django.template import RequestContext
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from profiles.forms import SignUpForm, EditUserForm, EditProfileForm
@@ -18,16 +16,19 @@ def ProfileView(request, user_name):
         raise Http404
     return render(request, 'profiles/profile.html', {'profile':user, 'info':user.profile })
 
-class SignUp(FormView):
-    template_name = "profiles/signUp.html"
-    form_class = SignUpForm
-    success_url = reverse_lazy('login')
-    
-    def form_valid(self, form):
-        user = form.save()
-        perfil = Profile(usuario = user)
-        perfil.save()
-        return super(SignUp, self).form_valid(form)
+def SignUp(request):
+    if request.POST:
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            perfil = Profile(usuario=user)
+            perfil.save()
+            return HttpResponseRedirect('/Login/')
+    if request.user.is_authenticated():
+        return HttpResponseRedirect('/Now/')
+    else:
+        form = SignUpForm()
+    return render_to_response('profiles/signUp.html',{'form':form}, context_instance=RequestContext(request))
     
 @login_required
 def editProfile(request):
