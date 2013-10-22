@@ -19,8 +19,7 @@ and open the template in the editor.
                     <a  href="/">
                         <h1 style="margin: 0 0 0 0; padding: 0%">Buzzter</h1>
                     </a>
-                </div>
-           
+                </div>           
                 <div id="logPart">
                     {% if user.is_authenticated %}
                     <div style="margin-top: 7.5px;">
@@ -29,10 +28,11 @@ and open the template in the editor.
                     {% endif %}            
                 </div>
             </div>
+            <div style="width:100%">
                 <div id="downDecorator" style="background-color: #0078b0;"> </div>
                 <div id="downDecorator" style="background-color: #ff8000; margin-left: 33%"> </div>
-                <div id="downDecorator" style="background-color: #f7ff55; margin-left: 66%"> </div>
-            
+                <div id="downDecorator" style="background-color: #f7ff55; margin-left: 66%; margin-right: 0"> </div>
+            </div>
         </div> 
         <div>
         {%block leftpanel %}
@@ -53,8 +53,6 @@ and open the template in the editor.
         <div>
             {% block content %} {% endblock %}
         </div>
-        <div class="footer">
-            {% block footer %} {% endblock %}
-        </div>
+        <div class="footer">{% block footer %} {% endblock %}</div>
     </body>
 </html>
