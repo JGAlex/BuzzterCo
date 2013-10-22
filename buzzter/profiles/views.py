@@ -31,7 +31,7 @@ class SignUp(FormView):
     
 @login_required
 def editProfile(request):
-    if request.method == POST:
+    if request.POST:
         userForm = EditUserForm(request.POST, instance=request.user)
         profileForm = EditProfileForm(request.POST, instance=request.user.profile)
         
@@ -42,5 +42,6 @@ def editProfile(request):
     else:
         userForm = EditUserForm(instance = request.user)
         profileForm = EditProfileForm(instance = request.user.profile)
-    return render_to_response('profiles/editProfile.html',{'userForm':userForm, 'profileForm', profileForm})
+    return render_to_response('profiles/editProfile.html',{'userForm':userForm, 'profileForm':profileForm},
+                                    context_instance=RequestContext(request))
             

@@ -7,7 +7,9 @@
         <h1>Edita tu perfil</h1>
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {{Profile.as_p}}
+            {{userForm}}
+            {% csrf_token %}
+            {{profileForm}}
             <input type="Submit" value="Listo!">
         </form>
 {% endblock %}
