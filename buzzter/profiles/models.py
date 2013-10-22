@@ -20,3 +20,6 @@ class Profile(models.Model):
     
     def __unicode__(self):
         return self.usuario.get_username()
+    
+    def isFollowing(self,usuario):
+        return bool(self.followings.get(username=usuario.username))
