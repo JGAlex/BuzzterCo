@@ -1,13 +1,20 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
-
 __author__="t4r0"
 __date__ ="$18-oct-2013 18:49:08$"
 
 from django import forms 
 from django.contrib.auth.models import User
+from models import Profile
 
+class EditUserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name','last_name','email']
+        
+class EditProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['pais','fotografia']
+        
 class SignUpForm(forms.ModelForm):  
     """
     Representa un formulario para registrarse en el sitio
@@ -58,4 +65,5 @@ class SignUpForm(forms.ModelForm):
     
     def hasErrors(self):
         return bool(self.errors)
+
     

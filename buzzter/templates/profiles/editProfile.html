@@ -5,9 +5,11 @@
     
 {% block content %}
         <h1>Edita tu perfil</h1>
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data" data-ajax="false">
             {% csrf_token %}
-            {{Profile.as_p}}
+            {{userForm}}
+            {% csrf_token %}
+            {{profileForm}}
             <input type="Submit" value="Listo!">
         </form>
 {% endblock %}
