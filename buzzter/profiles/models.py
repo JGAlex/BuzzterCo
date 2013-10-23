@@ -16,7 +16,7 @@ class Profile(models.Model):
     fotografia = models.ImageField(upload_to="users", null=True, blank=True,
                                 default='users/default.png')    
     followers = models.ManyToManyField(User, related_name='followers', null=True, blank=True)
-    followings = models.ManyToManyField(User, related_name='follwings', null=True, blank=True)
+    followings = models.ManyToManyField(User, related_name='followings', null=True, blank=True)
     
     def __unicode__(self):
         return self.usuario.get_username()
