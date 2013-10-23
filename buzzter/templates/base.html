@@ -50,7 +50,7 @@ and open the template in the editor.
                     {% if user.is_authenticated %}
                     {% with info=user.profile %}
                         <div class="row">
-                            <img alt="Imagen de usuario" src="{{info.fotografia.url}}" class="img-rounded" style="width: 180px; height: 180px" >      
+                            <img alt="Imagen de usuario" src="{{info.fotografia.url}}" class="img-rounded col-lg-offset-2" style="width: 180px; height: 180px" >      
                         </div>
                         <div class="row">
                             <a href="/Accounts/{{info}}" class="TextoPrincipal">{{info}}</a>
@@ -66,17 +66,13 @@ and open the template in the editor.
         
              <div class="col-lg-8">
                 <div class="container">
-                    {% block rightpanel %}
-                    <div class="col-lg-8">
                         {% block content%}
                         
                         {% endblock %}
-                    </div>
-                    {% endblock %}
                 </div>
              </div>
             <div class="row">
-                <div class="container">{% block footer %} {% endblock %}</div>
+                <div class="container">{% block footer %}{% endblock %}</div>
             </div>
         </div>
          <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>

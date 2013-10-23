@@ -15,11 +15,16 @@ and open the template in the editor.
            <div class="row">
                 <div class="container">
                     <div>
-                        <a> <button class="btMusica btn btn-default">Musica</button></a>
-                        <a> <button class="btPeliculas btn btn-default">Peliculas</button></a>
-                        <a> <button class="btSeries btn btn-default">Series</button></a>
-                        <a> <button class="btPosters btn btn-default">Posters</button></a>
-                        <a> <button class="btArtBooks btn btn-default">Art-Books</button></a>
+                        <a> <button class="btMusica btn btn-default">
+                        <span class="glyphicon glyphicon-headphones"></span> Musica</button></a>
+                        <a> <button class="btPeliculas btn btn-default">
+                        <span class="glyphicon glyphicon-facetime-video"></span> Peliculas</button></a>
+                        <a> <button class="btSeries btn btn-default">
+                        <span class="glyphicon glyphicon-star"></span> Series</button></a>
+                        <a> <button class="btPosters btn btn-default">
+                        <span class="glyphicon glyphicon-picture"></span> Posters</button></a>
+                        <a> <button class="btArtBooks btn btn-default">
+                        <span class="glyphicon glyphicon-book"></span> Art-Books</button></a>
                     </div>
                 </div>
            </div>
@@ -27,21 +32,29 @@ and open the template in the editor.
            <div class="row">
                     <form method="POST" >
                         <div>
-                            <h1 class="titulo">Nueva Publicacion</h1>
+                            <h1 class="titulo TextoPrincipal text-center">Nueva Publicacion</h1>
+                            
                         {% csrf_token %}
-                        <label> Titulo </label>
-                        <input name="titulo" type="text" placeholder="Titulo">
-                        
-                        <label> Link Relacionado </label>
-                        <input name="link" type="URL" placeholder="Link"> 
-                        
-                        <label> Descripcion </label>
-                        <input name="descripcion" type="text">  
-                        
-                        <label> Link de Imagen </label>
-                        <input name="linkImagen" type="URL">  
-                        
-                        <input class="mainButton" type="Submit" value="Postea">
+                        <div class="row">
+                            <label class="Texto"> Titulo: </label>
+                            <input class="form-control" name="titulo" type="text" placeholder="Titulo" style="height: 30px; width: 500px;">
+                        </div>
+                        <div class="row">
+                            <label class="Texto"> Link Relacionado: </label>
+                            <input class="form-control" name="link" type="URL" placeholder="Link" style="height: 30px; width: 500px;"> 
+                        </div>
+                        <div class="row">
+                            <label class="Texto"> Descripcion: </label>
+                            <textarea class="form-control" rows="10" name="descripcion" style="height: 200px; width: 500px;"> </textarea>  
+                        </div>
+                        <div class="row">
+                            <label class="Texto"> Link de Imagen: </label>
+                            <input class="form-control" name="linkImagen" type="URL" style="height: 30px; width: 500px;">  
+                        </div>
+                        <div class="row col-lg-offset-8">
+                            <a> <button class="mainbutton boton btn btn-default" type="Submit">
+                            <span class="glyphicon glyphicon-asterisk"></span> Postea </button></a>
+                        </div>
                         </div>                        
                    </form> 
             </div>
