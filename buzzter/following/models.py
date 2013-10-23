@@ -1,6 +1,7 @@
 from django.db import models
 from profiles.models import Profile
 
+
 class Follower(models.Model):
     """
     Clase para el manejo de los seguidores de un usuario
