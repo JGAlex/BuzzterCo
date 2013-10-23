@@ -14,16 +14,16 @@ and open the template in the editor.
            {% if user.is_authenticated %}
            <div class="row">
                 <div class="container">
-                    <div>
-                        <a> <button class="btMusica btn btn-default">
+                    <div class="btn-group">
+                        <a> <button class="btn btn-default btMusica">
                         <span class="glyphicon glyphicon-headphones"></span> Musica</button></a>
-                        <a> <button class="btPeliculas btn btn-default">
+                        <a> <button class="btn btn-default btPeliculas">
                         <span class="glyphicon glyphicon-facetime-video"></span> Peliculas</button></a>
-                        <a> <button class="btSeries btn btn-default">
+                        <a> <button class="btn btn-default btSeries">
                         <span class="glyphicon glyphicon-star"></span> Series</button></a>
-                        <a> <button class="btPosters btn btn-default">
+                        <a> <button class="btn btn-default btPosters">
                         <span class="glyphicon glyphicon-picture"></span> Posters</button></a>
-                        <a> <button class="btArtBooks btn btn-default">
+                        <a> <button class="btn btn-default btArtBooks">
                         <span class="glyphicon glyphicon-book"></span> Art-Books</button></a>
                     </div>
                 </div>
@@ -32,16 +32,16 @@ and open the template in the editor.
            <div class="row">
                     <form method="POST" >
                         <div>
-                            <h1 class="titulo TextoPrincipal text-center">Nueva Publicacion</h1>
+                            <h1 class="titulo TextoPrincipal">Nueva Publicacion</h1>
                             
                         {% csrf_token %}
                         <div class="row">
                             <label class="Texto"> Titulo: </label>
-                            <input class="form-control" name="titulo" type="text" placeholder="Titulo" style="height: 30px; width: 500px;">
+                            <input class="form-control buzzField" name="titulo" type="text" placeholder="Titulo">
                         </div>
                         <div class="row">
                             <label class="Texto"> Link Relacionado: </label>
-                            <input class="form-control" name="link" type="URL" placeholder="Link" style="height: 30px; width: 500px;"> 
+                            <input class="form-control buzzField" name="link" type="URL" placeholder="Link"> 
                         </div>
                         <div class="row">
                             <label class="Texto"> Descripcion: </label>
@@ -49,7 +49,7 @@ and open the template in the editor.
                         </div>
                         <div class="row">
                             <label class="Texto"> Link de Imagen: </label>
-                            <input class="form-control" name="linkImagen" type="URL" style="height: 30px; width: 500px;">  
+                            <input class="form-control buzzField" name="linkImagen" type="URL">  
                         </div>
                         <div class="row col-lg-offset-8">
                             <a> <button class="mainbutton boton btn btn-default" type="Submit">

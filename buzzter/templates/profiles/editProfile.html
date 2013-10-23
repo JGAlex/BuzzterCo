@@ -4,13 +4,15 @@
 {% block tittle %} Edita tu perfil {% endblock %}
     
 {% block content %}
-        <h1>Edita tu perfil</h1>
-        <form method="POST" enctype="multipart/form-data" data-ajax="false">
+<h1 class="titulo TextoPrincipal">Edita tu Perfil</h1>
+        <form  class="Form" method="POST" enctype="multipart/form-data" data-ajax="false">
             {% csrf_token %}
-            {{userForm}}
+            {{userForm.as_p}}
             {% csrf_token %}
-            {{profileForm}}
-            <input type="Submit" value="Listo!">
+            {{profileForm.as_p}}
+            
+            <a> <button class="boton btn btn-default" type="Submit">
+            <span class="glyphicon glyphicon-floppy-disk"></span> Listo! </button></a>
         </form>
 {% endblock %}
 

@@ -56,21 +56,44 @@ h3:hover{color: white;}
     font-weight: normal;
 }
 
-.Texto{
+.Texto, .Form label{
     font-size: 14pt;
     font-weight: normal;
     color: #336aa0;
 }
-.btMusica{background-color: #ffc319; color:white;}
-.btPeliculas{ background-color: #ff385a; color:white;}
-.btPosters{background-color: #1ab434; color:white;}
-.btSeries{background-color: #a55aa5; color:white;}
-.btArtBooks{background-color: #007bdc; color:white;}
-.boton{background-color: #ff9368; color: white}
 
-.btMusica:hover{color: #ffc319; background-color:white;}
-.btPeliculas:hover{color: #ff385a; background-color:white;}
-.btPosters:hover{color: #1ab434; background-color:white;}
-.btSeries:hover{color: #a55aa5; background-color:white;}
-.btArtBooks:hover{color: #007bdc; background-color:white;}
-.boton:hover{color: #ff9368; background-color: white}
+.Form input, .Form label, .Form select{
+    font-family: 'Segoe UI';
+    font-weight: normal;
+}
+
+.Form label{
+    width: 100%;
+}
+
+.Form input{
+    color : black;
+    border-radius: 5px;
+    width:500px;
+    height:30px;
+    font-size: 14px;
+    border-style: solid;
+    border-color: #cccccc;
+    border-width: thin;
+}
+.btMusica:hover{background-color: #ffc319; color:white;}
+.btPeliculas:hover{ background-color: #ff385a; color:white;}
+.btPosters:hover{background-color: #1ab434; color:white;}
+.btSeries:hover{background-color: #a55aa5; color:white;}
+.btArtBooks:hover{background-color: #007bdc; color:white;}
+.boton{background-color: #00269b; color: white}
+
+.btMusica{color: #ffc319; background-color:white;}
+.btPeliculas{color: #ff385a; background-color:white;}
+.btPosters{color: #1ab434; background-color:white;}
+.btSeries{color: #a55aa5; background-color:white;}
+.btArtBooks{color: #007bdc; background-color:white;}
+.boton:hover{color: #00269b; background-color: white}
+
+.buzzField{width: 500px; height: 30px;}
+#fotografia-clean_id{display: none}
