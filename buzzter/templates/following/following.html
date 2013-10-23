@@ -8,6 +8,9 @@ and open the template in the editor.
 {%block title%} Seguiendo a {%endblock%}
 {%block content%}
     {%for varUsuario in user.profile.followings.all%}
-        <div> <img src="{{varUsuario.profile.fotografia.url}}" style="width: 4%; height: 4%"> {{varUsuario}}</div>
+    <div> 
+        <img src="{{varUsuario.profile.fotografia.url}}" style="width: 4%; height: 4%"> 
+        <a href="/Accounts/{{varUsuario}}"> {{varUsuario}}</a> 
+    </div>
     {%endfor%}
 {%endblock%}
