@@ -9,7 +9,21 @@ and open the template in the editor.
 {% block tittle %} Nueva Publicacion {% endblock %}
     
 {% block content %}
-       <div>
+      
+           {% if user.is_authenticated %}
+           <div class="row">
+                <div class="container">
+                    <div>
+                        <a> <button class="btMusica btn btn-default">Musica</button></a>
+                        <a> <button class="btPeliculas btn btn-default">Peliculas</button></a>
+                        <a> <button class="btSeries btn btn-default">Series</button></a>
+                        <a> <button class="btPosters btn btn-default">Posters</button></a>
+                        <a> <button class="btArtBooks btn btn-default">Art-Books</button></a>
+                    </div>
+                </div>
+           </div>
+           {% endif %}
+           <div class="row">
                     <form method="POST" >
                         <div>
                             <h1 class="titulo">Nueva Publicacion</h1>
@@ -29,5 +43,6 @@ and open the template in the editor.
                         <input class="mainButton" type="Submit" value="Postea">
                         </div>                        
                    </form>                          
-                 </div>     
+              </div>
+      
 {% endblock %}

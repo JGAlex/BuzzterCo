@@ -42,27 +42,41 @@ and open the template in the editor.
                 </div>
                
             </header>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class = "container">
+                   
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="container">
                     {%block leftpanel %}
                     {% if user.is_authenticated %}
+                    {% with info=user.profile %}
                         <div class="row">
+                            <img alt="Imagen de usuario" src="{{info.fotografia.url}}" class="img-rounded" style="width: 180px; height: 180px" >      
                         </div>
-                    {% endif %}
+                        <div class="row">
+                            <a href="/Accounts/{{info}}" class="TextoPrincipal">{{info}}</a>
+                        </div>
+                        <div class="row">
+                            <label class="TextoSecundario">{{user.get_full_name}}</label>
+                        </div>
+                </div>
+                {%endwith%}
+                {% endif %}
+                {% endblock %}
+             </div>
+        
+             <div class="col-log-8">
+                <div class="container">
+                    {% block content %}
+
                     {% endblock %}
-                    </div>
                 </div>
-                <div class="col-log-8">
-                    <div class="container">
-                        {% block content %} {% endblock %}
-                    </div>
-                </div>
-            </div>
+             </div>
             <div class="row">
                 <div class="container">{% block footer %} {% endblock %}</div>
             </div>
         </div>
+         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+        <script src="js/vendor/bootstrap.js"></script>
+        <script src="js/main.js"></script>
     </body>
 </html>

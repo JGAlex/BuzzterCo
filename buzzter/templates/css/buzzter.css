@@ -36,3 +36,34 @@ h3:hover{color: white;}
 .BlueDecorator{border-color: #0078b0;}
 .OrangeDecorator{border-color: #ff8000;}
 .YellowDecorator{border-color: #f7ff55;}
+
+.TextoPrincipal,.TextoSecundario{font-family: 'Segoe UI';}
+.btMusica, .btPeliculas, .btPosters, .btSeries, .btArtBooks{
+    font-family: 'Segoe UI';
+    font-size: 15pt; 
+    font-weight: normal;}
+
+.TextoPrincipal{
+
+    color: #077cb2;
+    font-weight: bold;
+    font-size: 16pt;
+}
+
+.TextoSecundario{
+    color: #4ea0dc;
+    font-size: 14pt;
+    font-weight: normal;
+}
+
+.btMusica{background-color: #ffc319; color:white;}
+.btPeliculas{ background-color: #ff385a; color:white;}
+.btPosters{background-color: #1ab434; color:white;}
+.btSeries{background-color: #a55aa5; color:white;}
+.btArtBooks{background-color: #007bdc; color:white;}
+
+.btMusica:hover{color: #ffc319; background-color:white; }
+.btPeliculas:hover{color: #ff385a; background-color:white;}
+.btPosters:hover{color: #1ab434; background-color:white;}
+.btSeries:hover{color: #a55aa5; background-color:white;}
+.btArtBooks:hover{color: #007bdc; background-color:white;}
