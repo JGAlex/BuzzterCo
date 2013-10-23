@@ -7,7 +7,11 @@ and open the template in the editor.
     Created on : 18-oct-2013, 22:29:56
     Author     : t4r0
 */
-
+@font-face
+{
+    font-family: ComicBook;
+    src: url(/static/fonts/ComickBook_Simple.ttf)
+}
 .buzzBody
 {
    margin: 0;
@@ -27,11 +31,10 @@ and open the template in the editor.
     color: white;
  }
 
- #header
+ header
  {
      color: white;
-     margin: 0;     
-     height: 40px;
+     font-family: ComicBook;
  }
 
  #buzzterHome
@@ -139,7 +142,7 @@ and open the template in the editor.
  {
      font-size: 18pt;
      color: white;
-     font-family: 'ComickBook';
+     font-family: ComicBook;
      text-align: center;
  }
  .helptext
