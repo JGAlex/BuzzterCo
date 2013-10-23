@@ -9,16 +9,13 @@ and open the template in the editor.
         <title>{% block tittle %} {% endblock %}</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
-<<<<<<< HEAD
         <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/buzzter.css"/>
         <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/profiles.css"/>
-=======
         <link rel="stylesheet" href="{{STATIC_URL}}css/main.css">
         <link rel="stylesheet" href="{{STATIC_URL}}css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/buzzter.css"/>
         <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/profiles.css"/>
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
->>>>>>> Actualizacion de estilos
     </head>
     <body>
             <header>
@@ -29,8 +26,21 @@ and open the template in the editor.
                                 <h1>Buzzter</h1>
                             </a>
                         </div>
+                        {% if user.is_authenticated %}
+                         <div class="col-lg-2 col-lg-offset-8">
+                            <a  href="/Logout">
+                                <h3>Salir</h3>
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                     <div class="row">
+                        <div class="col-lg-4 Decorator BlueDecorator"></div>
+                        <div class="col-lg-4 Decorator OrangeDecorator"></div>
+                        <div class="col-lg-4 Decorator YellowDecorator"></div>
                     </div>
                 </div>
+               
             </header>
         <div class="container">
             <div class="row">
