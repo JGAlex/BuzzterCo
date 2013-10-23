@@ -10,6 +10,7 @@ and open the template in the editor.
     
 {% block content %}
       
+
            {% if user.is_authenticated %}
            <div class="row">
                 <div class="container">
@@ -42,7 +43,7 @@ and open the template in the editor.
                         
                         <input class="mainButton" type="Submit" value="Postea">
                         </div>                        
-                   </form>                          
-              </div>
-      
+                   </form> 
+            </div>
+
 {% endblock %}

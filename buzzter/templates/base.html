@@ -64,10 +64,14 @@ and open the template in the editor.
                 {% endblock %}
              </div>
         
-             <div class="col-log-8">
+             <div class="col-lg-8">
                 <div class="container">
-                    {% block content %}
-
+                    {% block rightpanel %}
+                    <div class="col-lg-8">
+                        {% block content%}
+                        
+                        {% endblock %}
+                    </div>
                     {% endblock %}
                 </div>
              </div>
