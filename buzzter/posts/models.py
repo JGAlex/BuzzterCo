@@ -17,6 +17,19 @@ class PostType(models.Model):
     """
     
     tipo = models.CharField(max_length=20,blank=False,unique=True)
+    campos = models.CommaSeparatedIntegerField(max_length=40, blank=False)
+    listaCampos = {"1":"titulo","2":"link","3":"descripcion","4":"linkImagen",
+    "5":"autor","6":"interprete","7":"album","8":"year","9":"director",
+    "10":"clasificacion","11":"dibujante","12":"temporada","13":"tipoGenero"}
+    
+    def getFields(self):
+        atrbts = []
+        for num in self.campos.split(","):
+            atrbts.append(self.listaCampos[num])
+        return atrbts
+    
+    def getFieldsList(self):
+        return self.listaCampos
     
     def __unicode__(self):
         return self.tipo
@@ -52,19 +65,19 @@ class Post(models.Model):
   """   
   
   titulo = models.CharField(max_length=50, blank=False, unique=True)
-  link = models.URLField(max_length=150, blank=True)
+  link = models.URLField(max_length=150)
   descripcion = models.TextField(blank=False)
-  rating = models.PositiveIntegerField()
-  eliminar = models.BooleanField()
+  rating = models.PositiveIntegerField(blank=True, null=True,default=0)
+  eliminar = models.BooleanField(blank=True,default=False)
   linkImagen = models.URLField(max_length=150,blank=False)
-  autor = models.CharField(max_length=50,blank=True, null=True)
-  interprete = models.CharField(max_length=50,blank=True, null=True)
-  album = models.CharField(max_length=50,blank=True, null=True)
+  autor = models.CharField(max_length=50,blank=True, null=True,default="")
+  interprete = models.CharField(max_length=50,blank=True, null=True,default="")
+  album = models.CharField(max_length=50,blank=True, null=True,default="")
   year = models.PositiveIntegerField()
-  director = models.CharField(max_length=50,blank=True, null=True)
-  clasificacion = models.CharField(max_length=50,blank=True,null=True)
-  dibujante = models.CharField(max_length=50,blank=True, null=True)
-  temporada = models.CharField(max_length=50,blank=True, null=True)
+  director = models.CharField(max_length=50,blank=True, null=True,default="")
+  clasificacion = models.CharField(max_length=50,blank=True,null=True,default="")
+  dibujante = models.CharField(max_length=50,blank=True, null=True,default="")
+  temporada = models.CharField(max_length=50,blank=True, null=True,default="")
   
   
   usuario = models.ForeignKey(Profile)

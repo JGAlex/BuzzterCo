@@ -15,21 +15,14 @@ class newPostForm(forms.ModelForm):
     Fecha: 20/10/13 19:56
     Autor: Karen
     Branch: Branch_Post
-    Modificado: 20/10/13
+    Modificado: 23/10/13
     """
-    
-    titulo = forms.CharField(max_length=50)
-    link = forms.URLField()
-    descripcion = forms.CharField()
-    linkImagen = forms.URLField()
+    def __init__(self,*args,**kwargs):
+        super(newPostForm, self).__init__(*args,**kwargs)
+        for campo in self.fields.values():
+            campo.required = False
+
     class Meta:
         model = Post
-        def save(self, commit=True):
-            posts = super(newPostForm, self).save(commit=False)
-            posts.titulo=self.cleaned_data["titulo"] 
-            posts.link=self.cleaned_data["link"]
-            posts.descripcion=self.cleaned_data["descripcion"]
-            posts.linkImagen=self.cleaned_data["linkImagen"]
-            if commit:
-                posts.save()
-            return posts
+ 
+    

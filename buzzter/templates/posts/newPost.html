@@ -11,11 +11,11 @@ and open the template in the editor.
 {% block content %}
       
 
-           {% if user.is_authenticated %}
+         
            <div class="row">
                 <div class="container">
                     <div class="btn-group">
-                        <a> <button class="btn btn-default btMusica">
+                        <a href="/Posts/New/Music"> <button class="btn btn-default btMusica">
                         <span class="glyphicon glyphicon-headphones"></span> Musica</button></a>
                         <a> <button class="btn btn-default btPeliculas">
                         <span class="glyphicon glyphicon-facetime-video"></span> Peliculas</button></a>
@@ -28,33 +28,19 @@ and open the template in the editor.
                     </div>
                 </div>
            </div>
-           {% endif %}
+
            <div class="row">
                     <form method="POST" >
                         <div>
                             <h1 class="titulo TextoPrincipal">Nueva Publicacion</h1>
                             
                         {% csrf_token %}
-                        <div class="row">
-                            <label class="Texto"> Titulo: </label>
-                            <input class="form-control buzzField" name="titulo" type="text" placeholder="Titulo">
-                        </div>
-                        <div class="row">
-                            <label class="Texto"> Link Relacionado: </label>
-                            <input class="form-control buzzField" name="link" type="URL" placeholder="Link"> 
-                        </div>
-                        <div class="row">
-                            <label class="Texto"> Descripcion: </label>
-                            <textarea class="form-control" rows="10" name="descripcion" style="height: 200px; width: 500px;"> </textarea>  
-                        </div>
-                        <div class="row">
-                            <label class="Texto"> Link de Imagen: </label>
-                            <input class="form-control buzzField" name="linkImagen" type="URL">  
-                        </div>
-                        <div class="row col-lg-offset-8">
-                            <a> <button class="mainbutton boton btn btn-default" type="Submit">
-                            <span class="glyphicon glyphicon-asterisk"></span> Postea </button></a>
-                        </div>
+                        
+                        {{form.as_p}}
+                        <input type="hidden" value="{{user.profile}}" name="usuario">
+                        <input type="hidden" value="{{tipo}}" name="tipoPublicacion">
+                        <a> <button class="btn btn-default boton" type="submit">
+                        <span class="glyphicon glyphicon-asterisk"></span> Postea</button></a>
                         </div>                        
                    </form> 
             </div>
