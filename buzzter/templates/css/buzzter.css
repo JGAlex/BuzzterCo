@@ -13,12 +13,12 @@ and open the template in the editor.
     src: url(/static/fonts/ComickBook_Simple.ttf)
 }
 
-h1, .titulo{
+h1, .titulo, .jumbotron h1{
     font-family: ComicBook;
     color: white;
     font-size: 18pt;
 }
-
+.jumbotron p{ font-family: 'Segoe UI'; font-size: 16pt; color:white}
 .titulo{color:white; font-size: 18pt; width: 100%; text-align: center}
 
 h3{
@@ -179,4 +179,12 @@ h3:hover{color: white;}
 .signPartForm form .texto{font-family: 'Segoe UI'; color: #cccccc}
 .signPartForm form div{margin: 0 auto; width: 95%;}
 .signPartForm a {color:#03a7cf; font-size: 9pt; text-align: center; width: 100%}
-.mainButton{margin-top: 4%; font-weight: bold}
+.mainButton{margin-top: 4%; font-weight: bold; margin-bottom: 4%;}
+.logInPart{
+    width:100%;
+    background-image: url('img/beehive.jpg');
+    background-size: 100% 100%;
+    min-height: 450px;
+    margin-top: 1%;
+}
+

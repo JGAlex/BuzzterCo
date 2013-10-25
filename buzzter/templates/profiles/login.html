@@ -4,26 +4,32 @@
 {% block tittle %} Welcome to buzzter {% endblock %}
     
 {% block main %}
-     <div class="bigBody">
-         <div class="bigBackground">
-        {%if user.is_authenticated %}
-        <div><a href="Accounts/{{user.username}}"> ve a tu perfil</a> </div>
-        {%else%}
-        <div class="logIn">
-            <div class="logIn">
+     <div class="jumbotron logInPart">
+         <h1>Es bueno verte de nuevo</h1>
+         <p>Muchas cosas han pasado desde que nos vimos</p>
+         <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-xs-6 col-sm-4 col-md-4
+                            col-lg-offset-8 col-xs-offset-6 col-sm-offset-8 col-md-offset-8">
+                {%if user.is_authenticated %}
+            <div><a href="Accounts/{{user.username}}"> ve a tu perfil</a> </div>
+            {%else%}
+            <div class="signPartForm">
                 <form method="POST">
                     {% csrf_token %}
                     <div>
-                        <label> Usuario </label>
-                        <input name="username" type="text" placeholder="Usuario">
-                        <label> Contrase&ntilde;a </label>
-                        <input name="password" type="password" placeholder="Contrase&ntilde;a">
-                        <input type="submit" class="mainButton">
-                    </div>
+                    <label class="titulo">Bienvenido</label>
+                    <label class="texto"> Usuario </label>
+                    <input name="username" type="text" placeholder="Usuario">
+                    <label class="texto"> Contrase&ntilde;a </label>
+                    <input name="password" type="password" placeholder="Contrase&ntilde;a">
+                    <input class="btn form-control btn-primary mainButton" type="submit">
+                    </div>                    
                 </form>
             </div>
-        </div>
-        {%endif%}
+            {%endif%}
+            </div>
          </div>
+        </div>
     </div>
 {% endblock %}
