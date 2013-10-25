@@ -58,6 +58,21 @@ and open the template in the editor.
                         <div class="row">
                             <label class="TextoSecundario">{{user.get_full_name}}</label>
                         </div>
+
+                        <blockquote>
+                            <div class="row">
+                                <label class="TextoPrincipal">Mi Perfil</label>
+                            </div>
+                            <div class="row"> 
+                                <a href="/Me"> <label class="TextoSecundario"> Acerca de mi </label> </a>
+                            </div>
+                            <div class="row">
+                                <a href="/Publications"> <label class="TextoSecundario"> Mis Publicaciones </label> </a>
+                            </div>
+                            <div>
+                                <a href="/Raiting"> <label class="TextoSecundario"> Mis Raitings </label> </a>
+                            </div>
+                        </blockquote>
                 </div>
                 {%endwith%}
                 {% endif %}
@@ -66,8 +81,8 @@ and open the template in the editor.
         
              <div class="col-lg-8">
                 <div class="container">
-                        {% block content%}
-                        
+                       {% block content%}
+
                         {% endblock %}
                 </div>
              </div>

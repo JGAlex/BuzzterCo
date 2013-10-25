@@ -47,4 +47,12 @@ def editProfile(request):
         profileForm = EditProfileForm(instance = request.user.profile)
     return render_to_response('profiles/editProfile.html',{'userForm':userForm, 'profileForm':profileForm},
                                     context_instance=RequestContext(request))
-            
+
+def MyPublications(request):
+    return render(request, 'profiles/myPublication.html')
+
+def AboutMe(request):
+    return render(request, 'profiles/aboutMe.html')
+
+def MyRaitings(request):
+    return render(request, 'profiles/myRaiting.html')
