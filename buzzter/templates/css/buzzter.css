@@ -96,7 +96,7 @@ h3:hover{color: white;}
 .btSeries{color: #a55aa5; background-color:white;}
 .btArtBooks{color: #007bdc; background-color:white;}
 .boton:hover{color: #00269b; background-color: white}
-
+#fotografia-clean_id{display: none}
 .buzzField{width: 500px; height: 30px;}
 .signPart
 {
@@ -119,5 +119,5 @@ h3:hover{color: white;}
 }
 .signPartForm form .texto{font-family: 'Segoe UI'; color: #cccccc}
 .signPartForm form div{margin: 0 auto; width: 95%;}
+.signPartForm a {color:#03a7cf; font-size: 9pt; text-align: center; width: 100%}
 .mainButton{margin-top: 4%; font-weight: bold}
-#fotografia-clean_id{display: none}
