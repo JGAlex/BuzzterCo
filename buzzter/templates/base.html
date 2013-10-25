@@ -15,7 +15,7 @@ and open the template in the editor.
         <link rel="stylesheet" href="{{STATIC_URL}}css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/buzzter.css"/>
         <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/profiles.css"/>
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="{{STATIC_URL}}js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
             <header>
@@ -34,13 +34,10 @@ and open the template in the editor.
                         </div>
                         {% endif %}
                     </div>
-                     <div class="row">
-                        <div class="col-lg-4 Decorator BlueDecorator"></div>
-                        <div class="col-lg-4 Decorator OrangeDecorator"></div>
-                        <div class="col-lg-4 Decorator YellowDecorator"></div>
-                    </div>
-                </div>
-               
+                    <div class="Decorator BlueDecorator"></div>
+                    <div class="Decorator OrangeDecorator"></div>
+                    <div class="Decorator YellowDecorator"></div>
+                </div>               
             </header>
                    
         <div class="row">
