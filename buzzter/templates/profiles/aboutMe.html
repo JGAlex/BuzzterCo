@@ -15,6 +15,11 @@ and open the template in the editor.
 			<h2> Mi Información </h2>
 		</div>
 
+		<div class="row">
+			<a class="col-lg-2 col-lg-offset-10 glyphicon-pencil" href="/Edit">Editar</a>
+		</div>
+
+
 		{% with usuario=info.usuario %}
 		<div class="row">
 			<h4 class="Texto"> Username: <label>{{user.username}}</label></h4>
@@ -23,7 +28,7 @@ and open the template in the editor.
 			<h4 class="Texto"> Correo electrónico: <label>{{user.email}}</label></h4>
 			
 			<h2>Información Adicional</h2>
-			<h4 class="Texto"> País: <label>{{info.profiles.pais}}</label></h4>
+			<h4 class="Texto"> País: <label>{{user.profile.pais}}</label></h4>
 			<h4 class="Texto"> Miembro desde: <label>{{user.date_joined}}</label></h4>
 		</div>
 		{% endwith %}
