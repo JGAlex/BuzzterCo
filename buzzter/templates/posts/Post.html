@@ -13,5 +13,11 @@ and open the template in the editor.
         <div><img src="{{post.linkImagen}}" style="width: 200px; height: 400px"> </div>
         <div>{{post.descripcion}}</div>
         <div><a href="/Accounts/{{autor.username}}">{{autor.username}}</a></div>
-
+        <form class="Form" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <a> <button class="btn btn-default boton" type="submit">
+            <span class="glyphicon glyphicon-asterisk"></span> Envia! (:</button></a>
+        </form>
+        
 {% endblock %}

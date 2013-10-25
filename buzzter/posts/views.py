@@ -2,18 +2,25 @@
 from django.http import Http404,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render 
-from posts.models import Post,PostType
+from posts.models import Post,PostType,Comments
 from django.views.generic import CreateView
 from posts import forms as PostForms
 from django.forms.models import modelform_factory
-import pdb
+
+
 def PostView(request, title):    
     try:
-        post = Post.objects.get(titulo=title.replace("-"," "))
+        post = Post.objects.get(titulo=title)
         autor = post.usuario.usuario
+        if request.user.is_authenticated():
+            comentario = Comments(usuario=request.user.profile,post=post)
+            form = PostForms.formComments(request.POST or None,instance=comentario)
+            if form.is_valid():
+                form.save()
+                return HttpResponseRedirect('/Posts/'+title+'/')
     except Post.DoesNotExist:
         raise Http404
-    return render(request, "posts/Post.html",{'post':post,'autor':autor})
+    return render(request, "posts/Post.html",{'post':post,'autor':autor,'form':form})
 
 @login_required
 def now(request):

@@ -1,7 +1,9 @@
 
 from django.db import models
 from profiles.models import Profile
+from django.contrib.comments.models import Comment
 # Create your models here.
+
 
 
 class PostType(models.Model):
@@ -32,7 +34,8 @@ class Genre(models.Model):
     """
     
     genero = models.CharField(max_length=50,blank=True,null=False)    
-    tipoGenero = models.ManyToManyField(PostType, related_name="tipoGenero", null=True, blank=True)
+    tipoGenero = models.ManyToManyField(PostType, related_name="tipoGenero",
+    null=True, blank=True, limit_choices_to={'tipo': genero})
     
     def __unicode__(self):
         return self.genero
@@ -56,7 +59,7 @@ class Post(models.Model):
   
   rating = models.PositiveIntegerField(blank=True, null=True,default=0)
   year = models.PositiveIntegerField(default=2013)
-  
+  fecha = models.DateTimeField(auto_now=True)
   titulo = models.CharField(max_length=50, blank=False, unique=True)
   autor = models.CharField(max_length=50,blank=True, null=True,default="")
   interprete = models.CharField(max_length=50,blank=True, null=True,default="")
@@ -71,13 +74,19 @@ class Post(models.Model):
   descripcion = models.TextField(blank=False)
   
   def set_titulo(self,titulo):
-      self.titulo = titulo.replace(" ","-")
+      self.titulo = titulo.replace(" ","_")
       return self.titulo
   
   def get_titulo(self,):
-      return self.titulo.replace("-"," ")
+      return self.titulo.replace("_"," ")
   
   def __unicode__(self):
       return self.titulo
   
   
+class Comments(models.Model):
+    usuario = models.ForeignKey(Profile,related_name="comentarios")
+    fecha = models.DateField(auto_now=True)
+    post = models.ForeignKey(Post, related_name="comentarios")
+    comentario = models.TextField(blank=False);
+    

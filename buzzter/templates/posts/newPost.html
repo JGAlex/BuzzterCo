@@ -30,15 +30,13 @@ and open the template in the editor.
            </div>
 
            <div class="row">
-                    <form method="POST" >
+                    <form class="Form" method="POST" >
                         <div>
                             <h1 class="titulo TextoPrincipal">Nueva Publicacion</h1>
                             
                         {% csrf_token %}
                         
                         {{form.as_p}}
-                        <input type="hidden" value="{{user.profile}}" name="usuario">
-                        <input type="hidden" value="{{tipo}}" name="tipoPublicacion">
                         <a> <button class="btn btn-default boton" type="submit">
                         <span class="glyphicon glyphicon-asterisk"></span> Postea</button></a>
                         </div>                        
