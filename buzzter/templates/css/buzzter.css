@@ -37,7 +37,7 @@ h3:hover{color: white;}
 .OrangeDecorator{border-color: #ff8000;}
 .YellowDecorator{border-color: #f7ff55;}
 
-.TextoPrincipal,.TextoSecundario,.Texto{font-family: 'Segoe UI';}
+.TextoPrincipal,.TextoSecundario,.Texto, .TextoDsc{font-family: 'Segoe UI';}
 .btMusica, .btPeliculas, .btPosters, .btSeries, .btArtBooks, .boton{
     font-family: 'Segoe UI';
     font-size: 15pt; 
@@ -56,13 +56,19 @@ h3:hover{color: white;}
     font-weight: normal;
 }
 
+.TextoDsc{
+    color: #666666;
+    font-size: 12pt;
+    font-weight: normal;
+}
+
 .Texto, .Form label{
     font-size: 14pt;
     font-weight: normal;
     color: #336aa0;
 }
 
-.Form input, .Form label, .Form select{
+.Form input, .Form label, .Form select, .Form textarea{
     font-family: 'Segoe UI';
     font-weight: normal;
 }
@@ -71,6 +77,12 @@ h3:hover{color: white;}
     width: 100%;
 }
 
+.Form textarea{
+    width: 500px;
+    height: 100px;
+    font-size: 12pt;
+    color: #009999
+}
 .Form input{
     color : black;
     border-radius: 5px;
@@ -80,6 +92,17 @@ h3:hover{color: white;}
     border-style: solid;
     border-color: #cccccc;
     border-width: thin;
+}
+.Separador{
+    
+    width: 800px;
+    color: #ff9900;
+    border-style: groove;
+}
+.imagen{
+    width: 140px;
+    height: 140px;
+    
 }
 .btMusica:hover{background-color: #ffc319; color:white;}
 .btPeliculas:hover{ background-color: #ff385a; color:white;}

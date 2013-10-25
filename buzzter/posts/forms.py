@@ -80,11 +80,9 @@ class formPosters(formPost):
         model = Post
         fields = ["titulo","link","linkImagen",
                   "autor","year","descripcion"]
-
     def save(self, commit=True):
         post = super(formPosters,self).save(commit=False)
         post.autor=self.cleaned_data['autor']
-        post.tipoGenero = self.cleaned_data['tipoGenero']
         if commit:
             post.save()
         return post

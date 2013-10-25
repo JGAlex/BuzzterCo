@@ -35,7 +35,7 @@ class Genre(models.Model):
     
     genero = models.CharField(max_length=50,blank=True,null=False)    
     tipoGenero = models.ManyToManyField(PostType, related_name="tipoGenero",
-    null=True, blank=True, limit_choices_to={'tipo': genero})
+    null=True, blank=True)
     
     def __unicode__(self):
         return self.genero
@@ -55,7 +55,7 @@ class Post(models.Model):
    
   usuario = models.ForeignKey(Profile)
   tipoPublicacion = models.ForeignKey(PostType)
-  tipoGenero = models.ForeignKey(Genre, related_name="tipo_Genero")
+  tipoGenero = models.ForeignKey(Genre, related_name="tipo_Genero",null=True)
   
   rating = models.PositiveIntegerField(blank=True, null=True,default=0)
   year = models.PositiveIntegerField(default=2013)
