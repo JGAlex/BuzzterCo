@@ -24,7 +24,8 @@ def PostView(request, title):
 
 @login_required
 def now(request):
-    return render(request,"posts/newPost.html")
+    listpost = Post.objects.all()[:8]
+    return render(request,"posts/newPost.html",{"posts": listpost})
 
 @login_required
 def newPostMusic(request):
