@@ -66,8 +66,8 @@ class Post(models.Model):
   dibujante = models.CharField(max_length=50,blank=True, null=True,default="")
   temporada = models.CharField(max_length=50,blank=True, null=True,default="")
   
-  link = models.URLField(max_length=150,blank=False,null=False)
-  linkImagen = models.URLField(max_length=150,blank=False,null=False)
+  link = models.URLField(max_length=350,blank=False,null=False)
+  linkImagen = models.URLField(max_length=350,blank=False,null=False)
   descripcion = models.TextField(blank=False)
   
   def set_titulo(self,titulo):
