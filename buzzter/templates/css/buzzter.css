@@ -13,11 +13,13 @@ and open the template in the editor.
     src: url(/static/fonts/ComickBook_Simple.ttf)
 }
 
-h1{
+h1, .titulo{
     font-family: ComicBook;
     color: white;
     font-size: 18pt;
 }
+
+.titulo{color:white; font-size: 16pt; width: 100%; text-align: center}
 
 h3{
     font-family: 'Segoe UI';
@@ -96,4 +98,26 @@ h3:hover{color: white;}
 .boton:hover{color: #00269b; background-color: white}
 
 .buzzField{width: 500px; height: 30px;}
+.signPart
+{
+    width: 100%;
+    background-image: url('img/start.jpg');
+    background-size: 100% 100%;
+    min-height: 450px;
+    margin-top: 1%;
+    
+}
+.signPartForm{width:110%; background-color: #3f3f3f; border-radius: 10px;}
+.signPartForm .errorlist 
+{ 
+        color: white;
+        font-size:10pt;
+        position:fixed;
+        margin: 1px;
+        list-style:none;
+        list-style-image: none;
+}
+.signPartForm form .texto{font-family: 'Segoe UI'; color: #cccccc}
+.signPartForm form div{margin: 0 auto; width: 95%;}
+.mainButton{margin-top: 4%;}
 #fotografia-clean_id{display: none}
