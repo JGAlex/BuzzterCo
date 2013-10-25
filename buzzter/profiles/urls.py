@@ -13,7 +13,8 @@ urlpatterns = patterns('',
                         url(r'^Followers/$', follow.FollowersView, name='followers'),
                         url(r'^Follow/(?P<username>\w+)/$', 'following.views.Follow', name='follow'),
                         url(r'^Unfollow/(?P<username>\w+)/$', 'following.views.Unfollow', name='unfollow'),
-                        #url(r'^Follow/(?P<username>\w+)/$', follow.Follow, name = 'follow'),
-                        #url(r'^Unfollow/(?P<username\w+)/$', follow.Unfollow, name = 'unfollow'),
+                        url(r'^Publications/$', 'profiles.views.MyPublications'),
+                        url(r'^Rating/$', 'profiles.views.MyRatings'),
+                        url(r'^Me/$', 'profiles.views.AboutMe'),
                         url(r'^$', views.SignUp, name='signup')
                         )
