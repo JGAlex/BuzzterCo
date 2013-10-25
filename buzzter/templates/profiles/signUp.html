@@ -15,16 +15,16 @@
                             <label class="titulo">Hazte escuchar</label>
                             {% csrf_token %}
                             <label class="texto"> Usuario </label>
-                            <input class="form-control" name="username" type="text" placeholder="Usuario">
+                            <input name="username" type="text" placeholder="Usuario">
                             {% if form.hasErrors %}
                             {% with errores=form.errors %}
                             <p class = "errorlist"> {{ errores.username }}</p>
                             {% endwith %}
                             {% endif %}
                             <label class="texto"> Contrase&ntilde;a </label>
-                            <input class="form-control" name="password" type="password" placeholder="Contrase&ntilde;a"> 
+                            <input name="password" type="password" placeholder="Contrase&ntilde;a"> 
                             <label class="texto"> e-mail </label>
-                            <input class="form-control" name="email" type="email" placeholder="e-mail">  
+                            <input  name="email" type="email" placeholder="e-mail">  
                             {% if form.hasErrors %}
                             {% with errores=form.errors %}
                             <p class = "errorlist"> {{ errores.email }}</p>

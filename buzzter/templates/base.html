@@ -49,7 +49,6 @@ and open the template in the editor.
             </header>
         <div class="container" role="main">
         <div class="row">
-            {%block leftpanel %}
             {% if user.is_authenticated %}
             {% with info=user.profile %}
             <div class="col-lg-4">
