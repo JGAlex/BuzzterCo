@@ -37,7 +37,10 @@ h3:hover{color: white;}
 .OrangeDecorator{border-color: #ff8000;}
 .YellowDecorator{border-color: #f7ff55;}
 
+
 .TextoPrincipal,.TextoSecundario,.Texto, .TextoDsc{font-family: 'Segoe UI';}
+
+.TextoPrincipal,.TextoSecundario,.Texto,.TextoTitulo1,.TextoValores1,.TextoValores2,.TextoValores3{font-family: 'Segoe UI';}
 .btMusica, .btPeliculas, .btPosters, .btSeries, .btArtBooks, .boton{
     font-family: 'Segoe UI';
     font-size: 15pt; 
@@ -68,7 +71,42 @@ h3:hover{color: white;}
     color: #336aa0;
 }
 
-.Form input, .Form label, .Form select, .Form textarea{
+
+.Form input, .Form label, .Form select, .Form textarea{}
+
+.TextoTitulo1{
+    color: #3390BA;
+    font-weight: normal;
+    font-size: 24pt;
+}
+
+/*gris*/
+.TextoValores1{
+    color: #999999;
+    font-weight: normal;
+    font-size: 14pt;
+}
+/*negro*/
+.TextoValores2{
+    color: #000000;
+    font-weight: normal;
+    font-size: 13pt;
+}
+
+/*naranja*/
+.TextoValores3{
+    color:#FF8000;
+    font-weight: normal;
+    font-size: 13pt;
+}
+
+.tr:hover{
+    color: #FF8000;
+    font-weight: normal;
+    font-size: 13pt;
+}
+
+.Form input, .Form label, .Form select{
     font-family: 'Segoe UI';
     font-weight: normal;
 }
