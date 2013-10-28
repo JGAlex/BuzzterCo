@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block tittle %} Welcome to Buzzter! {% endblock %}
+    
+{% block main %}
+     <div class="jumbotron signPart">
+         <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-xs-6 col-sm-4 col-md-4
+                            col-lg-offset-8 col-xs-offset-6 col-sm-offset-8 col-md-offset-8">
+                <div class="signPartForm">
+                    <form method="POST">
+                            <div>
+                            <label class="titulo">Hazte escuchar</label>
+                            {% csrf_token %}
+                            <label class="texto"> Usuario </label>
+                            <input name="username" type="text" placeholder="Usuario">
+                            {% if form.hasErrors %}
+                            {% with errores=form.errors %}
+                            <p class = "errorlist"> {{ errores.username }}</p>
+                            {% endwith %}
+                            {% endif %}
+                            <label class="texto"> Contrase&ntilde;a </label>
+                            <input name="password" type="password" placeholder="Contrase&ntilde;a"> 
+                            <label class="texto"> e-mail </label>
+                            <input  name="email" type="email" placeholder="e-mail">  
+                            {% if form.hasErrors %}
+                            {% with errores=form.errors %}
+                            <p class = "errorlist"> {{ errores.email }}</p>
+                            {% endwith %}
+                            {% endif %}                    
+                            <input class="btn form-control btn-primary mainButton" type="Submit" value="Registrarme">
+                            <a href="/Login">Ya tengo una cuenta</a>
+                            </div>                        
+                        </form>                          
+                 </div>                
+                </div>
+            </div>
+         </div>
+     </div>
+{% endblock %}

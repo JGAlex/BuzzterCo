@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+{% extends "base.html" %}
+
+{% block tittle %} Acerca de mi {% endblock %}
+    
+{% block content %}
+
+		<div class="row">
+			<h2 class="TextoTitulo1"> Mi Información </h2>
+		</div>
+
+		{% with usuario=info.usuario %}
+		<div class="row">
+			<h4 class="TextoValores2"> Username: <label class="TextoValores3">{{user.username}}</label></h4>
+			<h4 class="TextoValores2"> Nombre: <label class="TextoValores3">{{user.first_name}}</label></h4>
+			<h4 class="TextoValores2"> Apellidos: <label class="TextoValores3">{{user.last_name}}</label></h4>
+			<h4 class="TextoValores2"> Correo electrónico: <label class="TextoValores3">{{user.email}}</label></h4>
+			
+			<h2 class="TextoTitulo1">Información Adicional</h2>
+			<h4 class="TextoValores2"> País: <label class="TextoValores3">{{user.profile.pais}}</label></h4>
+			<h4 class="TextoValores2"> Miembro desde: <label class="TextoValores3">{{user.date_joined}}</label></h4>
+		</div>
+
+		<BR><BR>
+		<div class="row">
+			<a class="col-lg-2 col-lg-offset-10 glyphicon-pencil" href="/Edit">Editar</a>
+		</div>
+		{% endwith %}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+{%extends "base.html"%}
+{%block title%} Seguido por {%endblock%}
+{%block content%}
+    {%for varUsuario in user.profile.followers.all%}
+    <div> 
+        <a href="/Accounts/{{varUsuario}}"> <img src="{{varUsuario.profile.fotografia.url}}" style="width: 4%; height: 4%"> </a>
+        <a href="/Accounts/{{varUsuario}}"> {{varUsuario}} </a> 
+    </div>  
+    {%endfor%}
+{%endblock%}

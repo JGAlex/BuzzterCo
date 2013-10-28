@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+{% extends "base.html" %}
+
+{% block tittle %} Mis Publicaciones {% endblock %}
+    
+{% block content %}
+		
+		<div class="row">
+			<h2 class="TextoTitulo1">Mis Publicaciones</h2>
+		</div>
+
+		<BR>
+		<div class="row">
+			<div class="datagrid">
+				<!--<table border="1" cellpadding="3" frame="void" width="800"> -->
+					<table class="table table-condensed table-hover TextoSecundario">
+					<tr class="success">
+						<th> Listado de publicaciones</th>
+						<th> Fecha </th>
+						<th> Comentarios </th>
+					</tr>
+
+					<tr class="tr">
+						<td>publicacion 1</td>
+						<td>dd-mm-aaaa hh:mm:ss</td>
+						<td>23</td>
+					</tr>
+
+					<tr class="tr">
+						<td>publicacion 2</td>
+						<td>dd-mm-aaaa hh:mm:ss</td>
+						<td>32</td>
+					</tr>
+
+					<tr class="tr">
+						<td>publicacion 3</td>
+						<td>dd-mm-aaaa hh:mm:ss</td>
+						<td>33</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+{% endblock %}
