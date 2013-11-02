@@ -38,7 +38,7 @@ def newPostMusic(request):
     if tipoForm.is_valid():
         tipoForm.save()
         return HttpResponseRedirect('/Now/')
-    return render(request,"posts/newPost.html",{'form':tipoForm})
+    return render(request,"posts/newPostForm.html",{'form':tipoForm})
 
 @login_required
 def newPostMovies(request):
@@ -49,7 +49,7 @@ def newPostMovies(request):
     if tipoForm.is_valid():
         tipoForm.save()
         return HttpResponseRedirect('/Now/')
-    return render(request,"posts/newPost.html",{'form':tipoForm})
+    return render(request,"posts/newPostForm.html",{'form':tipoForm})
 
 @login_required
 def newPostSeries(request):
@@ -60,7 +60,7 @@ def newPostSeries(request):
     if tipoForm.is_valid():
         tipoForm.save()
         return HttpResponseRedirect('/Now/')
-    return render(request,"posts/newPost.html",{'form':tipoForm})
+    return render(request,"posts/newPostForm.html",{'form':tipoForm})
 
 @login_required
 def newPostPosters(request):
@@ -71,7 +71,7 @@ def newPostPosters(request):
     if tipoForm.is_valid():
         tipoForm.save()
         return HttpResponseRedirect('/Now/')
-    return render(request,"posts/newPost.html",{'form':tipoForm})
+    return render(request,"posts/newPostForm.html",{'form':tipoForm})
 
 @login_required
 def newPostArtBooks(request):
@@ -82,4 +82,4 @@ def newPostArtBooks(request):
     if tipoForm.is_valid():
         tipoForm.save()
         return HttpResponseRedirect('/Now/')
-    return render(request,"posts/newPost.html",{'form':tipoForm})
+    return render(request,"posts/newPostForm.html",{'form':tipoForm})

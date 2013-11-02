@@ -18,6 +18,7 @@ and open the template in the editor.
         <script src="{{STATIC_URL}}js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
+        {% block body %}
             <header>
                 <div class="container">
                 <div class="row">
@@ -102,6 +103,7 @@ and open the template in the editor.
                 <div class="container">{% block footer %}{% endblock %}</div>
             </div>
             </div>
+            {% endblock %}
         </div>
          <script>window.jQuery || document.write('<script src="{{STATIC_URL}}js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
         <script src="{{STATIC_URL}}js/vendor/bootstrap.js"></script>
