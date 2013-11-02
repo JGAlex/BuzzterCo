@@ -2,6 +2,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from countries.models import Country
+from countries.utils.isoflag import iso_flag 
 # Create your models here.
 class Profile(models.Model):
     """
@@ -20,6 +21,11 @@ class Profile(models.Model):
     
     def __unicode__(self):
         return self.usuario.get_username()
+    
+    def getFlag(self):
+        if self.pais:
+            return iso_flag(self.pais.iso or None)
+        return ""
     
     def isFollowing(self,usuario):
         return bool(self.followings.get(username=usuario.username))
