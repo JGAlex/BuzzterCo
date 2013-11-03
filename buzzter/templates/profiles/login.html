@@ -19,8 +19,12 @@
                     {% csrf_token %}
                     <div>
                     <label class="titulo">Bienvenido</label>
-                    <label class="texto"> Usuario </label>
+                    <label class="texto"> Usuario </label>                   
                     <input name="username" type="text" placeholder="Usuario">
+                     {% if form.hasErrors %}
+                     <p>Your username and password didn't match.
+                        Please try again.</p>
+                     {% endif %}
                     <label class="texto"> Contrase&ntilde;a </label>
                     <input name="password" type="password" placeholder="Contrase&ntilde;a">
                     <input class="btn form-control btn-primary mainButton" type="submit">

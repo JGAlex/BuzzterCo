@@ -64,14 +64,18 @@ and open the template in the editor.
                             <img alt="Imagen de usuario" src="{{info.fotografia.url}}" class="img-rounded col-lg-offset-2" style="width: 180px; height: 180px" >      
                         </div>
                         <div class="row">
-                            <a href="/Accounts/{{info}}" class="TextoPrincipal">{{info}}</a>
+                            {% if info.pais %}
+                            <div class="col-lg-1">
+                                <img alt="flag" src="{{info.getFlag}}">
+                            </div>
+                            {% endif %}
+                            <div class="col-lg-11">
+                                <a href="/Accounts/{{info}}" class="TextoPrincipal">{{info}}</a>
+                            </div>
                         </div>
                         <div class="row">
                             <label class="TextoSecundario">{{user.get_full_name}}</label>
                         </div>
-                    <div class="row">
-                        <img alt="flag" src="{{info.getFlag}}">
-                    </div>
                         <blockquote>
                             <div class="row">
                                 <label class="TextoPrincipal">Mi Perfil</label>
@@ -98,15 +102,7 @@ and open the template in the editor.
                         {% endblock %}
                 </div>
              </div>           
-            {%else%}
-            <div class="col-lg-12">
-                <div class="container">
-                       {% block main%}
-
-                        {% endblock %}
-                </div>
-             </div>
-            {% endif %}             
+            {%else%}{% block main%}{% endblock %}{% endif %}             
             <div class="row">
                 <div class="container">{% block footer %}{% endblock %}</div>
             </div>

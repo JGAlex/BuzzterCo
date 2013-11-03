@@ -5,6 +5,7 @@ from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import SetPasswordForm
 from profiles.forms import SignUpForm, EditUserForm, EditProfileForm
 from profiles.models import Profile
 
@@ -34,17 +35,12 @@ def SignUp(request):
     
 @login_required
 def editProfile(request):
-    if request.POST:
-        userForm = EditUserForm(request.POST, instance=request.user)
-        profileForm = EditProfileForm(request.POST, request.FILES, instance=request.user.profile)
-        
-        if userForm.is_valid() and profileForm.is_valid():
+    userForm = EditUserForm(request.POST or None, instance=request.user)
+    profileForm = EditProfileForm(request.POST or None, request.FILES or None, instance=request.user.profile)
+    if userForm.is_valid() and profileForm.is_valid():
             userForm.save()
             profileForm.save()
             return HttpResponseRedirect('/Now/')
-    else:
-        userForm = EditUserForm(instance = request.user)
-        profileForm = EditProfileForm(instance = request.user.profile)
     return render_to_response('profiles/editProfile.html',{'userForm':userForm, 'profileForm':profileForm},
                                     context_instance=RequestContext(request))
 

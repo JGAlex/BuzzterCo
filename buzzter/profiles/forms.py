@@ -6,14 +6,9 @@ from django.contrib.auth.models import User
 from models import Profile
 
 class EditUserForm(forms.ModelForm):
-    password = forms.CharField(label="Password",
-        widget=forms.PasswordInput)
     class Meta:
         model = User
-        fields = ['password', 'first_name','last_name','email']
-    def save(self, commit=True):
-        user = super(EditUserForm, self).save(commit=False)
-        user.set_password(self.cleaned_data["password"])
+        fields = ['first_name','last_name','email']
         
 class EditProfileForm(forms.ModelForm):
     class Meta:
