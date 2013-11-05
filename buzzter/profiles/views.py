@@ -13,6 +13,8 @@ def ProfileView(request, user_name):
     user = User()
     try:
         user = User.objects.get(username = user_name)
+        if user == request.user:
+            return HttpResponseRedirect('/Me/')
     except User.DoesNotExist:
         raise Http404
     return render(request, 'profiles/profile.html', {'profile':user, 'info':user.profile })

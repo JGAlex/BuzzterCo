@@ -220,7 +220,8 @@ h3:hover{color: white;}
     color: #ff8000;
 }
 
-.nav-icon:before, .icon:before{font-family: buzz glyph;}
+.nav-icon:before, .icon:before, .small-icon:before{font-family: buzz glyph;}
+.small-icon:berfore{ font-size: 8pt;}
 .nav-icon:before{ font-size: 30pt;}
 .icon:before{ font-size: 50pt; -webkit-transition: all 0.4s ease-out;
 -moz-transition: all 0.4s ease-out;
@@ -252,3 +253,18 @@ transition: all 0.4s ease-out; }
 .btn:hover{background-color: white;}
 .icon:hover:before {background-color: white; color:#3390ba; text-shadow: 0px 0px 5px #4ea0dc}
 .active .nav-icon:before {color:#ff8000}
+.media-heading{  
+    font-family: 'Segoe UI';
+    font-size: 18pt;
+    color: #999999;
+}
+.media-heading:hover
+{
+    color:#4ea0dd;
+    text-decoration: none;
+}
+
+.btn-info:hover
+{
+    background-color: #2bb2e9;
+}

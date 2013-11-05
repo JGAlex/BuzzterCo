@@ -15,7 +15,7 @@ and open the template in the editor.
             <h4 class="modal-title">Publica</h4>
         </div>
         <div class="modal-body">
-            <form class="Form" method="POST">
+            <form class="Form" action="{{postUrl}}" method="POST">
                 {% csrf_token %}
                 {{form.as_p}}
                 <a> <button class="btn btn-default" type="submit">

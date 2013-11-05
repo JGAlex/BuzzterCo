@@ -26,19 +26,18 @@ def PostView(request, title):
 
 @login_required
 def now(request):
-    listpost = Post.objects.all()[:8]
+    listpost = Post.objects.order_by('-fecha')[:8]
     return render(request,"posts/now.html",{"posts": listpost})
 
 @login_required
 def newPostMusic(request):
     tipos = PostType.objects.get(tipo='Music')
     nuevo = Post(usuario=request.user.profile, tipoPublicacion=tipos)
-    tipoForm = PostForms.formMusic(request.POST or None, instance=nuevo)
-    
+    tipoForm = PostForms.formMusic(request.POST or None, instance=nuevo)    
     if tipoForm.is_valid():
         tipoForm.save()
         return HttpResponseRedirect('/Now/')
-    return render(request,"posts/newPost.html",{'form':tipoForm})
+    return render(request,"posts/newPost.html",{'form':tipoForm, 'postUrl':'/Posts/New/Music/'})
 
 @login_required
 def newPostMovies(request):
@@ -49,7 +48,7 @@ def newPostMovies(request):
     if tipoForm.is_valid():
         tipoForm.save()
         return HttpResponseRedirect('/Now/')
-    return render(request,"posts/newPost.html",{'form':tipoForm})
+    return render(request,"posts/newPost.html",{'form':tipoForm, 'postUrl':'/Posts/New/Movies/'})
 
 @login_required
 def newPostSeries(request):
@@ -60,7 +59,7 @@ def newPostSeries(request):
     if tipoForm.is_valid():
         tipoForm.save()
         return HttpResponseRedirect('/Now/')
-    return render(request,"posts/newPost.html",{'form':tipoForm})
+    return render(request,"posts/newPost.html",{'form':tipoForm, 'postUrl':'/Posts/New/Series/'})
 
 @login_required
 def newPostPosters(request):
@@ -71,7 +70,7 @@ def newPostPosters(request):
     if tipoForm.is_valid():
         tipoForm.save()
         return HttpResponseRedirect('/Now/')
-    return render(request,"posts/newPost.html",{'form':tipoForm})
+    return render(request,"posts/newPost.html",{'form':tipoForm, 'postUrl':'/Posts/New/Posters/'})
 
 @login_required
 def newPostArtBooks(request):
@@ -82,4 +81,4 @@ def newPostArtBooks(request):
     if tipoForm.is_valid():
         tipoForm.save()
         return HttpResponseRedirect('/Now/')
-    return render(request,"posts/newPost.html",{'form':tipoForm})
+    return render(request,"posts/newPost.html",{'form':tipoForm, 'postUrl':'/Posts/New/ArtBooks/'})
