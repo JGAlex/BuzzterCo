@@ -10,16 +10,22 @@ and open the template in the editor.
 @font-face
 {
     font-family: ComicBook;
-    src: url(/static/fonts/ComickBook_Simple.ttf)
+    src: url(/static/fonts/ComickBook_Simple.ttf);
 }
 
-h1, .titulo, .jumbotron h1{
+@font-face
+{
+    font-family: buzz glyph;
+    src: url(/static/fonts/buzz-icons.ttf);
+}
+
+h1, .tittle, .jumbotron h1{
     font-family: ComicBook;
     color: white;
     font-size: 18pt;
 }
 .jumbotron p{ font-family: 'Segoe UI'; font-size: 16pt; color:white}
-.titulo{color:white; font-size: 18pt; width: 100%; text-align: center}
+.tittle{color:white; font-size: 18pt; width: 100%; text-align: center}
 
 h3{
     font-family: 'Segoe UI';
@@ -143,19 +149,6 @@ h3:hover{color: white;}
     height: 140px;
     
 }
-.btMusica:hover{background-color: #ffc319; color:white;}
-.btPeliculas:hover{ background-color: #ff385a; color:white;}
-.btPosters:hover{background-color: #1ab434; color:white;}
-.btSeries:hover{background-color: #a55aa5; color:white;}
-.btArtBooks:hover{background-color: #007bdc; color:white;}
-.boton{background-color: #00269b; color: white}
-
-.btMusica{color: #ffc319; background-color:white;}
-.btPeliculas{color: #ff385a; background-color:white;}
-.btPosters{color: #1ab434; background-color:white;}
-.btSeries{color: #a55aa5; background-color:white;}
-.btArtBooks{color: #007bdc; background-color:white;}
-.boton:hover{color: #00269b; background-color: white}
 #fotografia-clean_id{display: none}
 .buzzField{width: 500px; height: 30px;}
 
@@ -226,3 +219,36 @@ h3:hover{color: white;}
     font-size: 16pt;
     color: #ff8000;
 }
+
+.nav-icon:before, .icon:before{font-family: buzz glyph;}
+.nav-icon:before{ font-size: 30pt;}
+.icon:before{ font-size: 50pt; -webkit-transition: all 0.4s ease-out;
+-moz-transition: all 0.4s ease-out;
+-ms-transition: all 0.4s ease-out;
+-o-transition: all 0.4s ease-out;
+transition: all 0.4s ease-out; }
+.icon-play:before, .icon-video:before, .icon-book:before, .icon-tv:before,
+.icon-poster:before{color: #999999;}
+
+.icon-play:before{content: '>';}
+.icon-video:before{content: '<'}
+.icon-book:before{content: '|'}
+.icon-tv:before{content: 'v';}
+.icon-poster:before{content:'L'}
+.icon-help:before{content:'?'}
+.icon-home:before{content: 'h'}
+.icon-bubble:before{content: '['}
+.icon-pencil:before{content:'p'}
+.navButton{
+    text-align: justify;
+    max-width: 40px;
+}
+
+.btn-group div{
+     font-family: 'Segoe UI';
+    color: #999999;  
+}
+.btn {border: none;}
+.btn:hover{background-color: white;}
+.icon:hover:before {background-color: white; color:#3390ba; text-shadow: 0px 0px 5px #4ea0dc}
+.active .nav-icon:before {color:#ff8000}

@@ -4,6 +4,7 @@
 {% block tittle %} Welcome to Buzzter! {% endblock %}
     
 {% block main %}
+{% load i18n %}
      <div class="jumbotron signPart">
          <div class="container">
             <div class="row">
@@ -12,17 +13,17 @@
                 <div class="signPartForm">
                     <form method="POST">
                             <div>
-                            <label class="titulo">Hazte escuchar</label>
+                            <label class="tittle">Hazte escuchar</label>
                             {% csrf_token %}
-                            <label class="texto"> Usuario </label>
-                            <input name="username" type="text" placeholder="Usuario">
+                            <label class="texto"> {% trans "Username" %} </label>
+                            <input name="username" type="text" placeholder="{% trans "Username" %}">
                             {% if form.hasErrors %}
                             {% with errores=form.errors %}
                             <p class = "errorlist"> {{ errores.username }}</p>
                             {% endwith %}
                             {% endif %}
-                            <label class="texto"> Contrase&ntilde;a </label>
-                            <input name="password" type="password" placeholder="Contrase&ntilde;a"> 
+                            <label class="texto">{% trans "Password" %}</label>
+                            <input name="password" type="password" placeholder="{% trans "Password" %}"> 
                             <label class="texto"> e-mail </label>
                             <input  name="email" type="email" placeholder="e-mail">  
                             {% if form.hasErrors %}
@@ -30,8 +31,8 @@
                             <p class = "errorlist"> {{ errores.email }}</p>
                             {% endwith %}
                             {% endif %}                    
-                            <input class="btn form-control btn-primary mainButton" type="Submit" value="Registrarme">
-                            <a href="/Login">Ya tengo una cuenta</a>
+                            <input class="btn form-control btn-primary mainButton" type="Submit" value="{% trans "Registrarse" %}">
+                            <a href="/Login">{% trans "Ya tengo una cuenta." %} </a>
                             </div>                        
                         </form>                          
                  </div>                

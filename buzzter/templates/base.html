@@ -23,6 +23,7 @@ and open the template in the editor.
     $(this).removeData('bs.modal');
 });
 </script>
+
         {% block body %}
             <header>
                 <div class="container">
@@ -58,8 +59,7 @@ and open the template in the editor.
             {% if user.is_authenticated %}
             {% with info=user.profile %}
             <div class="col-lg-4">
-                <div class="container">
-                    
+                <div class="container">                    
                         <div class="row">
                             <img alt="Imagen de usuario" src="{{info.fotografia.url}}" class="img-rounded col-lg-offset-2" style="width: 180px; height: 180px" >      
                         </div>
@@ -76,31 +76,30 @@ and open the template in the editor.
                         <div class="row">
                             <label class="TextoSecundario">{{user.get_full_name}}</label>
                         </div>
-                        <blockquote>
-                            <div class="row">
+                        <hr>
+                        <div class="row">
                                 <label class="TextoPrincipal">Mi Perfil</label>
-                            </div>
-                            <div class="row"> 
+                        </div>
+                        <div class="row"> 
                                 <a href="/Me"> 
                                     <label class="TextoSecundario"> Acerca de mi </label> 
                                 </a>
-                            </div>
-                            <div class="row">
-                                <a href="/Publications"> <label class="TextoSecundario"> Mis Publicaciones </label> </a>
-                            </div>
-                            <div>
-                                <a href="/Rating"> <label class="TextoSecundario"> Mis Ratings </label> </a>
-                            </div>
-                        </blockquote>                
+                        </div>
+                        <div class="row">
+                                <a href="/Publications">
+                                    <label class="TextoSecundario"> Mis Publicaciones </label> 
+                                </a>
+                        </div>
+                        <div>
+                               <a href="/Rating"> <label class="TextoSecundario">Mis Ratings </label> </a>
+                        </div>            
                 </div>
              </div>
             {%endwith%}
-            <div class="col-lg-8">
-                <div class="container">
+            <div class="col-lg-8">                
                        {% block content%}
 
                         {% endblock %}
-                </div>
              </div>           
             {%else%}{% block main%}{% endblock %}{% endif %}             
             <div class="row">

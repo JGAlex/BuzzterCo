@@ -1,24 +1,26 @@
 <!DOCTYPE html>
+
 {% extends "base.html" %}
 
 {% block tittle %} Welcome to buzzter {% endblock %}
     
 {% block main %}
+{% load i18n %}
      <div class="jumbotron logInPart">
-         <h1>Es bueno verte de nuevo</h1>
-         <p>Muchas cosas han pasado desde que nos vimos</p>
+         <h1> Es bueno verte </h1>
+         <p> Muchas cosas han pasado desde que te fuiste</p>
          <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-xs-6 col-sm-4 col-md-4
                             col-lg-offset-8 col-xs-offset-6 col-sm-offset-8 col-md-offset-8">
                 {%if user.is_authenticated %}
-            <div><a href="Accounts/{{user.username}}"> ve a tu perfil</a> </div>
+            <div><a href="Accounts/{{user.username}}">Ve a tu perfil</a> </div>
             {%else%}
             <div class="signPartForm">
                 <form method="POST">
                     {% csrf_token %}
                     <div>
-                    <label class="titulo">Bienvenido</label>
+                    <label class="tittle"> Bienvenido </label>
                     <label class="texto"> Usuario </label>                   
                     <input name="username" type="text" placeholder="Usuario">
                      {% if form.hasErrors %}
