@@ -1,34 +1,27 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>{% block tittle %} {% endblock %}</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/buzzter.css"/>
-        <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/profiles.css"/>
+       
         <link rel="stylesheet" href="{{STATIC_URL}}css/main.css">
         <link rel="stylesheet" href="{{STATIC_URL}}css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/buzzter.css"/>
         <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/profiles.css"/>
         <script src="{{STATIC_URL}}js/vendor/modernizr-2.6.2.min.js"></script>
+        <script>
+        $('#newPost').on('hidden.bs.modal',function () {
+        $(this).removeData('bs.modal');
+        });
+    </script>
     </head>
     <body>
-        <script>
-   $('#newPost').on('hidden.bs.modal',function () {
-    $(this).removeData('bs.modal');
-});
-</script>
-        {% block body %}
-            <header>
-                <div class="container">
+  
+            <div id="header" class="navbar navbar-fixed-top" role="navigation">                
+                <div  class="container">
                 <div class="row">
-                    <div class="container">
-                        <div class="row">
                             <div class="col-lg-2 col-xs-2 col-md-2 col-sm-2">
                                 <a  href="/">
                                     <h1>Buzzter</h1>
@@ -43,44 +36,40 @@ and open the template in the editor.
                                 </a>
                             </div>
                             {% endif %}
-                        </div>
-                    <div class="row">
+                        </div>                    
                         <div class="col-lg-4 col-xs-4 col-md-4 col-sm-4 Decorator BlueDecorator"></div>
                         <div class="col-lg-4 col-xs-4 col-md-4 col-sm-4 Decorator OrangeDecorator"></div>
-                        <div class="col-lg-4 col-xs-4 col-md-4 col-sm-4 Decorator YellowDecorator"></div>
-                    </div>
+                        <div class="col-lg-4 col-xs-4 col-md-4 col-sm-4 Decorator YellowDecorator"></div>                 
                     </div>                   
                 </div>
-                </div>
-            </header>
-        <div class="container" role="main">
-        <div class="row">
-            {% if user.is_authenticated %}
-            {% with info=user.profile %}
-            <div class="col-lg-4">
+    {% if user.is_authenticated %}
+     {% with info=user.profile %}
+        <div class="container">
+        <div class="row">           
+            <div class="col-lg-3">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-lg-4 col-lg-offset-3">
-                            <img alt="Imagen de usuario" src="{{info.fotografia.url}}" class="img-rounded" style="width: 180px; height: 180px" >      
+                    <section class="row">
+                        <div class="col-lg-4">
+                            <img alt="Imagen de usuario" src="{{info.fotografia.url}}" class="img-rounded" style="width: 200px; height: 200px" >      
                         </div>
-                    </div>
-                    <div class="row">
+                    </section>
+                    <section class="row">
                         {% if info.pais %}
-                        <div class="col-lg-1">
+                        <div class="col-lg-2">
                             <img alt="flag" src="{{info.getFlag}}">
                         </div>
                         {% endif %}
-                        <div class="col-lg-11">
+                        <div class="col-lg-10">
                             <a href="/Accounts/{{info}}" class="TextoPrincipal">{{info}}</a>
                         </div>
-                    </div>
-                    <div class="row">
+                    </section>
+                    <section class="row">
                         <div class="col-lg-12">
                             <label class="TextoSecundario">{{user.get_full_name}}</label>
                         </div>
-                    </div>
+                    </section>
                     <hr>
-                    <div class="row">
+                    <section class="row">
                         <div class="col-lg-4">
                             <p>{{info.followers.count}}</p>
                             <div class="row">followers</div>
@@ -93,16 +82,16 @@ and open the template in the editor.
                             <p>{{info.posts.count}}</p>
                             <div class="row">Buzzies</div>
                         </div>
-                    </div>
+                    </section>
                     <hr>
-                    <div class="row">
+                    <section class="row">
                         <label class="TextoPrincipal">Mi Perfil</label>
-                    </div>
-                    <div class="row"> 
+                    </section>
+                    <section class="row"> 
                         <a href="/Me"> 
                             <label class="TextoSecundario"> Acerca de mi </label> 
                         </a>
-                    </div>
+                    </section>
                     <div class="row">
                         <a href="/Publications">
                             <label class="TextoSecundario"> Mis Publicaciones </label> 
@@ -114,17 +103,17 @@ and open the template in the editor.
                 </div>
              </div>
             {%endwith%}
-            <div class="col-lg-8">                
+            <div class="col-lg-9">                
                        {% block content%}
 
                         {% endblock %}
              </div>           
-            {%else%}{% block main%}{% endblock %}{% endif %}             
+            {%else%}
+            <div class="container">{% block main%}{% endblock %}</div>{% endif %}             
             <div class="row">
                 <div class="container">{% block footer %}{% endblock %}</div>
             </div>
             </div>
-            {% endblock %}
         </div>
          <script>window.jQuery || document.write('<script src="{{STATIC_URL}}js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
         <script src="{{STATIC_URL}}js/vendor/bootstrap.js"></script>

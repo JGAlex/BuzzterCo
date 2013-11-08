@@ -19,6 +19,7 @@ and open the template in the editor.
     src: url(/static/fonts/buzz-icons.ttf);
 }
 
+body{padding-top: 70px;}
 h1, .tittle, .jumbotron h1{
     font-family: ComicBook;
     color: white;

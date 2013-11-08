@@ -59,8 +59,8 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-header{background-color: #3f3f3f;}
-header a:hover{
+#header{background-color: #3f3f3f;}
+#header a:hover{
     text-decoration: none;
     text-shadow: 0 0 10px #white;
     color: white;
