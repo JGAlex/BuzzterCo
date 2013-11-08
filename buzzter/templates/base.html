@@ -10,15 +10,15 @@
         <link rel="stylesheet" href="{{STATIC_URL}}css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/buzzter.css"/>
         <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/profiles.css"/>
-        <script src="{{STATIC_URL}}js/vendor/modernizr-2.6.2.min.js"></script>
-        <script>
+        <script src="{{STATIC_URL}}js/vendor/modernizr-2.6.2.min.js"></script>      
+    </head>
+    <body>
+    <script>
         $('#newPost').on('hidden.bs.modal',function () {
         $(this).removeData('bs.modal');
         });
     </script>
-    </head>
-    <body>
-  
+    {% block body %}
             <div id="header" class="navbar navbar-fixed-top" role="navigation">                
                 <div  class="container">
                 <div class="row">
@@ -48,12 +48,12 @@
         <div class="row">           
             <div class="col-lg-3">
                 <div class="container">
-                    <section class="row">
+                    <div class="row">
                         <div class="col-lg-4">
                             <img alt="Imagen de usuario" src="{{info.fotografia.url}}" class="img-rounded" style="width: 200px; height: 200px" >      
                         </div>
-                    </section>
-                    <section class="row">
+                    </div>
+                    <div class="row">
                         {% if info.pais %}
                         <div class="col-lg-2">
                             <img alt="flag" src="{{info.getFlag}}">
@@ -62,14 +62,14 @@
                         <div class="col-lg-10">
                             <a href="/Accounts/{{info}}" class="TextoPrincipal">{{info}}</a>
                         </div>
-                    </section>
-                    <section class="row">
+                    </div>
+                    <div class="row">
                         <div class="col-lg-12">
                             <label class="TextoSecundario">{{user.get_full_name}}</label>
                         </div>
-                    </section>
+                    </div>
                     <hr>
-                    <section class="row">
+                    <div class="row">
                         <div class="col-lg-4">
                             <p>{{info.followers.count}}</p>
                             <div class="row">followers</div>
@@ -82,24 +82,8 @@
                             <p>{{info.posts.count}}</p>
                             <div class="row">Buzzies</div>
                         </div>
-                    </section>
-                    <hr>
-                    <section class="row">
-                        <label class="TextoPrincipal">Mi Perfil</label>
-                    </section>
-                    <section class="row"> 
-                        <a href="/Me"> 
-                            <label class="TextoSecundario"> Acerca de mi </label> 
-                        </a>
-                    </section>
-                    <div class="row">
-                        <a href="/Publications">
-                            <label class="TextoSecundario"> Mis Publicaciones </label> 
-                        </a>
                     </div>
-                    <div>
-                        <a href="/Rating"> <label class="TextoSecundario">Mis Ratings </label> </a>
-                    </div>            
+                    <hr>                        
                 </div>
              </div>
             {%endwith%}
@@ -115,6 +99,7 @@
             </div>
             </div>
         </div>
+     {%endblock%}
          <script>window.jQuery || document.write('<script src="{{STATIC_URL}}js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
         <script src="{{STATIC_URL}}js/vendor/bootstrap.js"></script>
         <script src="{{STATIC_URL}}js/main.js"></script>

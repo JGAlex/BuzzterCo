@@ -19,7 +19,7 @@ and open the template in the editor.
     src: url(/static/fonts/buzz-icons.ttf);
 }
 
-body{padding-top: 70px;}
+body{padding-top: 70px; background-color: white;}
 h1, .tittle, .jumbotron h1{
     font-family: ComicBook;
     color: white;
@@ -265,7 +265,6 @@ transition: all 0.4s ease-out; }
     text-decoration: none;
 }
 
-.btn-info:hover
-{
-    background-color: #2bb2e9;
+.btn-info:hover{background-color: #2bb2e9;}
+.emphasis{ background-color: #1c4162
 }
