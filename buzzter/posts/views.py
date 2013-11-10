@@ -8,9 +8,9 @@ from posts import forms as PostForms
 from django.forms.models import modelform_factory
 
 
-def PostView(request, title):    
+def PostView(request, id):    
     try:
-        post = Post.objects.get(titulo=title)
+        post = Post.objects.get(id=id)
         autor = post.usuario.usuario
         comentarios = []
         if request.user.is_authenticated():
@@ -19,7 +19,7 @@ def PostView(request, title):
             form = PostForms.formComments(request.POST or None,instance=comentario)
             if form.is_valid():
                 form.save()
-                return HttpResponseRedirect('/Posts/'+title+'/')
+                return HttpResponseRedirect('/Posts/'+id+'/')
     except Post.DoesNotExist:
         raise Http404
     return render(request, "posts/Post.html",{'post':post,'autor':autor,'form':form,'comments':comentarios})
@@ -30,55 +30,12 @@ def now(request):
     return render(request,"posts/now.html",{"posts": listpost})
 
 @login_required
-def newPostMusic(request):
-    tipos = PostType.objects.get(tipo='Music')
+def newPost(request, tipoP):
+    tipos = PostType.objects.get(tipo=tipoP)
     nuevo = Post(usuario=request.user.profile, tipoPublicacion=tipos)
-    tipoForm = PostForms.formMusic(request.POST or None, instance=nuevo)    
+    tipoForm = PostForms.formPost(request.POST or None, instance=nuevo)    
     if tipoForm.is_valid():
         tipoForm.save()
         return HttpResponseRedirect('/Now/')
-    return render(request,"posts/newPost.html",{'form':tipoForm, 'postUrl':'/Posts/New/Music/'})
+    return render(request,"posts/newPost.html",{'form':tipoForm, 'postUrl':'/Posts/New/'+tipoP+'/'})
 
-@login_required
-def newPostMovies(request):
-    tipos = PostType.objects.get(tipo='Movies')
-    nuevo = Post(usuario=request.user.profile, tipoPublicacion=tipos)
-    tipoForm = PostForms.formMovies(request.POST or None, instance=nuevo)
-    
-    if tipoForm.is_valid():
-        tipoForm.save()
-        return HttpResponseRedirect('/Now/')
-    return render(request,"posts/newPost.html",{'form':tipoForm, 'postUrl':'/Posts/New/Movies/'})
-
-@login_required
-def newPostSeries(request):
-    tipos = PostType.objects.get(tipo='Series')
-    nuevo = Post(usuario=request.user.profile, tipoPublicacion=tipos)
-    tipoForm = PostForms.formSeries(request.POST or None, instance=nuevo)
-    
-    if tipoForm.is_valid():
-        tipoForm.save()
-        return HttpResponseRedirect('/Now/')
-    return render(request,"posts/newPost.html",{'form':tipoForm, 'postUrl':'/Posts/New/Series/'})
-
-@login_required
-def newPostPosters(request):
-    tipos = PostType.objects.get(tipo='Posters')
-    nuevo = Post(usuario=request.user.profile, tipoPublicacion=tipos)
-    tipoForm = PostForms.formPosters(request.POST or None, instance=nuevo)
-    
-    if tipoForm.is_valid():
-        tipoForm.save()
-        return HttpResponseRedirect('/Now/')
-    return render(request,"posts/newPost.html",{'form':tipoForm, 'postUrl':'/Posts/New/Posters/'})
-
-@login_required
-def newPostArtBooks(request):
-    tipos = PostType.objects.get(tipo='ArtBooks')
-    nuevo = Post(usuario=request.user.profile, tipoPublicacion=tipos)
-    tipoForm = PostForms.formArtBooks(request.POST or None, instance=nuevo)
-    
-    if tipoForm.is_valid():
-        tipoForm.save()
-        return HttpResponseRedirect('/Now/')
-    return render(request,"posts/newPost.html",{'form':tipoForm, 'postUrl':'/Posts/New/ArtBooks/'})
