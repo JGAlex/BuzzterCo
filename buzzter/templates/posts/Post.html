@@ -20,55 +20,15 @@ and open the template in the editor.
    
             {%if user.profile.id == post.usuario.id %}
             <div class="TextoDsc">{{post.usuario.profile}}</div>
-            {%endif%}
+            {%endif%}         
             
-            {%if post.autor != ""%}
-            <label class="Texto">Autor:</label>
-            <div class="TextoDsc">{{post.autor}}</div>
-            {%endif%}
-            
-            {%if post.interprete != ""%}
-            <label class="Texto">Interprete:</label>
-            <div class="TextoDsc">{{post.interprete}}</div>
-            {%endif%}
-            
-            {%if post.year != ""%}
-            <label class="Texto">Year:</label>
-            <div class="TextoDsc">{{post.year}}</div>
-            {%endif%}
-            
-            {%if post.album != ""%}
-            <label class="Texto">Album:</label>
-            <div class="TextoDsc">{{post.album}}</div>
-            {%endif%}
-            
-            {%if post.director != ""%}
-            <label class="Texto">Director:</label>
-            <div class="TextoDsc">{{post.director}}</div>
-            {%endif%}
-            
-            {%if post.clasificacion != ""%}
-            <label class="Texto">Clasificacion:</label>
-            <div class="TextoDsc">{{post.clasificacion}}</div>
-            {%endif%}
-            
-            {%if post.dibujante != ""%}
-            <label class="Texto">Dibujante:</label>
-            <div class="TextoDsc">{{post.dibujante}}</div>
-            {%endif%}
-            
-            {%if post.temporada != ""%}
-            <label class="Texto">Temporada:</label>
-            <div class="TextoDsc">{{post.temporada}}</div>
-            {%endif%}
         </div>
-
 <hr class="Separador">
 <div class="row">
     <div class="col-lg-12">
     <div class="container">
         {%for comment in comments%}
-        <div class="row"><a href="/Accounts/{{post.usuario}}">{{comment.usuario}}</a></div>
+        <div class="row"><a href="/Accounts/{{comment.usuario}}">{{comment.usuario}}</a></div>
         <div class="row">
             <div class="col-lg-12 TextoDsc">{{comment.comentario}}</div> 
         </div>
