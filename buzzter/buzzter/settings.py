@@ -137,6 +137,11 @@ INSTALLED_APPS = (
     'following'
 )
 
+DELETE_MESSAGE = 50
+
+MESSAGE_TAGS = {
+    DELETE_MESSAGE:'deleted',
+}
 
 from django.core.urlresolvers import reverse_lazy
 
