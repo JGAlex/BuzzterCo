@@ -9,6 +9,16 @@ and open the template in the editor.
 {% block tittle %} Mis Publicaciones {% endblock %}
     
 {% block content %}
+<div class="container">
+	<div class="row">
+		<ul class="nav nav-tabs">
+			<li> <a href="/Me"> Perfil </a></li>
+			<li class="active"> <a href="/Publications"> Mis Buzzies </a></li>
+			<li> <a href="/Rating">Mis Ratings </a></li>
+		</ul>
+	</div>
+</div>
+
 		
 		<div class="row">
 			<h2 class="TextoTitulo1">Mis Publicaciones</h2>
@@ -25,23 +35,14 @@ and open the template in the editor.
 						<th> Comentarios </th>
 					</tr>
 
-					<tr class="tr">
-						<td>publicacion 1</td>
-						<td>dd-mm-aaaa hh:mm:ss</td>
-						<td>23</td>
-					</tr>
 
+					{% for publicaciones in user.profile.posts.all%}
 					<tr class="tr">
-						<td>publicacion 2</td>
-						<td>dd-mm-aaaa hh:mm:ss</td>
-						<td>32</td>
+						<td>{{publicaciones.titulo}}</td>
+						<td>{{publicaciones.fecha}}</td>
+						<td>{{publicaciones.comentarios.count}}</td>
 					</tr>
-
-					<tr class="tr">
-						<td>publicacion 3</td>
-						<td>dd-mm-aaaa hh:mm:ss</td>
-						<td>33</td>
-					</tr>
+					{%endfor%}
 				</table>
 			</div>
 		</div>
