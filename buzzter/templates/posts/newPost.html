@@ -7,57 +7,22 @@ and open the template in the editor.
 {% extends "base.html" %}
 
 {% block tittle %} Ahora en buzzter {% endblock %}
-    
-{% block content %}
-      
-
-<div class="col-lg-12">
-           <div class="row">
-                <div class="container">
-                    <div class="row">
-                    <div class="col-lg-12">
-                    <hr>
-                    <div class="btn-group">
-                        <a href="/Posts/New/Music" data-toggle="modal" data-remote="/Posts/New/Music" data-target="#newPost"> 
-                            <button class="btn btMusica">
-                        <span class="glyphicon glyphicon-headphones"></span>
-                        </button></a>                        
-                        <a data-toggle="modal" data-remote="/Posts/New/Movies" data-target="#newPost"> <button class="btn btPeliculas">
-                        <span class="glyphicon glyphicon-facetime-video"></span></button></a>
-                        <a data-toggle="modal" data-remote="/Posts/New/Series" data-target="#newPost"> <button class="btn btSeries">
-                        <span class="glyphicon glyphicon-star"></span></button></a>
-                        <a data-toggle="modal" data-remote="/Posts/New/Posters" data-target="#newPost"> <button class="btn btPosters">
-                        <span class="glyphicon glyphicon-picture"></span></button></a>
-                        <a  data-toggle="modal" data-remote="/Posts/New/ArtBooks" data-target="#newPost"> <button class="btn btArtBooks">
-                        <span class="glyphicon glyphicon-book"></span></button></a>
-                    </div>
-                    </div>
-                    </div>
-                </div>
-           </div>
-
-          
-</div>
-<div class="modal fade" id ="newPost"></div>  
-<div class="row bs-docs-section">
-    <div class="col-lg-12">
-        <div class="container">          
-        {%for post in posts %}
-        <hr>
-    <div class="row">
-        <div class="col-lg-3"><img  class="imagen img-rounded" src="{{post.linkImagen}}"> </div>
-        <div class="col-lg-9">
-        <div class="container">
-            <div class="row"><a href="/Accounts/{{post.usuario}}">{{post.usuario}}</a></div>
-            <div class="row"><a href="/Posts/{{post.titulo}}" class="TextoPrincipal">{{post.get_titulo}}</a></div>
-            <div class="row TextoDsc">{{post.descripcion}}</div>
-            <div class="row TextoDsc">{{post.comentarios.count}}</div>
+{% block body %}
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Publica</h4>
         </div>
-        </div>
-    </div>  
-    {%endfor%}
+        <div class="modal-body">
+            <form class="Form" action="{{postUrl}}" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <a> <button class="btn btn-default" type="submit">
+                        <span class="glyphicon glyphicon-asterisk"></span>Postea!
+                    </button></a>
+            </form>
         </div>
     </div>
 </div>
-
 {% endblock %}

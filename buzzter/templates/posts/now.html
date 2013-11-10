@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+{% extends "base.html" %}
+
+{% block tittle %} Ahora en buzzter {% endblock %}
+    
+{% block content %}
+{% load i18n %}
+<div class="container">
+                    <div class="row">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="/Now"><span class="nav-icon icon-home"></span></a></li>
+                            <li><a href="/Edit"><span class="nav-icon icon-pencil"></span></a></li>
+                            <li class="disabled"><a href="#"><span class="nav-icon icon-bubble"></span></a></li>
+                            <li class="disabled"><a href="#"><span class="nav-icon icon-help"></span></a></li>                            
+                        </ul>
+                    </div>
+</div>
+<div class="col-lg-12">
+           <div class="row">
+                <div class="container">
+                    <div class="row">
+                    <div class="col-lg-12">
+                    <div class="btn-group btn-group-justified">
+                        <a class="btn btn-default" data-toggle="modal" data-remote="/Posts/New/Music" data-target="#newPost"> 
+                            <div class="container">
+                                <div class="row">
+                                    <span class="glyphicon icon icon-play"></span>
+                                </div>
+                                <div class="row">
+                                    M&uacute;sica
+                                </div>
+                            </div>
+                        </a>
+                        <a class="btn btn-default" data-toggle="modal" data-remote="/Posts/New/Movies" data-target="#newPost">
+                            <div class="container">
+                                <div class="row">
+                                    <span class="glyphicon icon icon-video"></span>
+                                </div>
+                                <div class="row">
+                                    Pel&iacute;culas
+                                </div>
+                            </div>
+                        </a>
+                        <a class="btn btn-default" data-toggle="modal" data-remote="/Posts/New/Series" data-target="#newPost">
+                            <div class="container">
+                                <div class="row">
+                                    <span class="glyphicon icon icon-tv"></span>
+                                </div>
+                                <div class="row">
+                                    Series
+                                </div>
+                            </div>
+                        </a>
+                        <a class="btn btn-default" data-toggle="modal" data-remote="/Posts/New/Posters" data-target="#newPost">
+                            <div class="container">
+                                <div class="row">
+                                    <span class="glyphicon icon icon-poster"></span>
+                                </div>
+                                <div class="row">
+                                    Poster
+                                </div>
+                            </div>
+                        </a>
+                        <a class="btn btn-default" data-toggle="modal" data-remote="/Posts/New/ArtBooks"
+                                data-target="#newPost">
+                             <div class="container">
+                                <div class="row">
+                                    <span class="glyphicon icon icon-book"></span>
+                                </div>
+                                <div class="row">
+                                    Series
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+           </div>
+
+          
+</div>
+<div class="modal fade" id ="newPost"></div> 
+<div class="row" role="main">
+    <div class="col-lg-12">
+        <div class="container">          
+        {%for post in posts %}
+        <hr>
+        <div class="row">
+            <div class="span8">               
+                <div class="row">
+                    <div class="media">
+                        <a class="pull-left thumbnail" href="{{post.linkImagen}}">                            
+                            <img class="imagen media-object" src="{{post.linkImagen}}" alt="">
+                        </a>
+                        <div class="media-body">
+                             <div class="media-heading">
+                                <div class="span8">
+                                    <h4><strong><a href="/Posts/{{post.titulo}}">{{post.get_titulo}}</a></strong></h4>
+                                </div>
+                            </div>
+                            <p>{{post.descripcion}}</p>
+                            <a href="{{post.link}}">Link
+                              </a>
+                             <div class="span6">
+                                 <p></p>
+                                 <p><a class="btn btn-info" href="/Posts/{{post.titulo}}">Read more</a></p>
+                             </div>
+                        </div>
+                    </div>
+                   
+               </div>
+                <div class="row">
+                    <div class="span8">
+                    <p></p>
+                    <p>
+                        <i class="icon-user"></i> by <a href="/Accounts/{{post.usuario}}">{{post.usuario}}</a> 
+                      | <i class="icon-calendar"></i>{{post.fecha}}
+                      | <span class="small-icon icon-bubble"></span>
+                            <a href="/Posts/{{post.titulo}}">
+                                {{post.comentarios.count}} comments
+                            </a>
+                    </p>
+                    </div>
+               </div>
+            </div>
+         </div>
+    {%endfor%}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

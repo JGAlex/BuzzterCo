@@ -8,11 +8,15 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import SetPasswordForm
 from profiles.forms import SignUpForm, EditUserForm, EditProfileForm
 from profiles.models import Profile
+from django.template import RequestContext
+from django.contrib import messages
 
 def ProfileView(request, user_name):    
     user = User()
     try:
         user = User.objects.get(username = user_name)
+        if user == request.user:
+            return HttpResponseRedirect('/Me/')
     except User.DoesNotExist:
         raise Http404
     return render(request, 'profiles/profile.html', {'profile':user, 'info':user.profile })

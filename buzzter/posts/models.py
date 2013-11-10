@@ -53,7 +53,7 @@ class Post(models.Model):
   Modificado: 24/10/13 17:03
   """   
    
-  usuario = models.ForeignKey(Profile)
+  usuario = models.ForeignKey(Profile, related_name='posts')
   tipoPublicacion = models.ForeignKey(PostType)
   tipoGenero = models.ForeignKey(Genre, related_name="tipo_Genero",null=True)
   
