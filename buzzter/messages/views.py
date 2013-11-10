@@ -9,7 +9,7 @@ from messages.forms import formMessage
 from django.contrib.auth.models import User
 
 @login_required
-def SendMessage(request, user_name):
+def sendMessage(request, user_name):
     try:
         emisor = request.user
         receptor = User.objects.get(username=user_name)
@@ -18,8 +18,11 @@ def SendMessage(request, user_name):
         form = formMessage(request.POST or None, instance=mensaje)
         if form.is_valid():
             form.save()
-            HttpResponseRedirect('Messages/'+receptor.username)
-        return render(request, 'messages/send.html', {'form':form,'mensajes':mensajes})
+            return HttpResponseRedirect('/Messages/'+receptor.username)
+        return render(request, 'messages/send.html', {'form':form,'mensajes':mensajes.all()})
     except User.DoesNotExist:
         raise Http404
-
+@login_required
+def viewAll(request):
+    mensajes = request.user.profile.recibidos.all()
+    return render(request, 'messages/all.html',{'mensajes':mensajes})

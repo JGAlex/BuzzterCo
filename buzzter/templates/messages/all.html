@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block tittle %} Mensajes {% endblock %}
+    
+{% block content %}
+{% if mensajes.count > 0 %}
+    {% for mensaje in mensajes %}
+        {{mensaje.fecha}}
+        {{mensaje.mensaje}}
+        {{mensaje.emisor}}
+    {% endfor%}
+{% else %}
+    Aun no tienes mensajes
+{% endif %}
+{% endblock %}
