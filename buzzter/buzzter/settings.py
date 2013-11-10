@@ -134,7 +134,10 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'profiles',
     'posts',
-    'following'
+    'following',
+    'messages'
+    
+    
 )
 
 
