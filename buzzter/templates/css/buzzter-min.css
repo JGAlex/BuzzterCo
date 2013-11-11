@@ -1,0 +1,44 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 10-nov-2013, 17:38:16
+    Author     : t4r0
+*/
+
+.bigHeader, .parragraph,.mediumHeader,.mediumText, .form-block input,
+.font, .mighty-link,.tiny-text{font-family: 'Segoe UI';}
+.tiny-text{font-size: 8pt; color:#bebebe; text-align: center;}
+.font{color:#bebebe}
+.bigHeader, .mediumHeader{ color:#5c5c5c; font-weight: bold;}
+.bigHeader {font-size: 40pt}
+.mediumHeader{font-size: 32pt}
+.centerText{width: 100%; text-align: center}
+.parragraph{color:#737373; font-size: 28pt;}
+.mediumText{color:#747474; font-size: 16pt; text-align: justify;}
+.form-block{background-color: #313132; border-radius: 10px;}
+.form-block div{width: 85%; margin: 5px auto; height:90%}
+.form-block input, .form-block button{font-size: 15pt;height: 40px; border-radius: 5px;
+                  border-style: none; width: 100%; margin-bottom: 15px;}
+.form-block input{color:#313132;}
+.btn-main{background: #6ddd9c;
+background: -moz-linear-gradient(top, #6ddd9c 0%, #3fbd8f 82%, #009e7e 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, #6ddd9c), color-stop(82%, #3fbd8f), color-stop(100%, #009e7e));
+background: -webkit-linear-gradient(top, #6ddd9c 0%, #3fbd8f 82%, #009e7e 100%);
+background: -o-linear-gradient(top, #6ddd9c 0%, #3fbd8f 82%, #009e7e 100%);
+background: -ms-linear-gradient(top, #6ddd9c 0%, #3fbd8f 82%, #009e7e 100%);
+background: linear-gradient(to bottom, #6ddd9c 0%, #3fbd8f 82%, #009e7e 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6ddd9c', endColorstr='#009e7e', GradientType=0 );
+ font-size: 45%; font-weight: bold; color: white;}
+.btn-main:hover {background: #75e6a4;
+background: -moz-linear-gradient(top, #75e6a4 0%, #45d6a1 82%, #00ba92 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, #75e6a4), color-stop(82%, #45d6a1), color-stop(100%, #00ba92));
+background: -webkit-linear-gradient(top, #75e6a4 0%, #45d6a1 82%, #00ba92 100%);
+background: -o-linear-gradient(top, #75e6a4 0%, #45d6a1 82%, #00ba92 100%);
+background: -ms-linear-gradient(top, #75e6a4 0%, #45d6a1 82%, #00ba92 100%);
+background: linear-gradient(to bottom, #75e6a4 0%, #45d6a1 82%, #00ba92 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#75e6a4', endColorstr='#00ba92', GradientType=0 ); color:white;}
+.mighty-link{color:#5ce8eb; font-size: 12pt;}
+.mighty-link:hover{color:#37e4e7}

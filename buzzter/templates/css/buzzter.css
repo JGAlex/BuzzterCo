@@ -229,9 +229,7 @@ h3:hover{color: white;}
 -ms-transition: all 0.4s ease-out;
 -o-transition: all 0.4s ease-out;
 transition: all 0.4s ease-out; }
-.icon-play:before, .icon-video:before, .icon-book:before, .icon-tv:before,
-.icon-poster:before{color: #999999;}
-
+.main-icon{color: #999999;}
 .icon-play:before{content: '>';}
 .icon-video:before{content: '<'}
 .icon-book:before{content: '|'}
