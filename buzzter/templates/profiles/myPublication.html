@@ -38,7 +38,7 @@ and open the template in the editor.
 
 					{% for publicaciones in user.profile.posts.all%}
 					<tr class="tr">
-						<td>{{publicaciones.titulo}}</td>
+						<td><a href="/Posts/{{publicaciones.id}}">{{publicaciones.titulo}}</a></td>
 						<td>{{publicaciones.fecha}}</td>
 						<td>{{publicaciones.comentarios.count}}</td>
 					</tr>
