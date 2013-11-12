@@ -22,6 +22,7 @@ def sendMessage(request, user_name):
         return render(request, 'messages/send.html', {'form':form,'mensajes':mensajes.all()})
     except User.DoesNotExist:
         raise Http404
+    
 @login_required
 def viewAll(request):
     mensajes = request.user.profile.recibidos.all()

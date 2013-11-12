@@ -9,7 +9,8 @@ and open the template in the editor.
 */
 
 .bigHeader, .parragraph,.mediumHeader,.mediumText, .form-block input,
-.font, .mighty-link,.tiny-text{font-family: 'Segoe UI';}
+.font, .mighty-link,.tiny-text, .info, .main-text, .detail-text, .tab
+{font-family: 'Segoe UI';}
 .tiny-text{font-size: 8pt; color:#bebebe; text-align: center;}
 .font{color:#bebebe}
 .bigHeader, .mediumHeader{ color:#5c5c5c; font-weight: bold;}
@@ -42,3 +43,13 @@ background: linear-gradient(to bottom, #75e6a4 0%, #45d6a1 82%, #00ba92 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#75e6a4', endColorstr='#00ba92', GradientType=0 ); color:white;}
 .mighty-link{color:#5ce8eb; font-size: 12pt;}
 .mighty-link:hover{color:#37e4e7}
+
+.super-icon:before{font-size: inherit; color:inherit; font-family: buzz glyph}
+.big-text{font-size: 40pt;}
+.info{color:#b6b6b6}
+.info:hover{text-decoration: none; color:#bbbbbb}
+.blue-text{color:#077cb2;}
+.tab{color:#3390ba; font-size: 20pt; font-weight: bold;}
+.main-text{font-weight: bold; font-size: 33pt;}
+.main-text:hover, .tab:hover a{text-decoration: none; color:#0785c0}
+.detail-text{color:#4ea0dc; font-size: 20pt; font-weight:normal}

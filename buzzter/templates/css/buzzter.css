@@ -23,7 +23,7 @@ body{padding-top: 70px; background-color: white;}
 h1, .tittle, .jumbotron h1{
     font-family: ComicBook;
     color: white;
-    font-size: 18pt;
+    font-size: 16pt;
 }
 .jumbotron p{ font-family: 'Segoe UI'; font-size: 16pt; color:white}
 .tittle{color:white; font-size: 18pt; width: 100%; text-align: center}
@@ -162,47 +162,6 @@ h3:hover{color: white;}
     margin-top: 1%;
     
 }
-.signPartForm{width:110%; background-color: #3f3f3f; border-radius: 10px; margin-top: 0;}
- 
-.signPartForm input
-{ border-radius: 5px;     
-} 
- .signPartForm label, .signPartForm input
- {
-     border: #424646;
-     width: 100%;
-     height: 35px;
-     font-family: 'Segoe UI';
-     font-size: 80%;
- }
- 
- .signPartForm label
- {
-     font-weight: bold;
- }
-
-.signPartForm .errorlist 
-{ 
-        color: white;
-        font-size:10pt;
-        position:fixed;
-        margin: 1px;
-        list-style:none;
-        list-style-image: none;
-}
-
- .signPartForm form div
- {
-     width: 75%;
-     height: 100%;
-     max-height: 100%;
-     margin: 0 auto;     
- }
-
-.signPartForm form .texto{font-family: 'Segoe UI'; color: #cccccc}
-.signPartForm form div{margin: 0 auto; width: 95%;}
-.signPartForm a {color:#03a7cf; font-size: 9pt; text-align: center; width: 100%}
-.mainButton{margin-top: 4%; font-weight: bold; margin-bottom: 4%;}
 .logInPart{
     width:100%;
     background-image: url('img/beehive.jpg');
@@ -210,7 +169,6 @@ h3:hover{color: white;}
     min-height: 450px;
     margin-top: 1%;
 }
-
 
 #fotografia-clean_id{display: none}
 
@@ -221,15 +179,6 @@ h3:hover{color: white;}
     color: #ff8000;
 }
 
-.nav-icon:before, .icon:before, .small-icon:before{font-family: buzz glyph;}
-.small-icon:berfore{ font-size: 8pt;}
-.nav-icon:before{ font-size: 30pt;}
-.icon:before{ font-size: 50pt; -webkit-transition: all 0.4s ease-out;
--moz-transition: all 0.4s ease-out;
--ms-transition: all 0.4s ease-out;
--o-transition: all 0.4s ease-out;
-transition: all 0.4s ease-out; }
-.main-icon{color: #999999;}
 .icon-play:before{content: '>';}
 .icon-video:before{content: '<'}
 .icon-book:before{content: '|'}
@@ -239,19 +188,7 @@ transition: all 0.4s ease-out; }
 .icon-home:before{content: 'h'}
 .icon-bubble:before{content: '['}
 .icon-pencil:before{content:'p'}
-.navButton{
-    text-align: justify;
-    max-width: 40px;
-}
 
-.btn-group div{
-     font-family: 'Segoe UI';
-    color: #999999;  
-}
-.btn {border: none;}
-.btn:hover{background-color: white;}
-.icon:hover:before {background-color: white; color:#3390ba; text-shadow: 0px 0px 5px #4ea0dc}
-.active .nav-icon:before {color:#ff8000}
 .media-heading{  
     font-family: 'Segoe UI';
     font-size: 18pt;
@@ -261,8 +198,4 @@ transition: all 0.4s ease-out; }
 {
     color:#4ea0dd;
     text-decoration: none;
-}
-
-.btn-info:hover{background-color: #2bb2e9;}
-.emphasis{ background-color: #1c4162
 }
