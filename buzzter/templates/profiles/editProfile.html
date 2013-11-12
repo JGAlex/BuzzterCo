@@ -4,16 +4,6 @@
 {% block tittle %} Edita tu perfil {% endblock %}
     
 {% block content %}
-<div class="container">
-                    <div class="row">
-                        <ul class="nav nav-tabs">
-                            <li><a href="/Now"><span class="nav-icon icon-home"></span></a></li>
-                            <li class="active"><a href="/Edit"><span class="nav-icon icon-pencil"></span></a></li>
-                            <li class="disabled"><a href="#"><span class="nav-icon icon-bubble"></span></a></li>
-                            <li class="disabled"><a href="#"><span class="nav-icon icon-help"></span></a></li>                            
-                        </ul>
-                    </div>
-</div>
 <h1 class="titulo TextoPrincipal">Edita tu Perfil</h1>
         <form  class="Form" method="POST" enctype="multipart/form-data" data-ajax="false">
             {% csrf_token %}
