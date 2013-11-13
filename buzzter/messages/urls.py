@@ -10,4 +10,5 @@ from django.conf.urls import patterns, url
 from messages import views 
 
 urlpatterns = patterns ('',
-                        url(r'^(?P<user_name>\w+)/$',views.SendMessage,name= 'messages'),)
+                        url(r'^(?P<user_name>\w+)/$',views.sendMessage,name= 'messages'),
+                        url(r'^',views.viewAll,name= 'allMessages'),)

@@ -10,82 +10,80 @@ and open the template in the editor.
     
 {% block content %}
 {% load i18n %}
-<div class="container">
-                    <div class="row">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="/Now"><span class="nav-icon icon-home"></span></a></li>
-                            <li><a href="/Edit"><span class="nav-icon icon-pencil"></span></a></li>
-                            <li class="disabled"><a href="#"><span class="nav-icon icon-bubble"></span></a></li>
-                            <li class="disabled"><a href="#"><span class="nav-icon icon-help"></span></a></li>                            
-                        </ul>
-                    </div>
-</div>
 <div class="col-lg-12">
-           <div class="row">
-                <div class="container">
-                    <div class="row">
-                    <div class="col-lg-12">
-                    <div class="btn-group btn-group-justified">
-                        <a class="btn btn-default" data-toggle="modal" data-remote="/Posts/New/Music" data-target="#newPost"> 
-                            <div class="container">
-                                <div class="row">
-                                    <span class="glyphicon icon icon-play"></span>
+<hr>
+    <div class="container">
+        <div class="row">
+            <ul class="nav nav-tabs">
+                <li id="now" class="tab active"><a href="/Now/" data-toggle="tab">Noticias</a></li>
+                <li id="comments" class="tab"><a  href="/Now/" data-toggle="tab">Comentarios</a></li>
+                <li id="rates" class="tab"><a data-toggle="tab">Ratings</a></li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="btn-group btn-group-justified">
+                            <a class="btn btn-default" data-toggle="modal" data-remote="/Posts/New/Music" data-target="#newPost"> 
+                                <div class="container">
+                                    <div class="row">
+                                        <span class="glyphicon icon icon-play"></span>
+                                    </div>
+                                    <div class="row">
+                                        M&uacute;sica
+                                    </div>
                                 </div>
-                                <div class="row">
-                                    M&uacute;sica
+                            </a>
+                            <a class="btn btn-default" data-toggle="modal" data-remote="/Posts/New/Movies" data-target="#newPost">
+                                <div class="container">
+                                    <div class="row">
+                                        <span class="glyphicon icon icon-video"></span>
+                                    </div>
+                                    <div class="row">
+                                        Pel&iacute;culas
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                        <a class="btn btn-default" data-toggle="modal" data-remote="/Posts/New/Movies" data-target="#newPost">
-                            <div class="container">
-                                <div class="row">
-                                    <span class="glyphicon icon icon-video"></span>
+                            </a>
+                            <a class="btn btn-default" data-toggle="modal" data-remote="/Posts/New/Series" data-target="#newPost">
+                                <div class="container">
+                                    <div class="row">
+                                        <span class="glyphicon icon icon-tv"></span>
+                                    </div>
+                                    <div class="row">
+                                        Series
+                                    </div>
                                 </div>
-                                <div class="row">
-                                    Pel&iacute;culas
+                            </a>
+                            <a class="btn btn-default" data-toggle="modal" data-remote="/Posts/New/Posters" data-target="#newPost">
+                                <div class="container">
+                                    <div class="row">
+                                        <span class="glyphicon icon icon-poster"></span>
+                                    </div>
+                                    <div class="row">
+                                        Poster
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                        <a class="btn btn-default" data-toggle="modal" data-remote="/Posts/New/Series" data-target="#newPost">
-                            <div class="container">
-                                <div class="row">
-                                    <span class="glyphicon icon icon-tv"></span>
-                                </div>
-                                <div class="row">
-                                    Series
-                                </div>
-                            </div>
-                        </a>
-                        <a class="btn btn-default" data-toggle="modal" data-remote="/Posts/New/Posters" data-target="#newPost">
-                            <div class="container">
-                                <div class="row">
-                                    <span class="glyphicon icon icon-poster"></span>
-                                </div>
-                                <div class="row">
-                                    Poster
-                                </div>
-                            </div>
-                        </a>
-                        <a class="btn btn-default" data-toggle="modal" data-remote="/Posts/New/ArtBooks"
+                            </a>
+                            <a class="btn btn-default" data-toggle="modal" data-remote="/Posts/New/ArtBooks"
                                 data-target="#newPost">
-                             <div class="container">
-                                <div class="row">
-                                    <span class="glyphicon icon icon-book"></span>
+                                <div class="container">
+                                    <div class="row">
+                                        <span class="glyphicon icon icon-book"></span>
+                                    </div>
+                                    <div class="row">
+                                        Series
+                                    </div>
                                 </div>
-                                <div class="row">
-                                    Series
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
-           </div>
-
-          
+            </div>
+        </div>
+    </div>
 </div>
-<div class="modal fade" id ="newPost"></div> 
+<div class="modal fade" id ="newPost"></div>
 <div class="row" role="main">
     <div class="col-lg-12">
         <div class="container">          
@@ -134,5 +132,4 @@ and open the template in the editor.
         </div>
     </div>
 </div>
-
 {% endblock %}
