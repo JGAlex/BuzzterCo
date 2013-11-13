@@ -135,7 +135,8 @@ INSTALLED_APPS = (
     'profiles',
     'posts',
     'following',
-    'messages'
+    'messages',
+    'rating'
     
     
 )

@@ -6,19 +6,18 @@ __author__="JGalex"
 __date__ ="$10/11/2013 04:30:44 PM$"
 
 from django.db import models
-from pofiles.models import Profile
+from profiles.models import Profile
 from posts.models import Post
 
 class Rating(models.Model):
 	'''
 	Esta clase representa el valor con el que un usuario
-	calificara una publicación hecha
-
-	__date__ 10/11/2013 16:41
-	__author__ Jorge
+	calificara una publicacion hecha
+	date: 10/11/2013 16:41
+	author: Jorge
 	branch: JGBranch
 	'''
 	
-	usuario = models.ForeignKey(Profile, related_name="posts")
+	usuario = models.ForeignKey(Profile, related_name="rates")
 	rate = models.PositiveIntegerField(blank=True, null=True, default=0)
-	publicacion = model.ForeignKey(Post, related_name=)
+	publicacion = models.ForeignKey(Post, related_name='rates')

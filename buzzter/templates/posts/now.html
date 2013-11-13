@@ -99,7 +99,7 @@ and open the template in the editor.
                         <div class="media-body">
                              <div class="media-heading">
                                 <div class="span8">
-                                    <h4><strong><a href="/Posts/{{post.titulo}}">{{post.get_titulo}}</a></strong></h4>
+                                    <h4><strong><a href="/Posts/{{post.id}}">{{post.get_titulo}}</a></strong></h4>
                                 </div>
                             </div>
                             <p>{{post.descripcion}}</p>
@@ -107,7 +107,7 @@ and open the template in the editor.
                               </a>
                              <div class="span6">
                                  <p></p>
-                                 <p><a class="btn btn-info" href="/Posts/{{post.titulo}}">Read more</a></p>
+                                 <p><a class="btn btn-info" href="/Posts/{{post.id}}">Read more</a></p>
                              </div>
                         </div>
                     </div>
@@ -120,7 +120,7 @@ and open the template in the editor.
                         <i class="icon-user"></i> by <a href="/Accounts/{{post.usuario}}">{{post.usuario}}</a> 
                       | <i class="icon-calendar"></i>{{post.fecha}}
                       | <span class="small-icon icon-bubble"></span>
-                            <a href="/Posts/{{post.titulo}}">
+                            <a href="/Posts/{{post.id}}">
                                 {{post.comentarios.count}} comments
                             </a>
                     </p>

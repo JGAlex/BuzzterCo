@@ -20,9 +20,20 @@ and open the template in the editor.
    
             {%if user.profile.id == post.usuario.id %}
             <div class="TextoDsc">{{post.usuario.profile}}</div>
-            {%endif%}         
-            
+            {%endif%} 
+
         </div>
+
+        <div class="ec-stars-wrapper pull-left hidden-xs">
+            <a href="#" data-value="1" title="Votar con 1 estrella">&#9733;</a>
+            <a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+            <a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+            <a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+            <a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+        </div>
+        <noscript>Necesitas tener habilitado javascript para poder votar</noscript>
+
+
 <hr class="Separador">
 <div class="row">
     <div class="col-lg-12">

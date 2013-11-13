@@ -9,4 +9,4 @@ from django.conf.urls import patterns, url
 from posts import wiews
 
 urlpatterns = patterns('',
-						url(r'^(?P<id>\d+)/$', ))
+						url(r'^(?P<posterId>\d+)/(?P<valor>)$',views.RatingView,name='rating'))

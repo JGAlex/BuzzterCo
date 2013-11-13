@@ -2,7 +2,21 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
+from django.contrib.auth.models import User
+from posts.models import Post
+from models import Rating
+
+
 __author__="JGalex"
 __date__ ="$10/11/2013 04:21:23 PM$"
 
-def AddRate(request, user_name, valor):
+
+
+def RatingView(request, postID, valor):
+	usuario = request.user
+	rate = valor
+	publicacion = Post.objects.get(id = postID)
+
+	rate = Rating(usuario=usuario, rate=rate, publicacion=publicacion)
+	rate.save()
+	return rate

@@ -1,0 +1,36 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 12/11/2013, 08:40:37 PM
+    Author     : Jorge
+    Branch	   : JGRranch
+*/
+
+.ec-stars-wrapper a {
+  text-decoration: none;
+  display: inline-block;
+  /* Volver a dar tamaño al texto */
+  font-size: 32px;
+  font-size: 3.5rem;
+  
+  color: #888;
+  @include transition(text-shadow .5s ease);
+  text-shadow: 0 0 0 rgba(0,0,0,.3);
+}
+
+.ec-stars-wrapper:hover a {
+  color: rgb(39, 130, 228);
+  text-shadow: .1em .1em .2em rgba(0,0,0,.3);
+}
+
+/*
+ * El selector de hijo, es necesario para aumentar la especifidad
+ */
+
+.ec-stars-wrapper > a:hover ~ a {
+  color: #888;
+  text-shadow: none;
+}
