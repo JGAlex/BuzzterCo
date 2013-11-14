@@ -10,7 +10,6 @@
         <link rel="stylesheet" href="{{STATIC_URL}}css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/buzzter.css"/>
         <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/profiles.css"/>
-        <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/starRate.css"/>
         <script src="{{STATIC_URL}}js/vendor/modernizr-2.6.2.min.js"></script>      
     </head>
     <body>
@@ -23,19 +22,48 @@
     <div id ="header" class="navbar navbar-fixed-top" role="navigation">                  
         <div  class="container">
             <div class="row-fluid">
-                <div class="col-lg-2 col-xs-2 col-md-2 col-sm-2">                   
+                <div class="col-lg-2 col-xs-12 col-md-2 col-sm-2">                   
                         <a  href="/">
                             <h1>Buzzter</h1>
                         </a>                  
                 </div> 
                 {% if user.is_authenticated %} 
-                <div class="hidden-xs col-md-4 col-lg-4 col-sm-6
+                <div id="big-menu" class="hidden-xs col-md-4 col-lg-4 col-sm-6
                             pull-right">                                     
                        <a href="/Now" class="btn"><span class="super-icon icon-home"></span></a>
                        <a href="/Edit" class="btn"><span class="super-icon icon-pencil"></span></a>
                        <a href="/Messages/" class="btn"><span class="super-icon icon-bubble"></span></a>
                        <a href="#" class="btn"><span class="super-icon icon-help"></span></a>
                        <a href="/Logout" class="btn"><h3>Salir</h3></a>                 
+                </div>
+                <div class="hidden-lg hidden-md hidden-sm col-xs-12">
+                    <div class="accordion vertical">
+                        <section>
+                        <ul  id="super-menu" class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            <li><a class="btn" href="/Now"><span class="super-icon icon-home"></span> inicio</a></li>
+                            <li><a class="btn" href="/Edit"><span class="super-icon icon-pencil"></span> ajustes</a></li>
+                            <li><a class="btn" href="/Messages/" class="btn"><span class="super-icon icon-bubble"></span> mensajes</a></li>
+                            <li><a class="btn" href="#"><span class="super-icon icon-help"></span> ayuda </a></li>
+                            <li><a class="btn" href="/Logout">Salir</a></li>
+                            <li><hr></li>
+                        </ul>
+                        </section>
+                        <section>
+                            <ul>
+                            <li class="btn">Publica</li>
+                            <li><a class="btn" href="/Posts/New/Music"><span class="super-icon icon-play"></span>
+                                    M&uacute;sica</a></li>
+                            <li><a class="btn" href="/Posts/New/Movies"><span class="super-icon icon-video"></span>
+                                    Pel&iacute;culas</a></li>
+                            <li><a class="btn" href="/Posts/New/Series"><span class="super-icon icon-tv"></span>
+                                    Series</a></li>
+                            <li><a class="btn" href="/Posts/New/Posters"><span class="super-icon icon-poster"></span>
+                                    Poster</a></li>
+                            <li><a class="btn" data-toggle="modal" data-remote="/Posts/New/ArtBooks"><span class="super-icon icon-book"></span>
+                                    Art-books</a></li>                   
+                        </ul>
+                        </section>
+                    </div>
                 </div>
                 {% endif %}
             </div>                   

@@ -53,3 +53,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#75e6a4', end
 .main-text{font-weight: bold; font-size: 33pt;}
 .main-text:hover, .tab:hover a{text-decoration: none; color:#0785c0}
 .detail-text{color:#4ea0dc; font-size: 20pt; font-weight:normal}
+.accordion, .accordion>section{overflow: hidden; font-family: 'Segoe UI';background-color: white; font-size: 10pt;color:#3390ba;}
+.accordion{font-weight: bold;}
+.accordion > section{float:left;}
+.accordion a:hover{text-decoration: none;text-shadow: 0 0 10px #f17900;color: #ff8000;font-size: 10pt;
+      background-color: #f5f5f5;}
+.accordion section p {display:none;}  
+.accordion section:after{position:relative;color:#ff8000;font-weight:bold;}
+.accordion section:target p{display:block;}
+.vertical section{width:100%;height:40px;-webkit-transition:height 0.2s ease-out;-moz-transition:height 0.2s ease-out;
+                  -o-transition:height 0.2s ease-out;transition:height 0.2s ease-out;}
+.vertical section:after{top:-60px;left:810px;}
+.vertical section:target:after{left:-9999px;}
