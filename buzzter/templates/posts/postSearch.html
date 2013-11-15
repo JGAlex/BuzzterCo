@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+{% if posts.count > 0 and profiles.count > 0 %}
 
-<!--
-	autor: Jorge
-	fecha: 14/11/2013
-	branch: JGBranch
--->
+	{% for posteos in posts %}
+		<li><a href="/Posts/">{{post.id}}</a></li>
+	{% endfor %}
+
+{% else %}
+	<li>Ningún artículo relacionado</li>
+{% endif %}

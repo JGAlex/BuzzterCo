@@ -9,6 +9,5 @@ from django.conf.urls import patterns, url
 from rating import views
 
 urlpatterns = patterns('',
-						url(r'^(?P<posterId>\d+)/(?P<valor>\d+)/$',views.RatingView,name='rating'),
-						url(r'^(?P<rate>\d+)/(?P<id_Publicacion>\d+)/$', views.set_rate),
+						url(r'^Rates/(?P<postID>\d+)/(?P<valor>\d+)/$',views.RatingView,name='rating'),
 						)

@@ -9,6 +9,16 @@ and open the template in the editor.
     Branch	   : JGRranch
 */
 
+
+
+/*
+==========================================================
+  Css de las estrellas utilizadas para el promedio.
+==========================================================
+*/
+
+
+
 .ec-stars-wrapper a {
   text-decoration: none;
   display: inline-block;
@@ -36,11 +46,7 @@ and open the template in the editor.
 }
 
 
-/*
-==========================================================
-  Css de las estrellas utilizadas para el promedio.
-==========================================================
-*/
+
 
 .starProm{
   text-decoration: none;
@@ -78,3 +84,19 @@ and open the template in the editor.
   font-family: 'Segoe UI';
 }
 
+
+
+/*
+==========================================================
+  Css selección de estrellas.
+==========================================================
+*/
+
+
+.selectionStar b{
+  color: rgb(39, 130, 228);
+}
+
+.selectionStar > b: ~b{
+  color: rgb(39, 130, 228);
+}

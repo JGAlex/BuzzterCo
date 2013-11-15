@@ -5,24 +5,29 @@
 from django.contrib.auth.models import User
 from posts.models import Post
 from models import Rating
+from django.http import Http404, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 
 
 __author__="JGalex"
 __date__ ="$10/11/2013 04:21:23 PM$"
 
 
-
+@login_required
 def RatingView(request, postID, valor):
-	usuario = request.user
-	rate = valor
-	publicacion = Post.objects.get(id = postID)
+	try:
+		usuario = request.user
+		rate = valor
+		publicacion = Post.objects.get(id = postID)
 
-	rate = Rating(usuario=usuario, rate=rate, publicacion=publicacion)
-	rate.save()
-	return rate
+		rate = Rating(usuario=usuario.profile, rate=rate, publicacion=publicacion)		
+		publicacion.set_rate(valor)
+		rate.save()
 
-def set_rate (self, rating, publicacion):
-	prom = publicacion.rate
-	prom = prom / publicacion.rate.count
-
-	return prom
+	
+	except Post.DoesNotExist:
+		raise Http404
+	
+	return HttpResponseRedirect('/Posts/'+postID)
+	
+	

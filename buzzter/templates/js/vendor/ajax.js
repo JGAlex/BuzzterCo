@@ -11,20 +11,18 @@
  *
  */
 
- $(funcion(){
-
- 	$('#serch').keyup(funcion(){
-
+ $('#buscar').onclick(){
  		$.ajax({
- 			url: '/Posts/Serch/',
+ 			type="POST"
+ 			url: '/Posts/Search/',
  			data:{
- 				'textToSeach' : $('#Seach').vall()
+ 				'textToSeach' : $('#Search').val()
+ 				'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+
  			},
 
- 			success : seachSuccess,
  			dataType: 'html'
  		}):
- 	}):
  }):
 
  function seachSuccess (data, textStatus, jqXHR) {
