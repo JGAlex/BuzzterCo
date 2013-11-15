@@ -46,7 +46,7 @@ def deletePost(request , id):
         post.delete()
     except Post.DoesNotExist:
         raise Http404
-    return render(request,"posts/now.html",{"posts": listpost})
+    return HttpResponseRedirect('/Now/')
 
 def serch_people_posts(request):
     if request.post:

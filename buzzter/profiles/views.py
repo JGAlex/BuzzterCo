@@ -19,7 +19,7 @@ def ProfileView(request, user_name):
             return HttpResponseRedirect('/Me/')
     except User.DoesNotExist:
         raise Http404
-    return render(request, 'profiles/profile.html', {'profile':user, 'info':user.profile })
+    return render(request, 'profiles/profile.html', {'profile':user, 'usuario':user.profile })
 
 def SignUp(request):
     if request.POST:

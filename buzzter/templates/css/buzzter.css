@@ -66,11 +66,16 @@ h3:hover{color: white;}
 
 .TextoDsc{
     color: #a79a9a;
-    font-size: 12pt;
+    font-size: 18pt;
     font-weight: normal;
 }
 
-.Texto, .Form label{
+.Texto{
+    font-size: 20pt;
+    font-weight: normal;
+    color: #336aa0;
+}
+.Form label{
     font-size: 14pt;
     font-weight: normal;
     color: #336aa0;

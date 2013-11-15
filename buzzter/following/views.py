@@ -26,7 +26,7 @@ def Follow(request, username):
         user.profile.followers.add(prof.usuario)
         prof.save()
         user.save()
-        return HttpResponseRedirect('/Following/')
+        return HttpResponseRedirect('/Accounts/'+username+'/')
     
 def Unfollow(request, username):
     user = User.objects.get(username = username)
@@ -37,4 +37,4 @@ def Unfollow(request, username):
         user.profile.followers.remove(prof.usuario)
         prof.save()
         user.save()
-        return HttpResponseRedirect('/Following/')
+        return HttpResponseRedirect('/Accounts/'+username+'/')
