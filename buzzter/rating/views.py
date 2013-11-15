@@ -23,8 +23,7 @@ def RatingView(request, postID, valor):
 		rate = Rating(usuario=usuario.profile, rate=rate, publicacion=publicacion)		
 		publicacion.set_rate(valor)
 		rate.save()
-
-	
+			
 	except Post.DoesNotExist:
 		raise Http404
 	
