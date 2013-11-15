@@ -19,7 +19,8 @@ and open the template in the editor.
 .link{color: #d9d9d9; text-decoration: none;}
 .link:hover{color:white; text-decoration: none}
 .main-text{overflow-wrap: break-word;}
-.medium-text{color:#4d4d4d; font-size: 23pt;}
+.medium-text{color:#4d4d4d; font-size: 23pt; overflow-wrap: break-word}
+.medium-text:hover{text-decoration: none;}
 .tiny-text{font-size: 8pt; color:#bebebe; text-align: center;}
 .font{color:#bebebe}
 .bigHeader, .mediumHeader{ color:#5c5c5c; font-weight: bold;}

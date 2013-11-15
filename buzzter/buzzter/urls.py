@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 import settings
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
-from posts.views import now
+from posts.views import now, comments
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -22,6 +22,7 @@ urlpatterns = patterns('',
     url(r'^Logout/', 'django.contrib.auth.views.logout_then_login', name = 'logout'),
     url(r'^Posts/', include('posts.urls'), name='posts'),
     url(r'^Now/', now ,name="Now"),
+    url(r'^Comments/', comments,name="Now"),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
             {'document_root': settings.MEDIA_ROOT, 'show_indexes': True }),
     url(r'^Messages/',include('messages.urls'),name="Now"),
