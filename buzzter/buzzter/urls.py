@@ -20,9 +20,10 @@ urlpatterns = patterns('',
     url(r'^Login/', 'django.contrib.auth.views.login',
                             {'template_name':'profiles/login.html'}, name = 'login'),
     url(r'^Logout/', 'django.contrib.auth.views.logout_then_login', name = 'logout'),
-    url(r'^Posts/', include('posts.urls')),
+    url(r'^Posts/', include('posts.urls'), name='posts'),
     url(r'^Now/', now ,name="Now"),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
             {'document_root': settings.MEDIA_ROOT, 'show_indexes': True }),
-    url(r'^Messages/',include('messages.urls'),name="Now")
+    url(r'^Messages/',include('messages.urls'),name='messages'),
+    #url(r'^Rate/', include('rating.urls'), name='rates'),
 )

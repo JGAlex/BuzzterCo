@@ -34,3 +34,47 @@ and open the template in the editor.
   color: #888;
   text-shadow: none;
 }
+
+
+/*
+==========================================================
+  Css de las estrellas utilizadas para el promedio.
+==========================================================
+*/
+
+.starProm{
+  text-decoration: none;
+  display: inline.block;
+
+  font-size: 32px;
+  font-size: 1.8rem;
+
+  color: #888;
+}
+
+.textRate{
+  font-family: 'Segoe UI';
+  font-size:60px;
+}
+
+.text2Rate{
+  font-family: 'Segoe UI';
+  font-size: 13px;
+}
+
+.estiloRate{
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #F8F8F8;
+  border-style: solid;
+  border-color: #E7E7E7;
+  border-width: 1px;
+  vertical-align: middle;
+}
+
+.rateText1{
+  font-size: 20px;
+  font-family: 'Segoe UI';
+}
+
