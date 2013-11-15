@@ -13,7 +13,7 @@ and open the template in the editor.
 
 
 <div class="container">
-	<div class="row">
+	<div class="row mega">
 		<ul class="nav nav-tabs">
 			<li class="tab active"> <a href="/Me"> Perfil </a></li>
 			<li class="tab"> <a href="/Publications"> Mis Buzzies </a></li>
@@ -23,24 +23,24 @@ and open the template in the editor.
 </div>
 
 		<div class="row">
-			<h2 class="TextoTitulo1"> Mi Información </h2>
+			<h2 class="main-text blue-text"> Mi Información </h2>
 		</div>
 
 		{% with usuario=info.usuario %}
 		<div class="row">
-			<h4 class="TextoValores2"> Username: <label class="TextoValores3">{{user.username}}</label></h4>
-			<h4 class="TextoValores2"> Nombre: <label class="TextoValores3">{{user.first_name}}</label></h4>
-			<h4 class="TextoValores2"> Apellidos: <label class="TextoValores3">{{user.last_name}}</label></h4>
-			<h4 class="TextoValores2"> Correo electrónico: <label class="TextoValores3">{{user.email}}</label></h4>
+			<h4 class="medium-text"> Username: <label class="detail-text">{{user.username}}</label></h4>
+			<h4 class="medium-text"> Nombre: <label class="detail-text">{{user.first_name}}</label></h4>
+			<h4 class="medium-text"> Apellidos: <label class="detail-text">{{user.last_name}}</label></h4>
+			<h4 class="medium-text"> Correo electrónico: <label class="detail-text">{{user.email}}</label></h4>
 			
-			<h2 class="TextoTitulo1">Información Adicional</h2>
-			<h4 class="TextoValores2"> País: <label class="TextoValores3">{{user.profile.pais}}</label></h4>
-			<h4 class="TextoValores2"> Miembro desde: <label class="TextoValores3">{{user.date_joined}}</label></h4>
+			<h2 class="medium-text">Información Adicional</h2>
+			<h4 class="medium-text"> País: <label class="detail-text">{{user.profile.pais}}</label></h4>
+			<h4 class="medium-text"> Miembro desde: <label class="detail-text">{{user.date_joined}}</label></h4>
 		</div>
 
 		<BR><BR>
 		<div class="row">
-			<a class="col-lg-2 col-lg-offset-10 glyphicon-pencil" href="/Edit">Editar</a>
+			<a class="col-lg-2 glyphicon-pencil" href="/Edit">Editar</a>
 		</div>
 		{% endwith %}
 
