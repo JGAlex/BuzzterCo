@@ -8,5 +8,6 @@ from posts import views
 urlpatterns = patterns('',
                         url(r'^(?P<id>\d+)/$',views.PostView,name='posts'),
                         url(r'^New/(?P<tipoP>\w+)/$',views.newPost,name='newPost'),
-                        url(r'^Search/$',views.search_people_posts),
+                        url(r'^Delete/(?P<id>\d+)/$',views.deletePost,name='delete'),
+                        url(r'^Search/$',views.serch_people_posts),
                         )

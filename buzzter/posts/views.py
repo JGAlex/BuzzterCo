@@ -39,6 +39,14 @@ def newPost(request, tipoP):
         return HttpResponseRedirect('/Now/')
     return render(request,"posts/newPost.html",{'form':tipoForm, 'postUrl':'/Posts/New/'+tipoP+'/'})
 
+@login_required
+def deletePost(request , id):
+    try:
+        post = Post.objects.get(id=id)
+        post.delete()
+    except Post.DoesNotExist:
+        raise Http404
+    return render(request,"posts/now.html",{"posts": listpost})
 
 def search_people_posts(request):
     if request.post:
@@ -49,3 +57,4 @@ def search_people_posts(request):
         publicacion = posts.objects.filter(titulo__contains = textToSeach)
 
     return render_to_response('postSearch.html', {'resultados' 'articulos': persona})
+
