@@ -36,7 +36,7 @@ and open the template in the editor.
 .form-block input, .form-block button{font-size: 15pt;height: 40px; border-radius: 5px;
                   border-style: none; width: 100%; margin-bottom: 15px;}
 .form-block input{color:#313132;}
-.big-icon:before, .tiny-icon:before{font-family: buzz glyph;}
+.big-icon:before, .tiny-icon:before, .icon:before{font-family: buzz glyph;}
 .big-icon:before {font-size: 40pt;}
 .btn-main{background: #6ddd9c;
 background: -moz-linear-gradient(top, #6ddd9c 0%, #3fbd8f 82%, #009e7e 100%);

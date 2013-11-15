@@ -190,7 +190,7 @@ h3:hover{color: white;}
 .icon-home:before{content: 'h'}
 .icon-bubble:before{content: '['}
 .icon-pencil:before{content:'p'}
-.icon-trash:before{content:'T'}
+.icon-trash:before{content:'T';}
 
 .media-heading{  
     font-family: 'Segoe UI';

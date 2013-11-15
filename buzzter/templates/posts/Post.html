@@ -15,7 +15,7 @@ and open the template in the editor.
             <div class="col-lg-offset-5">
             <div class="col-lg-8 col-xs-8 col-md-8 col-sm-8">
             <label class="Texto">Link:</label>
-            <div class="TextoDsc"><a href="{{post.link}}">{{post.link}}</a></div>
+            <div class="TextoDsc"><a href="{{post.link}}">{{post.link|truncatechars:50}}</a></div>
             
             <label class="Texto">Descripcion:</label>
             <div class="TextoDsc">{{post.descripcion}}</div>
@@ -32,7 +32,7 @@ and open the template in the editor.
             
             
             {%if user.profile == post.usuario%}
-            <button data-toggle="modal" data-target="#myModal"><span class="glyphicon icon icon-trash"></span></button>
+            <button data-toggle="modal" data-target="#myModal" class="btn btn-info" style="font-size: 16pt;"><span class="icon icon-trash"></span></button>
             
             <!-- <a href="/Posts/Delete/{{post.id}}"><span class="glyphicon icon icon-trash"></span></a>-->
             
@@ -45,7 +45,7 @@ and open the template in the editor.
                 </div>
                 <div class="modal-body">Estas seguro de eliminar esta publicacion?</div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     <a href="/Posts/Delete/{{post.id}}"><button type="button" class="btn btn-primary">Eliminar</button></a>
                 </div>
                 </div><!-- /.modal-content -->
@@ -115,16 +115,16 @@ and open the template in the editor.
         <div class="row">
         {%for comment in comments%}
         <div class="container">
-        <div class="block">
+        <div class="alert alert-info">
         <img src="{{comment.usuario.fotografia.url}}" class="img-rounded" style="width: 30px; height: 30px">
-        <a href="/Accounts/{{comment.usuario}}" class="Texto">{{comment.usuario}}</a>
+        <a href="/Accounts/{{comment.usuario}}" class="alert-link">{{comment.usuario}}</a>
         <div class="container">
-        <div class="TextoCm col-lg-9">{{comment.comentario}}</div></div>
+        <div class="col-lg-9">{{comment.comentario}}</div></div>
         </div>
         </div>
         {%endfor%}
         </div>
-        <div class="block2">
+        <div class="alert alert-success">
         <form class="Form" method="POST">
         {% csrf_token %}
         <input type="hidden" name="usuario" value="{{user.profile}}">
