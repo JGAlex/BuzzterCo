@@ -104,14 +104,16 @@ and open the template in the editor.
         </div>
         {%endfor%}
         </div>
-        <div class="alert alert-info">
-        <form class="Form" method="POST">
+        <div class="alert alert-info col-lg-12 col-xs-12 col-md-12 col-sm-12">
+        <form class="form-horizontal" method="POST">
         {% csrf_token %}
         <input type="hidden" name="usuario" value="{{user.profile}}">
         <input type="hidden" name="post" value="{{post.titulo}}">
         <img src="{{user.profile.fotografia.url}}" class="img-rounded" style="width: 30px; height: 30px">
-        <input name="comentario" type="text" placeholder="Escribe un comentario">           
+        <div class="form-group">
+        <input class="form-control" name="comentario" type="text" placeholder="Escribe un comentario">           
         <a> <button class="btn btn-info pull-right" type="submit">Enviar</button></a>
+        </div>
         </form>
         </div>
     </div>

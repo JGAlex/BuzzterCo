@@ -195,7 +195,7 @@ h3:hover{color: white;}
 .icon-calendar:before{content:'c'}
 .icon-out:before{content:'-'}
 .icon-star:before{content:'%'}
-
+.icon-done:before{content: 'D'}
 .media-heading{  
     font-family: 'Segoe UI';
     font-size: 18pt;
