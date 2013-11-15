@@ -24,4 +24,47 @@ and open the template in the editor.
 			<h2 class="TextoTitulo1"> Mi Lista de Ratings</h2>
 		</div>
 
+		<BR>
+			<div class="row">
+                    <div class="container">
+                 {% if user.profile.rates %}
+                {% for post in user.profile.posts.all%}
+				<hr>
+                    <div class="row">              
+                    <div class="media col-xs-12">
+                        <a class="pull-left thumbnail" href="{{post.linkImagen}}">                            
+                            <img class="imagen media-object" src="{{post.linkImagen}}" alt="">
+                        </a>
+                        <div class="media-body container">
+                             <div class="media-heading">
+                                <div class="span8">
+                                    <a class="main-text blue-text" href="/Posts/{{post.id}}">{{post.get_titulo}}</a>                                </div>
+                            </div>
+                            <p class="light-gray-text medium-text">{{post.descripcion|truncatewords:10}}</p>
+                             <div class="span6">
+                                 <p></p>
+                                 <p><a class="btn btn-info" href="/Posts/{{post.id}}">Read more</a></p>
+                             </div>
+                            <p>Desde: <a href="{{post.link}}">{{post.link|truncatechars:50}}</a></p>
+                            <p></p>
+                    <p>
+                        <i class="icon-user"></i> by <a href="/Accounts/{{post.usuario}}">{{post.usuario}}</a> 
+                      | <i class="tiny-icon icon-calendar"></i>{{post.fecha}}
+                      | <i class="tiny-icon icon-bubble"></i>
+                            <a href="/Posts/{{post.id}}">
+                                {{post.comentarios.count}} comments
+                            </a>
+                    </p>
+                    </div>
+                        </div>
+                    </div>                            	
+                {%endfor%}
+                {% else %}
+                <div class="alert alert-info ">
+                    <p><b>Aun no has compartido nada</b></p>
+                </div>
+                {% endif %}
+                    </div>
+		</div>
+
 {% endblock %}

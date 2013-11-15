@@ -55,8 +55,8 @@ and open the template in the editor.
         </div>
 
         <div class="estiloRate">
-            <div class="container col-md-4">
-                <div class="ec-stars-wrapper hidden-xs" align="center">
+            <div class="container col-md-4 col-sm-4 col-lg-4 col-xs-12">
+                <div class="ec-stars-wrapper" align="center">
                     <div>
                         <label class="rateText1">Califica éste Post</label>
                     </div>                
@@ -69,7 +69,7 @@ and open the template in the editor.
             </div>
             <div>
                 <div class="container">
-                    <div class="container col-md-3 col-sm-3 col-lg-3 hidden-xs" align ="center">
+                    <div class="container col-md-3 col-sm-3 col-lg-3 col-xs-12" align ="center">
                         <h2 class="textRate">{{post.rating}}</h2>
                         <label class="text2Rate">{{post.rates.count}} votaciones</label>
                     </div>
@@ -102,13 +102,15 @@ and open the template in the editor.
         {%endfor%}
         </div>
         <div class="alert alert-success">
-        <form class="Form" method="POST">
+        <form class="form-horizontal" method="POST">
         {% csrf_token %}
+        <div class="form-group">
         <input type="hidden" name="usuario" value="{{user.profile}}">
         <input type="hidden" name="post" value="{{post.titulo}}">
         <img src="{{user.profile.fotografia.url}}" class="img-rounded" style="width: 30px; height: 30px">
-        <input name="comentario" type="text" placeholder="Escribe un comentario">           
+        <input class="form-control" name="comentario" type="text" placeholder="Escribe un comentario">           
         <a> <button class="btn btn-info pull-right" type="submit">Enviar</button></a>
+    </div>
         </form>
         </div>
     </div>
