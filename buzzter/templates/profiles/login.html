@@ -24,7 +24,7 @@
                     <p class="tiny-text">Te hemos extra&ntilde;ado</p>
                     <input name="username" type="text" placeholder="Usuario">             
                     <input name="password" type="password" placeholder="Contrase&ntilde;a">
-                    {% if form.hasErrors %}
+                    {% if form.errors %}
                      <h4 class="tiny-text">Algo ha salido mal vuelve a intentarlo</h4>
                      {% endif %}
                      <button class="btn-main" type="submit">Log in</button>
