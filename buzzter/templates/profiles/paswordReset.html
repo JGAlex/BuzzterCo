@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block tittle %} Settings {% endblock %}
+    
+{% block main %}
+{% load i18n %}
+     <div class="jumbotron logInPart">
+         <h1> No te preocupes</h1>
+         <p> Te ayudaremos a recordar tu contrase&ntilde;a</p>
+         <div class="container">
+             <div class="col-lg-4 col-xs-12 col-sm-4 col-md-4
+                            col-lg-offset-8 col-sm-offset-8 col-md-offset-8">
+            <div class="form-block">
+                <form method="POST">
+                    {% csrf_token %}
+                    {% form.as_p %}
+                    <button class="btn-main" type="submit">Enviar</button>
+                    <input type="hidden" name="next" value="{{ next }}" />
+                </form>
+            </div>
+        </div>
+    </div>
+{%endblock%}
