@@ -7,10 +7,19 @@ and open the template in the editor.
     Created on : 10-nov-2013, 17:38:16
     Author     : t4r0
 */
-
+@font-face
+{
+    font-family: buzz glyph;
+    src: url(/static/fonts/buzz-icons.ttf);
+}
 .bigHeader, .parragraph,.mediumHeader,.mediumText, .form-block input,
-.font, .mighty-link,.tiny-text, .info, .main-text, .detail-text, .tab
+.font, .mighty-link,.tiny-text, .info, .main-text, .detail-text, .tab,
+.show-time, .medium-text, .link
 {font-family: 'Segoe UI';}
+.link{color: #d9d9d9; text-decoration: none;}
+.link:hover{color:white; text-decoration: none}
+.main-text{overflow-wrap: break-word;}
+.medium-text{color:#4d4d4d; font-size: 23pt;}
 .tiny-text{font-size: 8pt; color:#bebebe; text-align: center;}
 .font{color:#bebebe}
 .bigHeader, .mediumHeader{ color:#5c5c5c; font-weight: bold;}
@@ -24,6 +33,8 @@ and open the template in the editor.
 .form-block input, .form-block button{font-size: 15pt;height: 40px; border-radius: 5px;
                   border-style: none; width: 100%; margin-bottom: 15px;}
 .form-block input{color:#313132;}
+.big-icon:before, .tiny-icon:before{font-family: buzz glyph;}
+.big-icon:before {font-size: 40pt;}
 .btn-main{background: #6ddd9c;
 background: -moz-linear-gradient(top, #6ddd9c 0%, #3fbd8f 82%, #009e7e 100%);
 background: -webkit-gradient(left top, left bottom, color-stop(0%, #6ddd9c), color-stop(82%, #3fbd8f), color-stop(100%, #009e7e));
@@ -53,3 +64,19 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#75e6a4', end
 .main-text{font-weight: bold; font-size: 33pt;}
 .main-text:hover, .tab:hover a{text-decoration: none; color:#0785c0}
 .detail-text{color:#4ea0dc; font-size: 20pt; font-weight:normal}
+.show-time .show{color:#999999; font-size: 21pt;}
+.show:hover{color:#3390ba; text-shadow: 0px 0px 3px #297395}
+.accordion, .accordion>section{overflow: hidden; font-family: 'Segoe UI';background-color: white; font-size: 10pt;color:#3390ba;}
+.accordion{font-weight: bold;}
+.accordion > section{float:left;}
+.accordion a:hover{text-decoration: none;text-shadow: 0 0 10px #f17900;color: #ff8000;font-size: 10pt;
+      background-color: #f5f5f5;}
+.accordion section ul{display:none; list-style: none;}  
+.accordion section:after{position:relative;color:#ff8000;font-weight:bold;}
+.accordion section:target ul{display:block;}
+.accordion section:target .heading {width:100%;}
+.vertical section{width:100%;height:40px;-webkit-transition:height 0.2s ease-out;-moz-transition:height 0.2s ease-out;
+                  -o-transition:height 0.2s ease-out;transition:height 0.2s ease-out;}
+.vertical section:after{top:-60px;left:810px;}
+.vertical :target{height:200px;width:100%;}  
+.vertical section:target:after{left:-9999px;}

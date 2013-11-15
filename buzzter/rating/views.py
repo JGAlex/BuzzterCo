@@ -20,3 +20,9 @@ def RatingView(request, postID, valor):
 	rate = Rating(usuario=usuario, rate=rate, publicacion=publicacion)
 	rate.save()
 	return rate
+
+def set_rate (self, rating, publicacion):
+	prom = publicacion.rate
+	prom = prom / publicacion.rate.count
+
+	return prom

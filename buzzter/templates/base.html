@@ -11,7 +11,9 @@
         <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/buzzter.css"/>
         <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/profiles.css"/>
         <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/starRate.css"/>
-        <script src="{{STATIC_URL}}js/vendor/modernizr-2.6.2.min.js"></script>      
+        <script src="{{STATIC_URL}}js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="{{STATIC_URL}}js/vendor/jquery-1.10.1.min.js"></script>
+        <script src="{{STATIC_URL}}js/vendor/ajax.js"></script>
     </head>
     <body>
     <script>
@@ -19,17 +21,16 @@
         $(this).removeData('bs.modal');
         });
     </script>
-    {% block body %}
     <div id ="header" class="navbar navbar-fixed-top" role="navigation">                  
         <div  class="container">
             <div class="row-fluid">
-                <div class="col-lg-2 col-xs-2 col-md-2 col-sm-2">                   
+                <div class="col-lg-2 col-xs-12 col-md-2 col-sm-2">                   
                         <a  href="/">
                             <h1>Buzzter</h1>
                         </a>                  
                 </div> 
                 {% if user.is_authenticated %} 
-                <div class="hidden-xs col-md-4 col-lg-4 col-sm-6
+                <div id="big-menu" class="hidden-xs col-md-4 col-lg-4 col-sm-6
                             pull-right">                                     
                        <a href="/Now" class="btn"><span class="super-icon icon-home"></span></a>
                        <a href="/Edit" class="btn"><span class="super-icon icon-pencil"></span></a>
@@ -44,8 +45,42 @@
         <div class="col-lg-4 col-xs-4 col-md-4 col-sm-4 Decorator OrangeDecorator"></div>
         <div class="col-lg-4 col-xs-4 col-md-4 col-sm-4 Decorator YellowDecorator"></div>          
     </div>
+    {% block body %}
     {% if user.is_authenticated %}
      {% with info=user.profile %}
+	  <div class="hidden-lg hidden-md hidden-sm col-xs-12">
+                     <section id="hide">
+                         <p class="heading"><a href="#hide">Esconder</a></p>
+                     </section>
+                    <div class="accordion vertical">
+                        <section id="opciones">
+                            <p class="heading"><a href="#opciones" >Opciones</a></p>
+                        <ul>
+                            <li><a class="btn" href="/Now"><span class="super-icon icon-home"></span> inicio</a></li>
+                            <li><a class="btn" href="/Edit"><span class="super-icon icon-pencil"></span> ajustes</a></li>
+                            <li><a class="btn" href="/Messages/"><span class="super-icon icon-bubble"></span> mensajes</a></li>
+                            <li><a class="btn" href="#"><span class="super-icon icon-help"></span> ayuda </a></li>
+                            <li><a class="btn" href="/Logout">Salir</a></li>
+                            <li><hr></li>
+                        </ul>
+                        </section>
+                        <section id="posts">
+                            <a href="#posts" class="heading">Publica algo</a>
+                            <div><ul>                           
+                            <li><a class="btn" href="/Posts/New/Music"><span class="super-icon icon-play"></span>
+                                    M&uacute;sica</a></li>
+                            <li><a class="btn" href="/Posts/New/Movies"><span class="super-icon icon-video"></span>
+                                    Pel&iacute;culas</a></li>
+                            <li><a class="btn" href="/Posts/New/Series"><span class="super-icon icon-tv"></span>
+                                    Series</a></li>
+                            <li><a class="btn" href="/Posts/New/Posters"><span class="super-icon icon-poster"></span>
+                                    Poster</a></li>
+                            <li><a class="btn" data-toggle="modal" data-remote="/Posts/New/ArtBooks"><span class="super-icon icon-book"></span>
+                                    Art-books</a></li>                   
+                            </ul></div>
+                        </section>
+                    </div>
+        </div>
         <div class="container">
         <div class="row">           
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
