@@ -14,12 +14,15 @@ and open the template in the editor.
 }
 .bigHeader, .parragraph,.mediumHeader,.mediumText, .form-block input,
 .font, .mighty-link,.tiny-text, .info, .main-text, .detail-text, .tab,
-.show-time, .medium-text, .link
+.show-time, .medium-text, .link, .mega
 {font-family: 'Segoe UI';}
+.right-text{text-align: right;}
+.mega{margin-top: 30px;}
 .link{color: #d9d9d9; text-decoration: none;}
 .link:hover{color:white; text-decoration: none}
 .main-text{overflow-wrap: break-word;}
-.medium-text{color:#4d4d4d; font-size: 23pt;}
+.medium-text{color:#4d4d4d; font-size: 23pt; overflow-wrap: break-word}
+.medium-text:hover{text-decoration: none;}
 .tiny-text{font-size: 8pt; color:#bebebe; text-align: center;}
 .font{color:#bebebe}
 .bigHeader, .mediumHeader{ color:#5c5c5c; font-weight: bold;}

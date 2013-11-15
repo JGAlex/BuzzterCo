@@ -1,28 +1,60 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-{% extends "base.html" %}
-
-{% block tittle %} Ahora en buzzter {% endblock %}
-{% block body %}
+<html>
+    <head>
+        <title>Publica</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/buzzter.css"/>
+        <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/buzzter-min.css"/>
+        <link rel="stylesheet" href="{{STATIC_URL}}css/main.css">
+        <link rel="stylesheet" href="{{STATIC_URL}}css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/buzzter.css"/>
+        <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/profiles.css"/>
+        <script src="{{STATIC_URL}}js/vendor/modernizr-2.6.2.min.js"></script>      
+    </head>
+<body>
 <div class="modal-dialog">
     <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header">           
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h4 class="modal-title">Publica</h4>
         </div>
         <div class="modal-body">
-            <form class="Form" action="{{postUrl}}" method="POST">
-                {% csrf_token %}
-                {{form.as_p}}
-                <a> <button class="btn btn-default" type="submit">
-                        <span class="glyphicon glyphicon-asterisk"></span>Postea!
+            <form class="form-horizontal" method="POST">
+                {% csrf_token %}       
+                 <div class="form-group">
+               <input class="form-control" id="id_titulo" maxlength="50" name="titulo" type="text"
+                      placeholder="Titulo">
+                 </div>
+                <div class="form-group">
+               <input class="form-control" id="id_link" maxlength="350" name="link" type="url"
+                      placeholder="Link">
+                </div>
+                <div class="form-group">
+               <input class="form-control" id="id_linkImagen" maxlength="350" name="linkImagen" type="url"
+                      placeholder="Link de imagen">
+                </div>
+                <div class="form-group">
+               <textarea class="form-control" cols="40" id="id_descripcion" name="descripcion" rows="10"
+                         placeholder="Descripci&oacute;n"></textarea>
+                </div>
+               <div class="form-group">
+               <input class="form-control" id="id_tags" maxlength="1500" name="tags" type="text"
+                      placeholder="tags">
+               </div>
+               <div class="form-group">
+              <a> <button class="btn btn-default" type="submit">
+                        <span class="glyphicon glyphicon-asterisk"></span>Postea
                     </button></a>
+               </div>
+                {% if form.errors %}
+                <div class="alert alert-danger">Parece que has olvidado incluir informaci&oacute;n</div>
+                {% endif %}
             </form>
         </div>
     </div>
 </div>
-{% endblock %}
+         <script>window.jQuery || document.write('<script src="{{STATIC_URL}}js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+        <script src="{{STATIC_URL}}js/vendor/bootstrap.js"></script>
+        <script src="{{STATIC_URL}}js/main.js"></script>
+    </body>
+</html>

@@ -18,13 +18,20 @@
             <h4 class="modal-title">Publica</h4>
         </div>
         <div class="modal-body">
-            <form class="Form" method="POST">
-                {% csrf_token %}
+            <form class="form-horizontal" method="POST">
+                {% csrf_token %}                
                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                {{form.as_p}}
-                <a> <button class="btn btn-default" type="submit">
+              
+                 <div class="form-group">
+               <input class="form-control" id="id_titulo" maxlength="50" name="titulo" type="text">                
+               <input class="form-control" id="id_link" maxlength="350" name="link" type="text">
+               <input class="form-control" id="id_linkImagen" maxlength="350" name="linkImagen" type="text">
+               <textarea class="form-control" cols="40" id="id_descripcion" name="descripcion" rows="10"></textarea>
+               <input class="form-control" id="id_tags" maxlength="1500" name="tags" type="text">
+              <a> <button class="btn btn-default" type="submit">
                         <span class="glyphicon glyphicon-asterisk"></span>Postea!
                     </button></a>
+                 </div>
             </form>
         </div>
     </div>

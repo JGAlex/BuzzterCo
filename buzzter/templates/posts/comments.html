@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block tittle %} Ahora en buzzter {% endblock %}
+    
+{% block content %}
+{% load i18n %}
+<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+<hr>
+    <div class="container">
+        <div class="row">
+            <ul class="nav nav-tabs">
+                <li class="tab"><a href="/Now/">Noticias</a></li>
+                <li class="tab active"><a href="/Comments/">Comentarios</a></li>
+                <li class="tab"><a>Ratings</a></li>
+            </ul>
+        </div>
+<div class="modal fade" id ="newPost"></div>
+<div class="row" role="main">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="container">          
+        {%for comment in comments %}
+        <hr>
+        <div class="row">              
+                    <div class="media">
+                        <a class="pull-left thumbnail" href="/Accounts/{{comment.usuario}}">                            
+                            <img class="imagen media-object" src="{{comment.usuario.fotografia.url}}" alt="imagen">
+                        </a>
+                        <div class="media-body container">                            
+                             <div class="media-heading">
+                                <div class="span8">
+                                    <a class="medium-text blue-text" href="/Posts/{{comment.post.id}}">{{comment.usuario}} ha comentado en {{comment.post.get_titulo}}</a>                                </div>
+                            </div>
+                            <p class="light-gray-text medium-text">{{comment.comentario|truncatewords:10}}</p>
+                             <p>
+                            <i class="tiny-icon icon-calendar"></i>{{comment.fecha}}
+                             </p>
+                             <div class="span6">
+                                 <p></p>
+                                 <p><a class="btn btn-info" href="/Posts/{{comment.post.id}}">Comentar</a></p>
+                             </div>               
+                    </div>
+                        </div>
+                    </div>             
+               </div>               
+    {%endfor%}
+    </div>
+</div>
+{% endblock %}

@@ -1,23 +1,17 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 {% extends "base.html" %}
 
 {% block tittle %} Ahora en buzzter {% endblock %}
     
 {% block content %}
 {% load i18n %}
-<div class="col-lg-12">
+<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
 <hr>
     <div class="container">
         <div class="row">
             <ul class="nav nav-tabs">
-                <li id="now" class="tab active"><a href="/Now/" data-toggle="tab">Noticias</a></li>
-                <li id="comments" class="tab"><a  href="/Now/" data-toggle="tab">Comentarios</a></li>
-                <li id="rates" class="tab"><a data-toggle="tab">Ratings</a></li>
+                <li class="tab active"><a href="/Now/">Noticias</a></li>
+                <li class="tab"><a  href="/Comments/">Comentarios</a></li>
+                <li class="tab"><a>Ratings</a></li>
             </ul>
         </div>
         <div class="row">
@@ -100,13 +94,12 @@ and open the template in the editor.
                                     <a class="main-text blue-text" href="/Posts/{{post.id}}">{{post.get_titulo}}</a>                                </div>
                             </div>
                             <p class="light-gray-text medium-text">{{post.descripcion|truncatewords:10}}</p>
-                            <p>Desde: <a href="{{post.link}}">Link
-                                </a></p>
                              <div class="span6">
                                  <p></p>
                                  <p><a class="btn btn-info" href="/Posts/{{post.id}}">Read more</a></p>
                              </div>
-                               <p></p>
+                            <p>Desde: <a href="{{post.link}}">{{post.link|truncatechars:50}}</a></p>
+                            <p></p>
                     <p>
                         <i class="icon-user"></i> by <a href="/Accounts/{{post.usuario}}">{{post.usuario}}</a> 
                       | <i class="tiny-icon icon-calendar"></i>{{post.fecha}}

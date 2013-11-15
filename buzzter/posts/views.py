@@ -6,8 +6,7 @@ from posts.models import Post,PostType,Comments
 from django.views.generic import CreateView
 from posts import forms as PostForms
 from django.forms.models import modelform_factory
-
-
+from django.db.models import Q
 def PostView(request, id):    
     try:
         post = Post.objects.get(id=id)
@@ -26,8 +25,13 @@ def PostView(request, id):
 
 @login_required
 def now(request):
-    listpost = Post.objects.order_by('-fecha')[:8]
-    return render(request,"posts/now.html",{"posts": listpost})
+    listpost = Post.objects.filter(Q(usuario__in=request.user.followings.all())|Q(usuario=request.user.profile))
+    return render(request,"posts/now.html",{"posts": listpost.order_by('-fecha')[:20]})
+
+@login_required
+def comments(request):
+    listpost = Comments.objects.filter(Q(usuario__in=request.user.followings.all())|Q(usuario=request.user.profile))
+    return render(request,"posts/comments.html",{"comments": listpost.order_by('-fecha')[:20]})
 
 @login_required
 def newPost(request, tipoP):

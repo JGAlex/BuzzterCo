@@ -7,6 +7,7 @@ from django.views.generic import CreateView
 from django.forms.models import modelform_factory
 from messages.forms import formMessage
 from django.contrib.auth.models import User
+from django.db.models import Q
 
 @login_required
 def sendMessage(request, user_name):
@@ -14,14 +15,16 @@ def sendMessage(request, user_name):
         emisor = request.user
         receptor = User.objects.get(username=user_name)
         mensaje = Messages(emisor=emisor.profile, receptor=receptor.profile)
-        mensajes = emisor.profile.enviados.filter(receptor=receptor).order_by('fecha')
+        mensajes = Messages.objects.filter(Q(emisor=receptor, receptor=emisor)|Q(emisor=emisor, receptor=receptor)).order_by('fecha')[:10]
         form = formMessage(request.POST or None, instance=mensaje)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/Messages/'+receptor.username)
-        return render(request, 'messages/send.html', {'form':form,'mensajes':mensajes.all()})
+            return HttpResponseRedirect('/Messages/'+receptor.username+'/')
     except User.DoesNotExist:
         raise Http404
+    return render(request, 'messages/send.html', {'form':form,'mensajes':mensajes.all()})
+    
+        
     
 @login_required
 def viewAll(request):
