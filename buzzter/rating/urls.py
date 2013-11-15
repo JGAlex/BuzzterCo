@@ -6,9 +6,8 @@ __author__="JGalex"
 __date__ ="$10/11/2013 04:21:02 PM$"
 
 from django.conf.urls import patterns, url
-from posts import views
+from rating import views
 
 urlpatterns = patterns('',
-						url(r'^(?P<posterId>\w+)/(?P<valor>)$',views.RatingView,name='rating'),
-						url(r'^(?P<rate>\w+)/(?P<id_Publicacion>)$', views.set_rate),
+						url(r'^Rates/(?P<postID>\d+)/(?P<valor>\d+)/$',views.RatingView,name='rating'),
 						)

@@ -2,6 +2,7 @@
 from django.db import models
 from profiles.models import Profile
 from django.contrib.comments.models import Comment
+
 # Create your models here.
 
 
@@ -36,7 +37,7 @@ class Post(models.Model):
    
   usuario = models.ForeignKey(Profile, related_name='posts')
   tipoPublicacion = models.ForeignKey(PostType)  
-  rating = models.PositiveIntegerField(blank=True, null=True,default=0)  
+  rating = models.FloatField(blank=True, null=True,default=0)  
   fecha = models.DateTimeField(auto_now=True)
   titulo = models.CharField(max_length=50, blank=False, unique=True)
   tags = models.CharField(max_length=1500)  
@@ -54,6 +55,29 @@ class Post(models.Model):
   def __unicode__(self):
       return self.titulo
   
+  def get_rate(self):
+      rating = 0
+      for rate in self.rates.all():
+        rating = rating + rate.rate
+      return rating
+
+  def isRated(self, usuario):
+      rate = self.rates.get(usuario=usuario)
+      return rate
+
+  
+  def set_rate (self, rating):
+    prom = float(self.get_rate()) + float(rating)
+    
+    if float(self.rates.count()) != 0:
+      prom = round(prom / float(self.rates.count()), 2)
+    else:
+      prom = 1.0
+
+    self.rating = prom
+    self.save()
+
+    return self
   
 class Comments(models.Model):
     usuario = models.ForeignKey(Profile,related_name="comentarios")

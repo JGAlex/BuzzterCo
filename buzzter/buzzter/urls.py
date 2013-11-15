@@ -25,7 +25,7 @@ urlpatterns = patterns('',
     url(r'^Comments/', comments,name="Now"),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
             {'document_root': settings.MEDIA_ROOT, 'show_indexes': True }),
-    url(r'^Messages/',include('messages.urls'),name="Now"),
+    url(r'^Messages/',include('messages.urls'),name="messages"),
     url(r'^Password_Change/$', 
                         'django.contrib.auth.views.password_change', 
                         {'template_name': 'profiles/passwordChange.html'}),
@@ -46,5 +46,7 @@ urlpatterns = patterns('',
     url(r'^Reset/done/$', 
                         'django.contrib.auth.views.password_reset_complete', 
                         {'template_name': 'profiles/passwordResetComplete.html'}),
+
+    url(r'^Rate/', include('rating.urls'), name='rates'),
 
 )

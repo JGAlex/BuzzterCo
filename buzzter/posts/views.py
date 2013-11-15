@@ -55,10 +55,15 @@ def deletePost(request , id):
 def serch_people_posts(request):
     if request.post:
 
+@login_required
+def search_people_posts(request):
+    if request.POST:
+        textToSeach = request.POST['textToSeach']
+    else:
         textToSeach = ''
 
-        persona = user.objects.filter(username__contains = textToSeach)
-        publicacion = posts.objects.filter(titulo__contains = textToSeach)
+        #persona = user.objects.filter(username__contains = textToSeach)
+        publicacion = Post.objects.filter(titulo__contains = textToSeach)
 
-    return render_to_response('postSearch.html', {'resultados' 'articulos': persona})
+    return render(request,'postSearch.html', {'publicacion':publicacion})
 
