@@ -39,3 +39,11 @@ def newPost(request, tipoP):
         return HttpResponseRedirect('/Now/')
     return render(request,"posts/newPost.html",{'form':tipoForm, 'postUrl':'/Posts/New/'+tipoP+'/'})
 
+@login_required
+def deletePost(request , id):
+    try:
+        post = Post.objects.get(id=id)
+        post.delete()
+    except Post.DoesNotExist:
+        raise Http404
+    return render(request,"posts/now.html",{"posts": listpost})

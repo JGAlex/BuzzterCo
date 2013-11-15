@@ -46,7 +46,7 @@ h3:hover{color: white;}
 .OrangeDecorator{border-color: #ff8000;}
 .YellowDecorator{border-color: #f7ff55;}
 
-.TextoPrincipal,.TextoSecundario,.Texto, .TextoDsc{font-family: 'Segoe UI';}
+.TextoPrincipal,.TextoSecundario,.Texto, .TextoDsc, .TextoSubtitulo, .TextoTitle{font-family: 'Segoe UI';}
 
 .TextoPrincipal,.TextoSecundario,.Texto,.TextoTitulo1,.TextoValores1,.TextoValores2,.TextoValores3{font-family: 'Segoe UI';}
 .btMusica, .btPeliculas, .btPosters, .btSeries, .btArtBooks, .boton{
@@ -121,12 +121,13 @@ h3:hover{color: white;}
 
 .Form label{
     width: 100%;
+    font-size: 22pt;
 }
 
 .Form textarea{
     width: 500px;
     height: 100px;
-    font-size: 12pt;
+    font-size: 18pt;
     color: #009999
 }
 .Form input{
@@ -188,6 +189,7 @@ h3:hover{color: white;}
 .icon-home:before{content: 'h'}
 .icon-bubble:before{content: '['}
 .icon-pencil:before{content:'p'}
+.icon-trash:before{content:'T'}
 
 .media-heading{  
     font-family: 'Segoe UI';
@@ -198,4 +200,47 @@ h3:hover{color: white;}
 {
     color:#4ea0dd;
     text-decoration: none;
+}
+
+.TextoTitle{
+
+    color: #6666ff;
+    font-weight: bold;
+    font-size: 30pt;
+}
+
+.TextoSubtitulo{
+
+    color: #ffa245;
+    font-weight: bold;
+    font-size: 20pt;
+}
+
+.block {
+    width: 800px;
+    height: 70px;
+    margin-bottom: 2px;
+    border-style: dotted;
+    border-radius: 8px;
+    border-width: 1px;
+    border-color: #d3d3d3;
+}
+
+
+.block2 {
+    width: 800px;
+    height: 80px;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    border-style: dotted;
+    border-radius: 8px;
+    border-width: 1px;
+    border-color: #d3d3d3;
+}
+
+
+.TextoCm{
+    color: black;
+    font-weight: normal;
+    font-size: 12pt;
 }
