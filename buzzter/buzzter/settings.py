@@ -9,6 +9,11 @@ ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = "587"
+EMAIL_HOST_USER = 'buzziebuzzter@gmail.com'
+EMAIL_HOST_PASSWORD = 'adminbuzz'
+EMAIL_USE_TLS = True
 MANAGERS = ADMINS
 
 DATABASES = {

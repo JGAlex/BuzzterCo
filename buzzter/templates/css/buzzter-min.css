@@ -14,8 +14,10 @@ and open the template in the editor.
 }
 .bigHeader, .parragraph,.mediumHeader,.mediumText, .form-block input,
 .font, .mighty-link,.tiny-text, .info, .main-text, .detail-text, .tab,
-.show-time, .medium-text
+.show-time, .medium-text, .link
 {font-family: 'Segoe UI';}
+.link{color: #d9d9d9; text-decoration: none;}
+.link:hover{color:white; text-decoration: none}
 .main-text{overflow-wrap: break-word;}
 .medium-text{color:#4d4d4d; font-size: 23pt;}
 .tiny-text{font-size: 8pt; color:#bebebe; text-align: center;}
