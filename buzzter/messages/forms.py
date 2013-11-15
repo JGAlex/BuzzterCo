@@ -14,11 +14,5 @@ class formMessage(forms.ModelForm ):
         model = Messages
         fields=['mensaje']
         
-     def save (self,commit=True):
-        messages = super(formMessage,self).save(commit=False)
-        messages.mensaje = self.cleaned_data['mensaje']
-        if commit:
-            messages.save()
-        return messages
         
         
