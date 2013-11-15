@@ -40,7 +40,7 @@ def newPost(request, tipoP):
     return render(request,"posts/newPost.html",{'form':tipoForm, 'postUrl':'/Posts/New/'+tipoP+'/'})
 
 
-def serch_people_posts(request):
+def search_people_posts(request):
     if request.post:
 
         textToSeach = ''
