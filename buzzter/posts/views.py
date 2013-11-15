@@ -52,9 +52,6 @@ def deletePost(request , id):
         raise Http404
     return HttpResponseRedirect('/Now/')
 
-def serch_people_posts(request):
-    if request.post:
-
 @login_required
 def search_people_posts(request):
     if request.POST:
