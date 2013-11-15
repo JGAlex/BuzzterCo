@@ -101,9 +101,9 @@
                             <p>Desde: <a href="{{post.link}}">{{post.link|truncatechars:50}}</a></p>
                             <p></p>
                     <p>
-                        <i class="icon-user"></i> by <a href="/Accounts/{{post.usuario}}">{{post.usuario}}</a> 
-                      | <i class="tiny-icon icon-calendar"></i>{{post.fecha}}
-                      | <i class="tiny-icon icon-bubble"></i>
+                        <span class="tiny-icon icon-user"></span> by <a href="/Accounts/{{post.usuario}}">{{post.usuario}}</a> 
+                      | <span class="tiny-icon icon-calendar"></span>{{post.fecha}}
+                      | <span class="tiny-icon icon-bubble"></span>
                             <a href="/Posts/{{post.id}}">
                                 {{post.comentarios.count}} comments
                             </a>

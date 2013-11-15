@@ -37,7 +37,7 @@
                        <a href="/Edit" class="btn"><span class="super-icon icon-pencil"></span></a>
                        <a href="/Messages/" class="btn"><span class="super-icon icon-bubble"></span></a>
                        <a href="#" class="btn"><span class="super-icon icon-help"></span></a>
-                       <a href="/Logout" class="btn"><h3>Salir</h3></a>                 
+                       <a href="/Logout" class="btn"><span class="super-icon icon-out"></span></a>                 
                 </div>
                 {% endif %}
             </div>                   
@@ -61,7 +61,7 @@
                             <li><a class="btn" href="/Edit"><span class="super-icon icon-pencil"></span> ajustes</a></li>
                             <li><a class="btn" href="/Messages/"><span class="super-icon icon-bubble"></span> mensajes</a></li>
                             <li><a class="btn" href="#"><span class="super-icon icon-help"></span> ayuda </a></li>
-                            <li><a class="btn" href="/Logout">Salir</a></li>
+                            <li><a class="btn" href="/Logout"><span class="super-icon icon-out"></span>Salir</a></li>
                             <li><hr></li>
                         </ul>
                         </section>
@@ -94,7 +94,12 @@
                         </div>
                     </div>
                     <div class="row">                      
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        {%if user.is_staff%}
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                            <span class="icon icon-star blue-text main-text"></span>
+                        </div>
+                        {%endif%}
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
                             <a href="/Accounts/{{info}}" class="blue-text main-text">{{info}}</a>
                         </div>
                     </div>

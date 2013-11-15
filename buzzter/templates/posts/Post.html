@@ -9,33 +9,37 @@ and open the template in the editor.
 {% block tittle %} {{post}} {% endblock %}
     
 {% block content %}
+        <div class="row">       
+              <div class="media col-xs-12">                        
+                        <div class="media-body container">
+                             <div class="media-heading">
+                                <div class="span8">
+                                    <a class="main-text blue-text" href="/Posts/{{post.id}}">{{post.get_titulo}}</a> 
+                                {%if user.profile == post.usuario%}
+                                <button class="btn btn-info" data-toggle="modal" data-target="#myModal" style="font-size: 10pt;"><span class="tiny-icon icon-trash"></span></button>
+                                {%endif%}</div>
+                            </div>                            
+                            <p>Desde: <a href="{{post.link}}">{{post.link|truncatechars:50}}</a></p>
+                            <p></p>
+                    <p>
+                        {%if user.profile != post.usuario %}
+                        <span class="tiny-icon icon-user"></span> by <a href="/Accounts/{{post.usuario}}">{{post.usuario}}</a> 
+                        {%endif%} 
+                      | <span class="tiny-icon icon-calendar"></span>{{post.fecha}}                     
+                    </p>
+                    </div>
+                </div>
+        </div>
         <div class="row">
-            <div class="TextoTitle">{{post.get_titulo}}</div>
-            <div class="col-lg-4 col-xs-5 col-md-5 col-sm-5"><img  class="imagen img-rounded" src="{{post.linkImagen}}" style="width: 300px; height: 300px"> </div>
-            <div class="col-lg-offset-5">
-            <div class="col-lg-8 col-xs-8 col-md-8 col-sm-8">
-            <label class="Texto">Link:</label>
-            <div class="TextoDsc"><a href="{{post.link}}">{{post.link|truncatechars:50}}</a></div>
-            
-            <label class="Texto">Descripcion:</label>
+            <div class="col-lg-4 col-lg-offset-4 col-xs-12 col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4"><img  class="img-rounded media-object" src="{{post.linkImagen}}"> </div>
+            <div class="row">
+            <div class="col-lg-8 col-xs-12 col-md-8 col-sm-8">
+            <label class="medium-text blue-text">Descripcion:</label>
             <div class="TextoDsc">{{post.descripcion}}</div>
-          
-            {%if user.profile != post.usuario %}
-            <label class="Texto">Escrito por:</label>
-            <div class="TextoDsc"><a href="/Accounts/{{post.usuario}}">{{post.usuario}}</a></div>
-            {%endif%}         
-            
-            <label class="Texto">Fecha:</label>
-            <div class="TextoDsc">{{post.fecha}}</div>
             </div>
             </div>
-            
-            
+        </div>            
             {%if user.profile == post.usuario%}
-            <button data-toggle="modal" data-target="#myModal" class="btn btn-info" style="font-size: 16pt;"><span class="icon icon-trash"></span></button>
-            
-            <!-- <a href="/Posts/Delete/{{post.id}}"><span class="glyphicon icon icon-trash"></span></a>-->
-            
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                 <div class="modal-content">
@@ -52,7 +56,6 @@ and open the template in the editor.
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
             {%endif%}
-        </div>
 
         <div class="estiloRate">
             <div class="container col-md-4">
@@ -101,7 +104,7 @@ and open the template in the editor.
         </div>
         {%endfor%}
         </div>
-        <div class="alert alert-success">
+        <div class="alert alert-info">
         <form class="Form" method="POST">
         {% csrf_token %}
         <input type="hidden" name="usuario" value="{{user.profile}}">
