@@ -32,8 +32,8 @@ def now(request):
 
 @login_required
 def comments(request):
-    listpost = Comments.objects.filter(Q(usuario__in=request.user.followings.all())|Q(usuario=request.user.profile))
-    return render(request,"posts/comments.html",{"comments": listpost.order_by('-fecha')[:20]})
+    comments = Comments.objects.filter(Q(usuario__in=request.user.followings.all())|Q(usuario=request.user.profile))
+    return render(request,"posts/comments.html",{"comments": comments.order_by('-fecha')[:20]})
 
 @login_required
 def newPost(request, tipoP):

@@ -10,23 +10,23 @@
         <hr>
         <div class="row">              
                     <div class="media col-xs-12">
-                        <a class="pull-left" href="/Accounts/{{varUsuario}}"> <img src="{{varUsuario.fotografia.url}}" style="width: 100px; height: 100px"> </a>
+                        <a class="pull-left" href="/Accounts/{{varUsuario}}"> <img src="{{varUsuario.profile.fotografia.url}}" style="width: 100px; height: 100px"> </a>
                         <div class="media-body container">
                              <div class="media-heading">
                                 <div class="span8"> 
                                     <p>
                                         {% if varUsuario.pais %}
-                                        <img alt="flag" src="{{varUsuario.getFlag}}">
+                                        <img alt="flag" src="{{varUsuario.profile.getFlag}}">
                                         {% endif %}
                                         <label class="Texto">{{varUsuario.get_full_name}}</label>
                                     </p>
                                 </div>    
                                 <p><a href="/Accounts/{{varUsuario}}"> {{varUsuario}} </a></p>
                                 <p>
-                                    {% if user in varUsuario.profile.followers.all %}
+                                    {% if user.profile in varUsuario.profile.followers.all %}
                                         <a href="/Unfollow/{{varUsuario}}"><button class="btn btn-danger">Dejar de Seguir</button></a>
                                         <a href="/Messages/{{varUsuario}}/"><button class="btn btn-info">Enviar Mensaje</button></a>
-                                    {% else %}
+                                    {% elif user.profile != varUsuario.profile %}
                                         <a href="/Follow/{{varUsuario}}"><button class="btn btn-info">Seguir</button></a>
                                     {% endif %}
                                 </p>
