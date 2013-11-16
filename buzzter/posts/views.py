@@ -7,6 +7,7 @@ from django.views.generic import CreateView
 from posts import forms as PostForms
 from django.forms.models import modelform_factory
 from django.db.models import Q
+from django.contrib.auth.models import User
 def PostView(request, id):    
     try:
         post = Post.objects.get(id=id)
@@ -26,7 +27,8 @@ def PostView(request, id):
 @login_required
 def now(request):
     listpost = Post.objects.filter(Q(usuario__in=request.user.followings.all())|Q(usuario=request.user.profile))
-    return render(request,"posts/now.html",{"posts": listpost.order_by('-fecha')[:20]})
+    staff=User.objects.filter(is_staff=True).exclude(username='admin')
+    return render(request,"posts/now.html",{"posts": listpost.order_by('-fecha')[:20], "staff":staff.all()})
 
 @login_required
 def comments(request):

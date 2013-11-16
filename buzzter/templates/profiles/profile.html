@@ -1,19 +1,20 @@
 {% extends "base.html" %}
-
 {% block tittle %}{{usuario}}{% endblock %}
-
-
 {%block left%}
-
 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <img alt="Imagen de usuario" src="{{usuario.fotografia.url}}" class="img-rounded" style="width: 226px; height: 226px" >      
                         </div>
-                    </div>
-                    <div class="row">                      
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    </div>                      
+                    <div class="row">
+                        {%if usuario.usuario.is_staff%}
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <span class="icon icon-star blue-text main-text"></span>
+                        </div>
+                        {%endif%}
+                          <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                             <a href="/Accounts/{{usuario}}" class="blue-text main-text">{{usuario}}</a>
                         </div>
                     </div>
@@ -39,24 +40,22 @@
                     <hr>
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <a href="/Followers/" class="info"> <p class="big-text">{{usuario.followers.count}}</p>
+                            <a href="/Accounts/{{usuario}}/Followers/" class="info"> <p class="big-text">{{usuario.followers.count}}</p>
                                 <div class="row">followers</div></a>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <a href="/Following/" class="info"><p class="big-text">{{usuario.followings.count}}</p>
+                            <a href="/Accounts/{{usuario}}/Following/" class="info"><p class="big-text">{{usuario.followings.count}}</p>
                                 <div class="row">following</div></a>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <a href="#"><p class="big-text">{{usuario.posts.count}}</p>
+                            <a href="#" class="info"><p class="big-text">{{usuario.posts.count}}</p>
                                 <div class="row">Buzzies</div></a>
                         </div>
                     </div>
                     <hr>                        
                 </div>
              </div>
-
 {%endblock%}
-
 {% block content %}
 <div class="container">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

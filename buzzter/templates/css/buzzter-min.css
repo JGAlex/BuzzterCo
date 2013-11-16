@@ -64,7 +64,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#75e6a4', end
 .info:hover{text-decoration: none; color:#bbbbbb}
 .blue-text{color:#077cb2;}
 .tab{color:#3390ba; font-size: 20pt; font-weight: bold;}
-.main-text{font-weight: bold; font-size: 33pt;}
+.main-text{font-weight: bold; font-size: 25pt;}
 .main-text:hover, .tab:hover a{text-decoration: none; color:#0785c0}
 .detail-text{color:#4ea0dc; font-size: 20pt; font-weight:normal}
 .show-time .show{color:#999999; font-size: 21pt;}

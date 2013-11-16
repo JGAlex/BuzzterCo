@@ -15,7 +15,7 @@ def sendMessage(request, user_name):
         emisor = request.user
         receptor = User.objects.get(username=user_name)
         mensaje = Messages(emisor=emisor.profile, receptor=receptor.profile)
-        mensajes = Messages.objects.filter(Q(emisor=receptor, receptor=emisor)|Q(emisor=emisor, receptor=receptor)).order_by('fecha')[:10]
+        mensajes = Messages.objects.filter(Q(emisor=receptor.profile, receptor=emisor.profile)|Q(emisor=emisor.profile, receptor=receptor.profile)).order_by('fecha')[:10]
         form = formMessage(request.POST or None, instance=mensaje)
         if form.is_valid():
             form.save()

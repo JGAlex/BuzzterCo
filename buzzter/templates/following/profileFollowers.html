@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-{%extends "base.html"%}
-{%block title%} Seguiendo a {%endblock%}
+{%extends "profiles/profile.html"%}
+{%block title%} Perfiles {%endblock%}
 {%block content%}
-<div class="container"><div class="main-text blue-text">Tu Sigues a...</div></div>
+<div class="container"><div class="main-text blue-text">Los seguidores de {{usuario}}</div></div>
 <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="container"> 
-    {%for varUsuario in user.profile.followings.all%}
-    <hr>
+        <div class="container">          
+        {%for varUsuario in followers%}  
+        <hr>
         <div class="row">              
                     <div class="media col-xs-12">
-                        <a class="pull-left" href="/Accounts/{{varUsuario}}"> <img src="{{varUsuario.profile.fotografia.url}}" style="width: 100px; height: 100px"> </a>
+                        <a class="pull-left" href="/Accounts/{{varUsuario}}"> <img src="{{varUsuario.fotografia.url}}" style="width: 100px; height: 100px"> </a>
                         <div class="media-body container">
                              <div class="media-heading">
                                 <div class="span8"> 
                                     <p>
-                                        {% if varUsuario.profile.pais %}
-                                        <img alt="flag" src="{{varUsuario.profile.getFlag}}">
+                                        {% if varUsuario.pais %}
+                                        <img alt="flag" src="{{varUsuario.getFlag}}">
                                         {% endif %}
                                         <label class="Texto">{{varUsuario.get_full_name}}</label>
                                     </p>
@@ -33,9 +33,9 @@
                             </div>
                         </div>
                     </div>             
-               </div>     
+               </div>               
     {%endfor%}
-        </div>
+    </div>
     </div>
 </div>
-{%endblock%}
+{% endblock %}

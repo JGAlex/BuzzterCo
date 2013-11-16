@@ -7,12 +7,30 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.http import Http404, HttpResponseRedirect
 
-def FollowingView(request):
-    user = request.user
-    if user.is_authenticated():
-        return render(request, "following/following.html")
+def ProfileFollowingView(request, user_name):
+    try:
+        user = User.objects.get(username=user_name)
+    except User.DoesNotExist:
+        raise Http404
+    if request.user == user:
+        return FollowersView(request)
+    return render(request, "following/profileFollowings.html", {'following':user.followings.all(), 'usuario':user.profile})
+
+def ProfileFollowersView(request, user_name):
+    try:
+        user = User.objects.get(username=user_name)
+    except User.DoesNotExist:
+        raise Http404
+    if request.user == user:
+        return FollowersView(request)
+    return render(request, "following/profileFollowers.html", {'followers':user.followers.all(), 'usuario':user.profile})       
     
 def FollowersView(request):
+    user = request.user
+    if user.is_authenticated():
+        return render(request, "following/follower.html")
+    
+def FollowingView(request):
     user = request.user
     if user.is_authenticated():
         return render(request, "following/follower.html")

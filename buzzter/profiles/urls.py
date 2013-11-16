@@ -8,6 +8,8 @@ from profiles import views
 from following import views as follow
 urlpatterns = patterns('', 
                         url(r'^Accounts/(?P<user_name>\w+)/$', views.ProfileView, name='profile'),
+                        url(r'^Accounts/(?P<user_name>\w+)/Following/$', follow.ProfileFollowingView, name='following'),
+                        url(r'^Accounts/(?P<user_name>\w+)/Followers/$', follow.ProfileFollowersView, name='followers'),
                         url(r'^Edit/$', views.editProfile, name='edit_profile'),
                         url(r'^Following/$', follow.FollowingView, name='following'),
                         url(r'^Followers/$', follow.FollowersView, name='followers'),
