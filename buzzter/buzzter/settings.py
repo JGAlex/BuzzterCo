@@ -141,9 +141,12 @@ INSTALLED_APPS = (
     'posts',
     'following',
     'messages',
-    'rating'
-    
-    
+    'rating',
+    # Para que esto funcione debe estar instalado django-oauth-provider
+    'provider',
+    'provider.oauth2',
+    # Debe estar instalado django-tastypie
+    'tastypie',
 )
 
 
