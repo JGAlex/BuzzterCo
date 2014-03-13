@@ -1,7 +1,6 @@
 from buzzter.authentication import OAuth20Authentication
 from tastypie.authorization import DjangoAuthorization
 from tastypie.resources import ModelResource
-from tastypie.serializers import Serializer
 from tastypie import fields
 from django.conf.urls import url
 from django.contrib.auth.models import User
