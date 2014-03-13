@@ -1,10 +1,17 @@
 from django.conf.urls import patterns, include, url
-import settings
-# Uncomment the next two lines to enable the admin:
 from django.contrib import admin
-
+from tastypie.api import Api
+from profiles.resources import ProfileResource, UserResource
+from posts.resources import PostTypeResource,PostResource,CommentsResource
 admin.autodiscover()
 
+profileResource = ProfileResource()
+api = Api(api_name='v1')
+api.register(PostTypeResource())
+api.register(PostResource())
+api.register(CommentsResource())
+api.register(ProfileResource())
+api.register(UserResource())
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'buzzter.views.home', name='home'),
@@ -14,5 +21,7 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
+    url(r'^admin/',include(admin.site.urls)),
     url(r'^auth/', include('provider.oauth2.urls', namespace='oauth2')),
+    url(r'^', include(api.urls)),   
 )
