@@ -19,7 +19,7 @@ class PostResource(ModelResource):
     class Meta:
         queryset = Post.objects.all()
         resource_name = 'post'
-        fields =['titulo','usuario','descripcion','link','linkImagen']
+        fields =['titulo','username','descripcion','link','linkImagen']
         authorization = DjangoAuthorization()
         authentication = OAuth20Authentication()
 
