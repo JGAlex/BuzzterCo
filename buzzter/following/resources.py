@@ -15,8 +15,8 @@ class FollowerResource(ModelResource):
         
 class FollowerResource(ModelResource):
 	class Meta:
-		queryset = Following.objects.all()
-		resource_name = 'following'
-		fields = ['usuario']
-		authorization = DjangoAuthorizacion()
-        authentication = Oauth20Authenticaction()
+            queryset = Following.objects.all()
+            resource_name = 'following'
+            fields = ['usuario']
+            authorization = DjangoAuthorizacion()
+            authentication = Oauth20Authenticaction()
