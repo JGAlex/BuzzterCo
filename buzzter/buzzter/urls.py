@@ -3,6 +3,7 @@ from django.contrib import admin
 from tastypie.api import Api
 from profiles.resources import ProfileResource, UserResource
 from posts.resources import PostTypeResource,PostResource,CommentsResource
+from following.resources import FollowerResource, FollowingResource
 admin.autodiscover()
 
 profileResource = ProfileResource()
@@ -12,6 +13,8 @@ api.register(PostResource())
 api.register(CommentsResource())
 api.register(ProfileResource())
 api.register(UserResource())
+api.register(FollowerResource())
+api.register(FollowingResource())
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'buzzter.views.home', name='home'),
