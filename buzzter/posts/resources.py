@@ -1,10 +1,12 @@
 from tastypie.resources import ModelResource
 from posts.models import PostType, Post, Comments
 from tastypie.authorization import DjangoAuthorization
+from tastypie import fields
 from buzzter.authentication import OAuth20Authentication
 from django.conf.urls import url
 
 class PostTypeResource(ModelResource):
+    posts = fields.ToManyField('posts.resources.PostResource','posts', null=True)
     class Meta:
         queryset = PostType.objects.all()
         resource_name = 'type'
@@ -15,6 +17,7 @@ class PostTypeResource(ModelResource):
         
         def prepend_urls(self):
             return[url(r'(?P<resource_name>%s)/(?P<tipo>\w+)/$' % self._meta.resource_name, self.wrap_view('dispatch_detail'), name='api_dispatch_detail'),
+                    url(r"^(?P<resource_name>%s)/(?P<username>\w+)/posts%s$" % (self._meta.resource_name, trailing_slash()), self.wrap_view('get_posts'), name="api_get_children"),
                     ]
 
 class PostResource(ModelResource):

@@ -23,9 +23,18 @@ class ProfileResource(ModelResource):
     def dehydrate_username(self, bundle):
         return bundle.obj.__unicode__()
     
+    def get_posts(self, request, **kwargs):
+        try:
+            bundle = self.build_bundle(data={'pk': kwargs['pk']}, request=request)
+            obj = self.cached_obj_get(bundle=bundle, **self.remove_api_resource_names(kwargs))
+        except ObjectDoesNotExist:
+            return HttpGone()
+        child_resource = PostResource()
+        return child_resource.obj_get_list(request).filter(usuario=obj.pk)
+    
     def prepend_urls(self):
         return[
-    url(r"^(?P<resource_name>%s)/(?P<username>\w+)/posts%s$" % (self._meta.resource_name, trailing_slash()), self.wrap_view('get_posts'), name="api_get_children"),]
+            url(r"^(?P<resource_name>%s)/(?P<pk>\w+)/posts%s$" % (self._meta.resource_name, trailing_slash()), self.wrap_view('get_posts'), name="api_get_children"),]
 class UserResource(ModelResource):
     profile = fields.ToOneField(ProfileResource, 'profile', related_name='user', full=True)
     class Meta:
