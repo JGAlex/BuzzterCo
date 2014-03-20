@@ -1,7 +1,6 @@
 
 from django.db import models
 from profiles.models import Profile
-from django.contrib.comments.models import Comment
 
 # Create your models here.
 

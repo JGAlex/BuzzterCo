@@ -6,7 +6,7 @@ from buzzter.authentication import OAuth20Authentication
 from django.conf.urls import url
 
 class PostTypeResource(ModelResource):
-    posts = fields.ToManyField('posts.resources.PostResource','posts', null=True)
+    posts = fields.ToManyField('posts.resources.PostResource','posts', full=True, null=True)
     class Meta:
         queryset = PostType.objects.all()
         resource_name = 'type'

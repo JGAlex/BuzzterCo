@@ -10,7 +10,7 @@ from posts.resources import *
 
 class ProfileResource(ModelResource):
     username = fields.CharField(readonly=True, attribute='username', null = True)
-    posts = fields.ToManyField('posts.resources.PostResource','posts', null=True)
+    posts = fields.ToManyField('posts.resources.PostResource','posts', full=True)
     class Meta:
         queryset = Profile.objects.all()
         resource_name = 'account'
