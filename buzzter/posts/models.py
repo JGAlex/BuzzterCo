@@ -4,23 +4,6 @@ from profiles.models import Profile
 
 # Create your models here.
 
-
-
-class PostType(models.Model):
-    
-    """
-    Esta es una clase que representa
-    los distintos tipos de publicaciones 
-    que el usuario puede realizar
-    Fecha: 20/10/13 16:41
-    Autor: Karen (:
-    Branch: Branch_Posts
-    Modificado: 24/10/13
-    """
-    
-    tipo = models.CharField(max_length=20,blank=False,unique=True)
-    def __unicode__(self):
-        return self.tipo
       
 class Post(models.Model):
   """
@@ -35,7 +18,7 @@ class Post(models.Model):
   """   
    
   usuario = models.ForeignKey(Profile, related_name='posts')
-  tipoPublicacion = models.ForeignKey(PostType)  
+  tipoPublicacion = models.ForeignKey('PostType', related_name='publicaciones')  
   rating = models.FloatField(blank=True, null=True,default=0)  
   fecha = models.DateTimeField(auto_now=True)
   titulo = models.CharField(max_length=50, blank=False, unique=True)
@@ -82,5 +65,20 @@ class Comments(models.Model):
     usuario = models.ForeignKey(Profile,related_name="comentarios")
     fecha = models.DateField(auto_now=True)
     post = models.ForeignKey(Post, related_name="comentarios")
-    comentario = models.TextField(blank=False);
+    comentario = models.TextField(blank=False)    
+
+class PostType(models.Model):
     
+    """
+    Esta es una clase que representa
+    los distintos tipos de publicaciones 
+    que el usuario puede realizar
+    Fecha: 20/10/13 16:41
+    Autor: Karen (:
+    Branch: Branch_Posts
+    Modificado: 24/10/13
+    """
+    
+    tipo = models.CharField(max_length=20,blank=False,unique=True)
+    def __unicode__(self):
+        return self.tipo
