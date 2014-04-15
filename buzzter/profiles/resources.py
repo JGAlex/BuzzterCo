@@ -45,11 +45,55 @@ class UserResource(ModelResource):
             bundle = res.build_bundle(obj=post, request = request)
             bundle = res.full_dehydrate(bundle)
             objects.append(bundle)
+
         object_list = {   
             'objects':objects
         }
         res.log_throttled_access(request)
         return res.create_response(request, object_list)
+
+
+    def get_followers(self, request, **kwargs):
+        try:
+            bundle = self.build_bundle(data={'username':kwargs['username']}, request=request)
+            obj = self.cached_obj_get(bundle = bundle, **self.remove_api_resource_names(kwargs))
+        except ObjectDosNotExist:
+            return HttpGone()
+        except MultipleObjectsReturned:
+            return HttpMultipleChoices("More than one resorce is found at this uri")
+
+        res = UserResource()
+        objects = []
+
+        for _user in obj.profile.followers.all():
+            bundle = res.build_bundle(obj = _user, request = request)
+            bundle = res.full_dehydrate(bundle)
+            objects.append(bundle)
+
+        object_list = {'objects': objects}
+        res.log_throttled_access(request)
+        return res.create_response(request, object_list)
+
+    def get_following(self, request, **kwargs):
+        try:
+            bundle = self.build_bundle(data={'username':kwargs['username']}, request=request)
+            obj = self.cached_obj_get(bundle = bundle, **self.remove_api_resource_names(kwargs))
+        except ObjectDosNotExist:
+            return HttpGone()
+        except MultipleObjectsReturned:
+            return HttpMultipleChoices("More than one resorce is found at this uri")
+
+        res = UserResource()
+        objects = []
+
+        for _user in obj.profile.followings.all():
+            bundle = res.build_bundle(obj = _user, request = request)
+            bundle = res.full_dehydrate(bundle)
+            objects.append(bundle)
+
+        object_list = {'objects': objects}
+        res.log_throttled_access(request)
+        return res.create_response(request,object_list)
     
     
     def prepend_urls(self):
