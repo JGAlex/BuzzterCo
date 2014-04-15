@@ -5,11 +5,13 @@ from tastypie import fields
 from django.conf.urls import url
 from django.contrib.auth.models import User
 from posts.resources import *
+import pdb
 
 class UserResource(ModelResource):
     picture = fields.CharField(readonly=True, attribute='picture', null = True) 
     country = fields.CharField(readonly=True, attribute='country', null = True)
     flag = fields.CharField(readonly=True, attribute='flag', null = True)
+    
     class Meta:
         queryset = User.objects.all()
         resource_name = 'users'
@@ -36,9 +38,19 @@ class UserResource(ModelResource):
             return HttpGone()
         except MultipleObjectsReturned:
             return HttpMultipleChoices("More than one resource is found at this uri")
-        child_resource = PostResource()
-        return child_resource.get_list(request, usuari = obj.usuario)
-        
+        res = PostResource()
+        list = Post.objects.filter(usuario = obj)
+        objects = []
+        for post in list:
+            bundle = res.build_bundle(obj=post, request = request)
+            bundle = res.full_dehydrate(bundle)
+            objects.append(bundle)
+        object_list = {   
+            'objects':objects
+        }
+        res.log_throttled_access(request)
+        return res.create_response(request, object_list)
+    
     def prepend_urls(self):
         return [
             url(r'^user/(?P<username>\w+)/$', self.wrap_view('dispatch_detail'), name='api_dispatch_detail'),

@@ -124,7 +124,7 @@ ROOT_URLCONF = 'buzzter.urls'
 WSGI_APPLICATION = 'buzzter.wsgi.application'
 
 TEMPLATE_DIRS = (
-    PROJECT_PATH.child('templates')
+    #PROJECT_PATH.child('templates')
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.

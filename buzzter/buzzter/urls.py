@@ -6,11 +6,9 @@ from posts.resources import PostResource,CommentsResource
 from following.resources import FollowerResource, FollowingResource
 admin.autodiscover()
 
-profileResource = ProfileResource()
 api = Api(api_name='v1')
 api.register(PostResource())
 api.register(CommentsResource())
-api.register(ProfileResource())
 api.register(UserResource())
 api.register(FollowerResource())
 api.register(FollowingResource())
