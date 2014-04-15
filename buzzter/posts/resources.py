@@ -5,33 +5,31 @@ from tastypie import fields
 from buzzter.authentication import OAuth20Authentication
 from django.conf.urls import url
 
-class PostTypeResource(ModelResource):
-    posts = fields.ToManyField('posts.resources.PostResource','posts', full=True, null=True)
-    class Meta:
-        queryset = PostType.objects.all()
-        resource_name = 'type'
-        fields = ['tipo']
-        detail_uri_name='tipo'
-        authorization = DjangoAuthorization()
-        authentication = OAuth20Authentication()
-        
-        def prepend_urls(self):
-            return[url(r'(?P<resource_name>%s)/(?P<tipo>\w+)/$' % self._meta.resource_name, self.wrap_view('dispatch_detail'), name='api_dispatch_detail'),
-                    url(r"^(?P<resource_name>%s)/(?P<username>\w+)/posts%s$" % (self._meta.resource_name, trailing_slash()), self.wrap_view('get_posts'), name="api_get_children"),
-                    ]
-
 class PostResource(ModelResource):
+    user_uri=fields.CharField(readonly=True, attribute='user', null=True)
+    
     class Meta:
         queryset = Post.objects.all()
         resource_name = 'post'
-        fields =['titulo','descripcion','link','linkImagen']
+        fields =['titulo','descripcion','link','linkImagen','fecha','rating','tags']
         detail_uri_name='titulo'
+        allowed_methods=['get','post','put','patch']
+        include_resource_uri=False
         authorization = DjangoAuthorization()
         authentication = OAuth20Authentication()
         
-        def prepend_urls(self):
-            return[url(r'(?P<resource_name>%s)/(?P<titulo>\w+)/$' % self._meta.resource_name, self.wrap_view('dispatch_detail'), name='api_dispatch_detail'),
-                    ]
+    def dehydrate_user_uri(self,bundle):   
+        return '/v1/user/'+str(bundle.obj.usuario)+'/'
+    
+    def get_comments(self,request, **kwargs):
+        try:
+            bundle = serlf.buil_bundle(ddata={'pk': kwargs['pk']}, request=request)
+            obj = self.cached_obj_get(bundle=bundle, **self.remove_api_resource_names(kwargs))
+        except ObjectDoesNotExist:
+            return HttpGone()
+        child_resource = PostResource()
+        return child_resource.obj_get_list(request).filter(usuario=obj.pk)
+        
 
 class CommentsResource(ModelResource):
     class Meta:

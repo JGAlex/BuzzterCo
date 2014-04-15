@@ -2,13 +2,12 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from tastypie.api import Api
 from profiles.resources import ProfileResource, UserResource
-from posts.resources import PostTypeResource,PostResource,CommentsResource
+from posts.resources import PostResource,CommentsResource
 from following.resources import FollowerResource, FollowingResource
 admin.autodiscover()
 
 profileResource = ProfileResource()
 api = Api(api_name='v1')
-api.register(PostTypeResource())
 api.register(PostResource())
 api.register(CommentsResource())
 api.register(ProfileResource())
