@@ -2,9 +2,13 @@
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+import os
 
-from unipath import Path
-PROJECT_PATH = Path(__file__).ancestor(2)
+#To use unipath uncomment this lines
+#from unipath import Path
+#PROJECT_PATH = Path(__file__).ancestor(2)
+
+PROJECT_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
@@ -59,8 +63,9 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = PROJECT_PATH.child('media')
-
+# Another unipath line
+#MEDIA_ROOT = PROJECT_PATH.child('media')
+MEDIA_ROOT = os.path.join(PROJECT_PATH, "public","media")
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://example.com/media/", "http://media.example.com/"
