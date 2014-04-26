@@ -6,6 +6,8 @@ from tastypie.http import *
 from django.conf.urls import url
 from django.contrib.auth.models import User
 from posts.resources import *
+from django.contrib.auth import authenticate, login, logout
+from tastypie.http import HttpUnauthorized, HttpForbidden
 
 class UserResource(ModelResource):
     picture = fields.CharField(readonly=True, attribute='picture', null = True) 
@@ -101,11 +103,11 @@ class UserResource(ModelResource):
         object_list = {'objects': objects}
         res.log_throttled_access(request)
         return res.create_response(request,object_list)
-    
-    
+
     def prepend_urls(self):
         return [
             url(r'^user/(?P<username>\w+)/$', self.wrap_view('dispatch_detail'), name='api_dispatch_detail'),
             url(r'^user/(?P<username>\w+)/posts/$', self.wrap_view('get_posts'), name='user_get_posts'),
             url(r'^user/(?P<username>\w+)/followers/$', self.wrap_view('get_followers'), name='user_get_followers'),
-            url(r'^user/(?P<username>\w+)/following/$', self.wrap_view('get_following'), name='user_get_followings'),]
+            url(r'^user/(?P<username>\w+)/following/$', self.wrap_view('get_following'), name='user_get_followings'),
+            ]
