@@ -1,39 +1,60 @@
+from django.contrib.auth.models import User
 from tastypie.resources import ModelResource
 from posts.models import PostType, Post, Comments
 from tastypie.authorization import DjangoAuthorization
 from tastypie import fields
 from buzzter.authentication import OAuth20Authentication
 from django.conf.urls import url
+from tastypie.constants import ALL, ALL_WITH_RELATIONS
+from tastypie.paginator import Paginator
 
 class CommentsResource(ModelResource):
+    post_uri = fields.CharField(readonly=True, attribute='post_uri', null=True)
+    post_id = fields.IntegerField(readonly=True, attribute='post_id', null=True)
     user_uri = fields.CharField(readonly=True, attribute='user_uri', null=True)
     user = fields.CharField(readonly=True, attribute='user', null=True)
+    
     class Meta:
         queryset = Comments.objects.all()
         resource_name = 'comments'
-        fields =['comentario','fecha']
+        fields =['id','comentario','fecha']
         authorization = DjangoAuthorization()
         authentication = OAuth20Authentication()
+        paginator_class = Paginator
+        
     
     def dehydrate_user_uri(self,bundle):
         return '/v1/user/'+str(bundle.obj.usuario)+'/'
     
     def dehydrate_user(self,bundle):
         return str(bundle.obj.usuario)
+    
+    def dehydrate_post_uri(self,bundle):
+        return '/v1/posts/'+str(bundle.obj.post.id)+'/'
+    
+    def dehydrate_post_id(self,bundle):
+        return bundle.obj.post.id
 
 
 class PostResource(ModelResource):
     user_uri=fields.CharField(readonly=True, attribute='user_uri', null=True)
     user = fields.CharField(readonly=True, attribute='user', null=True)
     comments = fields.IntegerField(readonly=True, attribute='comments',null=True)
+    
     class Meta:
         queryset = Post.objects.all()
         resource_name = 'posts'
-        fields =['titulo','descripcion','link','linkImagen','fecha','rating','tags']
+        fields =['id','titulo','descripcion','link','linkImagen','fecha','rating','tags']
         allowed_methods=['get','post','put','patch']
         authorization = DjangoAuthorization()
         authentication = OAuth20Authentication()
         
+        filtering = {
+            'tags': ALL,
+            'titulo': ALL,
+            'id': ALL,
+        }
+                  
     def dehydrate_user_uri(self,bundle):   
         return '/v1/user/'+str(bundle.obj.usuario)+'/'
     
