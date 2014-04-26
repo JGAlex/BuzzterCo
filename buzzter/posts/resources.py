@@ -48,6 +48,7 @@ class PostResource(ModelResource):
         allowed_methods=['get','post','put']
         authorization = DjangoAuthorization()
         authentication = OAuth20Authentication()
+        paginator_class = Paginator
         
         filtering = {
             'tags': ALL,

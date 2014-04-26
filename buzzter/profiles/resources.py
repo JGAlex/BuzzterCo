@@ -8,6 +8,9 @@ from django.contrib.auth.models import User
 from posts.resources import *
 from django.contrib.auth import authenticate, login, logout
 from tastypie.http import HttpUnauthorized, HttpForbidden
+from tastypie.constants import ALL, ALL_WITH_RELATIONS
+from tastypie.paginator import Paginator
+
 
 class UserResource(ModelResource):
     picture = fields.CharField(readonly=True, attribute='picture', null = True) 
@@ -24,6 +27,13 @@ class UserResource(ModelResource):
         detail_uri_name = 'username'
         authorization = DjangoAuthorization()
         authentication = OAuth20Authentication()
+        
+        filtering={
+            'first_name':ALL,
+            'last_name':ALL,
+            'username':ALL,
+            'is_staff':ALL,
+        }
         
     def dehydrate_followers(selfs,bundle):
         return bundle.obj.profile.followers.count()
