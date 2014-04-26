@@ -10,8 +10,6 @@ api = Api(api_name='v1')
 api.register(PostResource())
 api.register(CommentsResource())
 api.register(UserResource())
-api.register(FollowerResource())
-api.register(FollowingResource())
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'buzzter.views.home', name='home'),

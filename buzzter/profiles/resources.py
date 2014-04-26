@@ -2,15 +2,17 @@ from buzzter.authentication import OAuth20Authentication
 from tastypie.authorization import DjangoAuthorization
 from tastypie.resources import ModelResource, ObjectDoesNotExist, MultipleObjectsReturned
 from tastypie import fields
+from tastypie.http import *
 from django.conf.urls import url
 from django.contrib.auth.models import User
 from posts.resources import *
-import pdb
 
 class UserResource(ModelResource):
     picture = fields.CharField(readonly=True, attribute='picture', null = True) 
     country = fields.CharField(readonly=True, attribute='country', null = True)
     flag = fields.CharField(readonly=True, attribute='flag', null = True)
+    followers = fields.IntegerField(attribute='followers_count', null=True)
+    following = fields.IntegerField(attribute='following_count', null=True)
     
     class Meta:
         queryset = User.objects.all()
@@ -20,7 +22,12 @@ class UserResource(ModelResource):
         detail_uri_name = 'username'
         authorization = DjangoAuthorization()
         authentication = OAuth20Authentication() 
-        
+    def dehydrate_followers(selfs,bundle):
+        return bundle.obj.profile.followers.count()
+    
+    def dehydrate_following(selfs,bundle):
+        return bundle.obj.profile.followings.count()
+    
     def dehydrate_picture(self, bundle):
         return '/media/' + str(bundle.obj.profile.fotografia)
     
