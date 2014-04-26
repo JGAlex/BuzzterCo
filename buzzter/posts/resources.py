@@ -30,7 +30,7 @@ class PostResource(ModelResource):
         queryset = Post.objects.all()
         resource_name = 'posts'
         fields =['titulo','descripcion','link','linkImagen','fecha','rating','tags']
-        allowed_methods=['get','post','put','patch']
+        allowed_methods=['get','post','put']
         authorization = DjangoAuthorization()
         authentication = OAuth20Authentication()
         

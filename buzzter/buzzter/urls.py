@@ -3,7 +3,7 @@ from django.contrib import admin
 from tastypie.api import Api
 from profiles.resources import UserResource
 from posts.resources import PostResource,CommentsResource
-from following.resources import FollowerResource, FollowingResource
+
 admin.autodiscover()
 
 api = Api(api_name='v1')

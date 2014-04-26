@@ -17,7 +17,7 @@ class UserResource(ModelResource):
     class Meta:
         queryset = User.objects.all()
         resource_name = 'users'
-        allowed_methods = ['get', 'post', 'put', 'patch']
+        allowed_methods = ['get', 'post', 'put']
         fields = ['date_joined','first_name','last_name','is_staff', 'username']       
         detail_uri_name = 'username'
         authorization = DjangoAuthorization()
