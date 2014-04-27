@@ -34,8 +34,8 @@ class CommentsResource(ModelResource):
     
     def dehydrate_post_id(self,bundle):
         return bundle.obj.post.id
-
-
+    
+    
 class PostResource(ModelResource):
     user_uri=fields.CharField(readonly=True, attribute='user_uri', null=True)
     user = fields.CharField(readonly=True, attribute='user', null=True)
@@ -63,7 +63,14 @@ class PostResource(ModelResource):
         return str(bundle.obj.usuario)
     
     def dehydrate_comments(self,bundle):
-        return bundle.obj.comentarios.count()
+        return bundle.obj.comentarios.count()  
+    
+    def hydrate(self,bundle):
+        if not bundle.obj.usuario_id:
+            bundle.obj.usuario_id = User.objects.get(username=bundle.data['user']).id
+        if not bundle.obj.tipoPublicacion_id:
+            bundle.obj.tipoPublicacion_id = PostType.objects.get(tipo=bundle.data['type']).id
+        return bundle
     
     def get_comments(self,request, **kwargs):
         try:

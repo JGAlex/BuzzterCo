@@ -10,7 +10,7 @@ from django.contrib.auth import authenticate, login, logout
 from tastypie.http import HttpUnauthorized, HttpForbidden
 from tastypie.constants import ALL, ALL_WITH_RELATIONS
 from tastypie.paginator import Paginator
-
+from countries.models import Country
 
 class UserResource(ModelResource):
     picture = fields.CharField(readonly=True, attribute='picture', null = True) 
