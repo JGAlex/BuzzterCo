@@ -6,8 +6,8 @@ from tastypie.http import *
 from django.conf.urls import url
 from django.contrib.auth.models import User
 from posts.resources import *
+from profiles.models import Profile
 from django.contrib.auth import authenticate, login, logout
-from tastypie.http import HttpUnauthorized, HttpForbidden
 from tastypie.constants import ALL, ALL_WITH_RELATIONS
 from tastypie.paginator import Paginator
 from countries.models import Country
@@ -22,7 +22,7 @@ class UserResource(ModelResource):
     class Meta:
         queryset = User.objects.all()
         resource_name = 'users'
-        allowed_methods = ['get', 'post', 'put']
+        allowed_methods = ['get','post' ,'put']
         fields = ['date_joined','first_name','last_name','is_staff', 'username']       
         detail_uri_name = 'username'
         authorization = DjangoAuthorization()
@@ -45,14 +45,38 @@ class UserResource(ModelResource):
         return '/media/' + str(bundle.obj.profile.fotografia)
     
     def dehydrate_country(self, bundle):
-        return bundle.obj.profile.pais    
+        return bundle.obj.profile.pais or None
     
     def dehydrate_flag(self, bundle):
-        return bundle.obj.profile.getFlag()
+        return bundle.obj.profile.getFlag() or None
     
     def hydrate(self,bundle):
+        country=bundle.data['country']
+        if country:
+            bundle.obj.profile.pais_id= Country.objects.get(printable_name=country).iso
+            bundle.obj.profile.save()
+        return bundle
+            
+    def create(self, request, **kwargs):
+        data = self.deserialize(request, request.body, format=request.META.get('CONTENT_TYPE', 'application/json'))
+        user = User(username=data['username'], email=data['email'],password=data['password'])
+        user.save()
+        profile = Profile(usuario = user)
+        profile.save()
+        if user.profile:
+             return self.create_response(request, 'usuario creado con exito')
+        else:
+         return self.create_response(request, 'No tengo idea de lo que hago')
+     
+    def login(self, request, **kwargs):
+         data = self.deserialize(request, request.body, format=request.META.get('CONTENT_TYPE', 'application/json'))
+         user = authenticate(username=data['username'], password=['password'])
+         if user is not None:
+            login(request,user)
+            return self.create_response(request,user)
+         else:
+            return self.create_response(request,"Algo ha salido mal")
         
-    
     def get_posts(self, request, **kwargs):
         try:
             bundle = self.build_bundle(data={'username':kwargs['username']}, request=request)
@@ -123,4 +147,6 @@ class UserResource(ModelResource):
             url(r'^user/(?P<username>\w+)/posts/$', self.wrap_view('get_posts'), name='user_get_posts'),
             url(r'^user/(?P<username>\w+)/followers/$', self.wrap_view('get_followers'), name='user_get_followers'),
             url(r'^user/(?P<username>\w+)/following/$', self.wrap_view('get_following'), name='user_get_followings'),
+            url(r'^register/$', self.wrap_view('create'), name='create_user'),
+            url(r'^login/$', self.wrap_view('login'), name='login'),
             ]
