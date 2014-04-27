@@ -21,8 +21,7 @@ class CommentsResource(ModelResource):
         authorization = DjangoAuthorization()
         authentication = OAuth20Authentication()
         paginator_class = Paginator
-        
-    
+            
     def dehydrate_user_uri(self,bundle):
         return '/v1/user/'+str(bundle.obj.usuario)+'/'
     
@@ -35,6 +34,12 @@ class CommentsResource(ModelResource):
     def dehydrate_post_id(self,bundle):
         return bundle.obj.post.id
     
+    def hydrate(self,bundle):
+        if not bundle.obj.usuario_id:
+            bundle.obj.usuario_id = User.objects.get(username=bundle.data['user']).id
+        if not bundle.obj.post_id:
+            bundle.obj.post_id = Post.objects.get(id=bundle.data['post_id']).id
+        return bundle
     
 class PostResource(ModelResource):
     user_uri=fields.CharField(readonly=True, attribute='user_uri', null=True)

@@ -50,6 +50,9 @@ class UserResource(ModelResource):
     def dehydrate_flag(self, bundle):
         return bundle.obj.profile.getFlag()
     
+    def hydrate(self,bundle):
+        
+    
     def get_posts(self, request, **kwargs):
         try:
             bundle = self.build_bundle(data={'username':kwargs['username']}, request=request)
