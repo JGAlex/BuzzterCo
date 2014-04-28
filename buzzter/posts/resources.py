@@ -78,18 +78,18 @@ class PostResource(ModelResource):
             bundle.obj.tipoPublicacion_id = PostType.objects.get(tipo=bundle.data['type']).id
         return bundle
     
-    def now(self, request,**kwargs):
-        list = Post.objects.order_by('-fecha')[:20]
+    def TimeLine(self, request, **kwargs):
+        list = Post.objects.order_by('-fecha')[:10]
         objects = []
-        for posts in list:
-            bundle = self.build_bundle(obj=posts, request = request)
+        for post in list:
+            bundle = self.build_bundle(obj=post, request = request)
             bundle = self.full_dehydrate(bundle)
             objects.append(bundle)
         object_list = {   
             'objects':objects
         }
-        res.log_throttled_access(request)
-        return res.create_response(request, object_list)
+        self.log_throttled_access(request)
+        return self.create_response(request, object_list)
 
     
     def get_comments(self,request, **kwargs):
@@ -117,5 +117,5 @@ class PostResource(ModelResource):
         return[
             url(r'^post/(?P<pk>\d+)/$', self.wrap_view('dispatch_detail'), name='api_dispatch_detail'),
             url(r'^post/(?P<pk>\d+)/comments/$', self.wrap_view('get_comments'),name='post_comments_detail'),
-            url(r'^now/$', self.wrap_view('now'),name='now'),
+            url(r'^timeline/$', self.wrap_view('TimeLine'),name='now'),
             ]
