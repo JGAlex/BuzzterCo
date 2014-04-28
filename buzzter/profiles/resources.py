@@ -43,13 +43,13 @@ class UserResource(ModelResource):
         return bundle.obj.profile.followings.count()
     
     def dehydrate_picture(self, bundle):
-        return '/media/' + str(bundle.obj.profile.fotografia)
+        return 'http://www.buzzter.co/media/' + str(bundle.obj.profile.fotografia)
     
     def dehydrate_country(self, bundle):
         return bundle.obj.profile.pais or None
     
     def dehydrate_flag(self, bundle):
-        return bundle.obj.profile.getFlag() or None
+        return 'http://www.buzzter.co/' + bundle.obj.profile.getFlag() or None
     
     def hydrate(self,bundle):
         country=bundle.data['country']
