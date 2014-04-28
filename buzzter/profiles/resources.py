@@ -71,13 +71,20 @@ class UserResource(ModelResource):
      
     def login(self, request, **kwargs):
          data = self.deserialize(request, request.body, format=request.META.get('CONTENT_TYPE', 'application/json'))
-         user = authenticate(username=data['username'], password=['password'])
+         user = authenticate(username=data['username'], password=data['password'])
          if user is not None:
-            login(request,user)
-            return self.create_response(request,user)
+			login(request,user)
+			bundle = self.build_bundle(obj=user, request=request)
+			bundle = self.full_dehydrate(bundle)
+			return self.create_response(request,bundle)
+			
          else:
-            return self.create_response(request,"Algo ha salido mal")
-        
+            return self.create_response(request,"Something went wrong",response_class=HttpBadRequest)
+			
+    def logout(self,request, **kwargs):
+		logout(request)
+		return self.create_response(request,"Logout successful")
+	
     def get_posts(self, request, **kwargs):
         try:
             bundle = self.build_bundle(data={'username':kwargs['username']}, request=request)
@@ -150,4 +157,5 @@ class UserResource(ModelResource):
             url(r'^user/(?P<username>\w+)/following/$', self.wrap_view('get_following'), name='user_get_followings'),
             url(r'^register/$', self.wrap_view('create'), name='create_user'),
             url(r'^login/$', self.wrap_view('login'), name='login'),
+			url(r'^logout/$', self.wrap_view('logout'), name='logout'),
             ]
