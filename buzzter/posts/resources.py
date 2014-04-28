@@ -7,6 +7,7 @@ from buzzter.authentication import OAuth20Authentication
 from django.conf.urls import url
 from tastypie.constants import ALL, ALL_WITH_RELATIONS
 from tastypie.paginator import Paginator
+from tastypie.resources import ModelResource, ObjectDoesNotExist, MultipleObjectsReturned
 
 class CommentsResource(ModelResource):
     post_uri = fields.CharField(readonly=True, attribute='post_uri', null=True)
@@ -77,6 +78,21 @@ class PostResource(ModelResource):
             bundle.obj.tipoPublicacion_id = PostType.objects.get(tipo=bundle.data['type']).id
         return bundle
     
+    def now(self, request, **kwargs):
+        res = PostResource()
+        list = Post.objects.all()
+        objects = []
+        for post in list:
+            bundle = res.build_bundle(obj=post, request = request)
+            bundle = res.full_dehydrate(bundle)
+            objects.append(bundle)
+        object_list = {   
+            'objects':objects
+        }
+        res.log_throttled_access(request)
+        return res.create_response(request, object_list)
+
+    
     def get_comments(self,request, **kwargs):
         try:
             bundle = self.build_bundle(data={'pk':kwargs['pk']}, request=request)
@@ -102,6 +118,5 @@ class PostResource(ModelResource):
         return[
             url(r'^post/(?P<pk>\d+)/$', self.wrap_view('dispatch_detail'), name='api_dispatch_detail'),
             url(r'^post/(?P<pk>\d+)/comments/$', self.wrap_view('get_comments'),name='post_comments_detail'),
+            url(r'^now/$', self.wrap_view('now'),name='now'),
             ]
-                
-        
