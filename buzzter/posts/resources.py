@@ -78,14 +78,12 @@ class PostResource(ModelResource):
             bundle.obj.tipoPublicacion_id = PostType.objects.get(tipo=bundle.data['type']).id
         return bundle
     
-    def now(self, request, **kwargs):
-        bundle = self.build_bundle(request=request)
-        res = PostResource()
-        list = Post.objects.all()
+    def now(self, request,**kwargs):
+        list = Post.objects.order_by('-fecha')[:20]
         objects = []
-        for post in list:
-            bundle = res.build_bundle(obj=post, request = request)
-            bundle = res.full_dehydrate(bundle)
+        for posts in list:
+            bundle = self.build_bundle(obj=posts, request = request)
+            bundle = self.full_dehydrate(bundle)
             objects.append(bundle)
         object_list = {   
             'objects':objects
