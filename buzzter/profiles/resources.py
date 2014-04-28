@@ -3,7 +3,8 @@ from tastypie.authorization import DjangoAuthorization
 from tastypie.resources import ModelResource, ObjectDoesNotExist, MultipleObjectsReturned
 from tastypie import fields
 from tastypie.http import *
-from django.conf.urls import url
+from django.conf.urls import url 
+from tastypie.authentication import MultiAuthentication, BasicAuthentication
 from django.contrib.auth.models import User
 from posts.resources import *
 from profiles.models import Profile
@@ -26,7 +27,7 @@ class UserResource(ModelResource):
         fields = ['date_joined','first_name','last_name','is_staff', 'username']       
         detail_uri_name = 'username'
         authorization = DjangoAuthorization()
-        authentication = OAuth20Authentication()
+        authentication = MultiAuthentication(OAuth20Authentication(),BasicAuthentication())
         
         filtering={
             'first_name':ALL,
@@ -140,7 +141,7 @@ class UserResource(ModelResource):
         object_list = {'objects': objects}
         res.log_throttled_access(request)
         return res.create_response(request,object_list)
-
+		
     def prepend_urls(self):
         return [
             url(r'^user/(?P<username>\w+)/$', self.wrap_view('dispatch_detail'), name='api_dispatch_detail'),
