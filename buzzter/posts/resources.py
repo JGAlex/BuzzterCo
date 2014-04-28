@@ -79,6 +79,7 @@ class PostResource(ModelResource):
         return bundle
     
     def now(self, request, **kwargs):
+        bundle = self.build_bundle(request=request)
         res = PostResource()
         list = Post.objects.all()
         objects = []
